@@ -46,5 +46,9 @@ public enum ErrorCode {
 	/**
 	 * Identity id error
 	 */
-	P10009;
+	P10009,
+	/**
+	 * Company id error
+	 */
+	P10010;
 }

@@ -10,6 +10,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import com.hsuforum.common.web.util.MessageUtils;
+import com.hsuforum.eas.common.ErrorCode;
 /**
  * Taiwan company id validator
  * @author Marvin
@@ -40,7 +41,7 @@ public class TaiwanCompanyIdValidator implements Validator {
 
         }
         if (!validate) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, MessageUtils.getAccessor().getMessage("A10010"),
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, MessageUtils.getAccessor().getMessage(ErrorCode.P10010.toString()),
                     null);
             throw new ValidatorException(message);
         }
