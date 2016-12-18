@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2016/12/18 PM 01:41:21                       */
+/* Created on:     2016/12/18 PM 08:51:52                       */
 /*==============================================================*/
 
 
@@ -779,7 +779,7 @@ end
 
 select @CurrentUser = user_name() 
 execute sp_addextendedproperty 'MS_Description',  
-   '使用者資料表', 
+   'User Table', 
    'user', @CurrentUser, 'table', 'TB_USERS'
 go
 

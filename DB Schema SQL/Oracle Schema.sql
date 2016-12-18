@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2016/12/17 PM 03:24:21                       */
+/* Created on:     2016/12/18 PM 08:51:06                       */
 /*==============================================================*/
 
 
@@ -212,7 +212,7 @@ create table TB_USERS (
 );
 
 comment on table TB_USERS is
-'使用者資料表';
+'User Table';
 
 comment on column TB_USERS.ID is
 'ID';

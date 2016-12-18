@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/12/18 PM 01:42:09                       */
+/* Created on:     2016/12/18 下午 08:52:32                       */
 /*==============================================================*/
 
 
@@ -113,7 +113,7 @@ create table TB_USERS
    key TBCL_USERS_UK1 (ACCOUNT)
 );
 
-alter table TB_USERS comment '使用者資料表';
+alter table TB_USERS comment 'User Table';
 
 /*==============================================================*/
 /* Table: TB_USERS_GROUPS                                       */
