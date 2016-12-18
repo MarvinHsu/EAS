@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2016/12/18 PM 08:51:06                       */
+/* Created on:     2016/12/18 PM 09:13:12                       */
 /*==============================================================*/
 
 
@@ -177,7 +177,7 @@ create table TB_MODULES (
    NAME                 VARCHAR2(50)          not null,
    CODE                 VARCHAR2(20)          not null,
    SEQUENCE             SMALLINT,
-   constraint PK_TB_MODULES primary key (ID)
+   constraint TB_MODULES_PK primary key (ID)
 );
 
 comment on table TB_MODULES is

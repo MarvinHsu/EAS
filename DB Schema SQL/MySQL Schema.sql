@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/12/18 ¤U¤È 08:52:32                       */
+/* Created on:     2016/12/18 PM 09:14:36                       */
 /*==============================================================*/
 
 
@@ -94,7 +94,7 @@ create table TB_MODULES
    primary key (ID)
 );
 
-alter table TB_MODULES comment 'Modulet table';
+alter table TB_MODULES comment 'Module table';
 
 /*==============================================================*/
 /* Table: TB_USERS                                              */

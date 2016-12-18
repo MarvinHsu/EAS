@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2016/12/18 PM 08:51:52                       */
+/* Created on:     2016/12/18 PM 09:13:58                       */
 /*==============================================================*/
 
 
@@ -652,7 +652,7 @@ create table TB_MODULES (
    NAME                 varchar(50)          not null,
    CODE                 varchar(20)          not null,
    SEQUENCE             smallint             null,
-   constraint PK_TB_MODULES primary key nonclustered (ID)
+   constraint TB_MODULES_PK primary key nonclustered (ID)
 )
 go
 
