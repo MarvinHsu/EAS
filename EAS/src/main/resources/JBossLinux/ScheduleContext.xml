@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <bean id="siteMapForGoogleJob" class="com.hsuforum.eas.job.SiteMapForGoogleJob" p:forumService-ref="forumService"
+          p:siteMapFile="sitemap.xml" p:jobConfigBean-ref="jobConfigBean" p:forumTitleService-ref="forumTitleService"
+          p:newsService-ref="newsService" p:forumReplyService-ref="forumReplyService" p:xitePath="/Application/HSUForum/SiteMap">
+        <property name="domains">
+            <list>
+                <value>https://www.hsuforum.com/</value>
+                
+            </list>
+        </property>
+    </bean>
+    <bean id="accessTokenJob" class="com.hsuforum.eas.job.AccessTokenJob" p:accessTokenService-ref="accessTokenService"
+          p:jobConfigBean-ref="jobConfigBean" p:wsConfigBean-ref="wsConfigBean"/>
+        
+    
+    <bean id="siteMapForGoogleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+          p:targetObject-ref="siteMapForGoogleJob" p:targetMethod="execute"/>
+    <bean id="accessTokenJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+          p:targetObject-ref="accessTokenJob" p:targetMethod="execute"/>
+          
+    
+    <bean id="siteMapForGoogleJobCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+          p:jobDetail-ref="siteMapForGoogleJobDetail" p:cronExpression="0 0/5 * * * ?"/>
+    <bean id="accessTokenJobCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+          p:jobDetail-ref="accessTokenJobDetail" p:cronExpression="0 0/20 * * * ?"/>
+          
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+    
+                <ref bean="siteMapForGoogleJobCronTrigger"/>
+                <!--  
+                <ref bean="accessTokenJobCronTrigger"/>
+                -->
+            </list>
+        </property>
+    </bean>
+    <bean id="jobConfigBean" class="com.hsuforum.eas.web.config.JobConfigBean" p:dataTableRows="25"/>
+</beans>

@@ -1,0 +1,57 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="persistenceUnit"
+		transaction-type="JTA">
+
+		<!-- EclipseLink -->
+		<!--  
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		-->
+		<!-- Hibernate -->
+
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<jta-data-source>jndi/HSUForumXADS</jta-data-source>
+
+		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
+		<class>com.hsuforum.eas.entity.Function</class>
+		<class>com.hsuforum.eas.entity.Group</class>
+		<class>com.hsuforum.eas.entity.FunctionItem</class>
+		<class>com.hsuforum.eas.entity.GroupFunction</class>
+		<class>com.hsuforum.eas.entity.GroupFunctionPK</class>
+		<class>com.hsuforum.eas.entity.Module</class>
+		<class>com.hsuforum.eas.entity.User</class>
+		<class>com.hsuforum.eas.entity.News</class>
+		<class>com.hsuforum.eas.entity.NewsCategory</class>
+		<class>com.hsuforum.eas.entity.Forum</class>
+		<class>com.hsuforum.eas.entity.ForumCategory</class>
+		<class>com.hsuforum.eas.entity.ForumReply</class>
+		<class>com.hsuforum.eas.entity.ForumTitle</class>
+		<class>com.hsuforum.eas.entity.Message</class>
+		<class>com.hsuforum.eas.entity.AccessToken</class>
+		<class>com.hsuforum.eas.entity.App</class>
+		<class>com.hsuforum.eas.entity.Report</class>
+
+		<properties>
+
+			<!-- EclipseLink -->
+			<!--  
+			<property name="eclipselink.logging.level" value="INFO" />
+			<property name="eclipselink.target-server" value="WebSphere_7" />
+			<property name="eclipselink.cache.shared.default" value="false" />
+			
+			-->
+			<!-- Hibernate -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.WebSphereExtendedJTATransactionLookup" />
+			<property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.CMTTransactionFactory"/>
+			<property name="jta.UserTransaction" value="java:comp/UserTransaction"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>
