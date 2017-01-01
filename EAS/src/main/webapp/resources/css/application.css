@@ -15,7 +15,7 @@ body {
 
 #page {
 	margin: 0 auto;
-	width: 987px;
+	width: 100%;
 }
 
 #header {
@@ -50,12 +50,12 @@ body {
 	float: left;
 	margin-right: 10px;
 	min-height: 450px;
-	width: 185px;
+	width: 15%;
 }
 
 #page-content .content-container {
 	float: right;
-	width: 750px;
+	width: 80%;
 }
 
 .clear {
