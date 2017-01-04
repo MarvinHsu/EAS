@@ -135,7 +135,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-
+		
 		<servlet-name>Jersey</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
