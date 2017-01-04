@@ -9,7 +9,7 @@
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<jta-data-source>jndi/EASXADS</jta-data-source>
+		<jta-data-source>java:/EASXADS</jta-data-source>
 
 		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
         <class>com.hsuforum.eas.entity.Function</class>
@@ -19,27 +19,17 @@
         <class>com.hsuforum.eas.entity.GroupFunctionPK</class>
         <class>com.hsuforum.eas.entity.Module</class>
         <class>com.hsuforum.eas.entity.User</class>
-        <class>com.hsuforum.eas.entity.News</class>
-        <class>com.hsuforum.eas.entity.NewsCategory</class>
-        <class>com.hsuforum.eas.entity.Forum</class>
-        <class>com.hsuforum.eas.entity.ForumCategory</class>
-        <class>com.hsuforum.eas.entity.ForumReply</class>
-        <class>com.hsuforum.eas.entity.ForumTitle</class>
-        <class>com.hsuforum.eas.entity.Message</class>
-        <class>com.hsuforum.eas.entity.AccessToken</class>
-        <class>com.hsuforum.eas.entity.App</class>
-        <class>com.hsuforum.eas.entity.Report</class>
 
 		<properties>
 
 			<!-- Hibernate -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.transaction.manager_lookup_class"
-				value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+				value="org.hibernate.transaction.JBossTransactionManagerLookup" />
 			<property name="hibernate.transaction.jta.platform"
-				value="org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform" />	
+				value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />	
 			
 		</properties>
 	</persistence-unit>
