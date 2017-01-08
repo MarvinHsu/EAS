@@ -11,7 +11,7 @@
     
     <bean id="wsConfigBean"
     	class="com.hsuforum.eas.web.config.WSConfigBean" 
-    	p:dataTableRows="25" p:mailFrom="hsuforumwebmaster@gmail.com"
+    	p:dataTableRows="25" p:mailFrom="abc@abc.com"
     	scope="singleton" />
 	
 
