@@ -8,7 +8,6 @@
 	<name>EAS</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<richfaces.version>4.5.17.Final</richfaces.version>
 		<primefaces.version>6.0</primefaces.version>
 		<spring.version>4.3.5.RELEASE</spring.version>
 		<springSecurity.version>4.2.0.RELEASE</springSecurity.version>
@@ -107,16 +106,6 @@
 		</dependency>
 
 		<!-- JSF -->
-		<dependency>
-			<groupId>org.richfaces</groupId>
-			<artifactId>richfaces</artifactId>
-			<version>${richfaces.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.richfaces</groupId>
-			<artifactId>richfaces-page-fragments</artifactId>
-			<version>${richfaces.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
