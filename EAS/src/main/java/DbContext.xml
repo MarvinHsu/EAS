@@ -8,20 +8,6 @@
     <context:annotation-config/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan scoped-proxy="targetClass" base-package="com.hsuforum.eas"/>
-    
-    <!-- 
-    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/ExpDataSource"></jee:jndi-lookup>
-
-    
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-        p:driverClass="oracle.jdbc.OracleDriver" p:jdbcUrl="jdbc:oracle:thin:@10.8.81.3:1521:xe"
-        p:user="EXPADMIN" p:password="EXPADMIN"></bean>
-
-    <bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://10.211.55.15:3306/cladmin"
-		p:username="CLADMIN" p:password="vm6jo35k6" />
-     -->
     <!--
     <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/persistenceUnit"/>
     -->  

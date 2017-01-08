@@ -99,8 +99,7 @@
 	<listener>
 		<listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
 	</listener>
-	<!-- <listener> <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
-		</listener> -->
+	
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
