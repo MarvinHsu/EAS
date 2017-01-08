@@ -19,16 +19,7 @@
         <class>com.hsuforum.eas.entity.GroupFunctionPK</class>
         <class>com.hsuforum.eas.entity.Module</class>
         <class>com.hsuforum.eas.entity.User</class>
-        <class>com.hsuforum.eas.entity.News</class>
-        <class>com.hsuforum.eas.entity.NewsCategory</class>
-        <class>com.hsuforum.eas.entity.Forum</class>
-        <class>com.hsuforum.eas.entity.ForumCategory</class>
-        <class>com.hsuforum.eas.entity.ForumReply</class>
-        <class>com.hsuforum.eas.entity.ForumTitle</class>
-        <class>com.hsuforum.eas.entity.Message</class>
-        <class>com.hsuforum.eas.entity.AccessToken</class>
-        <class>com.hsuforum.eas.entity.App</class>
-        <class>com.hsuforum.eas.entity.Report</class>
+        
 
 		<properties>
 
