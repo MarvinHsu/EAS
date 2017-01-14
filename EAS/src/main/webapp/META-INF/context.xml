@@ -6,13 +6,13 @@
 	-->
 	   
     <!-- MySQL -->
-    <!--  
+      
     <Resource name="jndi/EASDS" auth="Container"
         type="javax.sql.DataSource"
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://devdb:3306/eas" username="EAS"
         password="Happygo1!" maxTotal="5" maxWaitMillis="-1" />
-    -->
+    
     
     <!-- SQL Server -->
     <!--  
@@ -21,11 +21,21 @@
         driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
         url="jdbc:sqlserver://devdb:1433;databaseName=eas;"
         username="EAS" password="Happygo1!" maxTotal="5" maxWaitMillis="-1" />
-   -->  
-   <!-- Oracle -->    
-   <Resource name="jndi/EASDS" auth="Container"
+	-->  
+   	<!-- Oracle -->
+   	<!--      
+   	<Resource name="jndi/EASDS" auth="Container"
         type="javax.sql.DataSource"
         driverClassName="oracle.jdbc.OracleDriver"
         url="jdbc:oracle:thin:@devdb:1521:orcl" username="EAS"
         password="Happygo1!" maxActive="5" maxIdle="10" maxWait="-1" />
+    -->    
+    <!-- DB2 -->
+    <!--      
+   	<Resource name="jndi/EASDS" auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="com.ibm.db2.jcc.DB2Driver"
+        url="jdbc:db2://devdb:50000/Sample" username="EAS"
+        password="Happygo1!" maxActive="5" maxIdle="10" maxWait="-1" />
+    -->            
 </Context>
