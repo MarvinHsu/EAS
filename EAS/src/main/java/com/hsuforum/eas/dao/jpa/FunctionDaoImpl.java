@@ -16,7 +16,7 @@ import com.hsuforum.eas.entity.Function;
 @Repository("functionDao")
 public class FunctionDaoImpl extends BaseDaoImpl<Function, java.lang.String> implements FunctionDao {
 
-	@PersistenceContext(unitName = "persistenceUnit")
+	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
 	/**

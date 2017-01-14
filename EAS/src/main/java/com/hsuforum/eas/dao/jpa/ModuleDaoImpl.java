@@ -16,7 +16,7 @@ import com.hsuforum.eas.entity.Module;
 @Repository("moduleDao")
 public class ModuleDaoImpl extends BaseDaoImpl<Module, java.lang.String> implements ModuleDao {
 
-	@PersistenceContext(unitName = "persistenceUnit")
+	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
 	/**

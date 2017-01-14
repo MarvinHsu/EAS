@@ -21,7 +21,7 @@ import com.hsuforum.eas.entity.Group;
 @Repository("groupDao")
 public class GroupDaoImpl extends BaseDaoImpl<Group, String> implements GroupDao {
 
-	@PersistenceContext(unitName = "persistenceUnit")
+	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
 	/**

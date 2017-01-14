@@ -15,7 +15,7 @@ import com.hsuforum.eas.entity.GroupFunction;
 public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK>
 		implements GroupFunctionDao {
 
-	@PersistenceContext(unitName = "persistenceUnit")
+	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
 	/**

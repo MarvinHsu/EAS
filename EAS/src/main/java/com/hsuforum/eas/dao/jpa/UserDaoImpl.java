@@ -21,7 +21,7 @@ import com.hsuforum.eas.entity.User;
  */
 @Repository("userDao")
 public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
-	@PersistenceContext(unitName = "persistenceUnit")
+	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
 	/**
