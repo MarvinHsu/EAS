@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="myPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<!-- Open JPA -->
+		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider> -->
+		<!-- Hibernate -->
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+		<!-- EclipseLink -->
+
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<!-- EclipseLink -->
+		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
+		<class>com.hsuforum.eas.entity.Function</class>
+		<class>com.hsuforum.eas.entity.Group</class>
+		<class>com.hsuforum.eas.entity.Item</class>
+		<class>com.hsuforum.eas.entity.User</class>
+		<class>com.hsuforum.eas.entity.Department</class>
+		<class>com.hsuforum.eas.entity.Sequence</class>
+		<class>com.hsuforum.eas.entity.News</class>
+		<class>com.hsuforum.eas.entity.NewsCategory</class>
+		<class>com.hsuforum.eas.entity.Forum</class>
+		<class>com.hsuforum.eas.entity.ForumCategory</class>
+		<class>com.hsuforum.eas.entity.ForumReply</class>
+		<class>com.hsuforum.eas.entity.ForumTitle</class>
+		<class>com.hsuforum.eas.entity.Message</class>
+		<class>com.hsuforum.eas.entity.AccessToken</class>
+		<class>com.hsuforum.eas.entity.App</class>
+		<class>com.hsuforum.eas.entity.Report</class>
+		<class>com.hsuforum.eas.entity.Test</class>
+		<properties>
+	
+			
+			<!-- EclipseLink -->
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:oracle:thin:@lulu:1521:lorcl" />
+			<property name="javax.persistence.jdbc.user" value="CLADMIN" />
+			<property name="javax.persistence.jdbc.password" value="vm6jo35k6" />
+			<property name="eclipselink.logging.level" value="INFO" />
+			<property name="eclipselink.cache.shared.default" value="false" />
+
+			<!-- Hibernate -->
+			<!-- Oracle -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" 
+				/> -->
+			<!-- MySQL -->
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/> -->
+			<!-- GlassFish -->
+			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.SunONETransactionManagerLookup"/> -->
+			<!--Weblogic -->
+			<!-- <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/> 
+				<property name="hibernate.show_sql" value="false"/> <property name="hibernate.format_sql" 
+				value="false"/> -->
+			<!-- Open JPA -->
+			<!-- <property name="openjpa.Log" value="DefaultLevel=debug, Tool=debug"/> -->
+		</properties>
+	</persistence-unit>
+</persistence>

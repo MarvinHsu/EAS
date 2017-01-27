@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="persistenceUnit" transaction-type="JTA">
+        
+        <!-- Hibernate -->
+        
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- EclipseLink -->
+        <!-- 
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        -->
+        <!--
+        <non-jta-data-source>jndi/cl/dataSource</non-jta-data-source>
+        -->
+        <jta-data-source>jndi/EASDS</jta-data-source>
+        
+        <!-- EclipseLink -->
+        <class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
+        <class>com.hsuforum.eas.entity.Function</class>
+        <class>com.hsuforum.eas.entity.Group</class>
+        <class>com.hsuforum.eas.entity.FunctionItem</class>
+        <class>com.hsuforum.eas.entity.GroupFunction</class>
+        <class>com.hsuforum.eas.entity.GroupFunctionPK</class>
+        <class>com.hsuforum.eas.entity.Module</class>
+        <class>com.hsuforum.eas.entity.User</class>
+        <properties>
+            <!-- EclipseLink -->
+            <!--  
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.target-server" value="WebLogic_10"/>
+            <property name="eclipselink.cache.shared.default" value="false"/>
+            -->
+            <!-- Hibernate -->
+            
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.event.merge.entity_copy_observer" value="allow"/>
+            <!-- Oracle -->
+              
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+            
+            <!-- MySQL -->
+            <!--
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            -->
+            <!-- SQL Server-->
+            <!--  
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+            -->
+            <!-- GlassFish -->
+            <!--
+            <property name="hibernate.transaction.manager_lookup_class"
+                      value="org.hibernate.transaction.SunONETransactionManagerLookup"/>
+            -->
+            <!--Weblogic-->
+            <!--
+            <property name="hibernate.transaction.manager_lookup_class"
+                      value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>
+            
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            -->
+            
+        </properties>
+    </persistence-unit>
+</persistence>
