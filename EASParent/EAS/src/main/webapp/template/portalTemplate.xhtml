@@ -13,8 +13,8 @@
 <h:body>
 	<c:choose>
 		<c:when test="#{userAgentManagedBean.phone}">
-			<h:outputStylesheet library="css" name="applicationMobile.css"
-				target="head" />
+			<h:outputStylesheet library="defaultTheme"
+				name="css/applicationMobile.css" target="head" />
 
 			<div id="page">
 				<div id="header">
@@ -59,9 +59,7 @@
 		</c:when>
 		<c:otherwise>
 
-
-
-			<h:outputStylesheet library="css" name="application.css"
+			<h:outputStylesheet library="defaultTheme" name="css/application.css"
 				target="head" />
 
 			<div id="page">

@@ -16,7 +16,7 @@ import com.hsuforum.eas.service.UserService;
 /**
  * User Service Implement
  * 
- * @author Administrator
+ * @author Marvin
  *
  */
 
