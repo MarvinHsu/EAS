@@ -19,6 +19,12 @@
 		<module>EASWebLogicMySQL</module>
 		<module>EASWebLogicOracle</module>
 		<module>EASWebLogicSQLServer</module>
+		<module>EASGlassFishDB2</module>
+		<module>EASGlassFishMySQL</module>
+		<module>EASGlassFishOracle</module>
+		<module>EASGlassFishSQLServer</module>
+		<module>EASWebSphereLibertyMySQL</module>
+		<module>EASWebSphereLibertyDB2</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

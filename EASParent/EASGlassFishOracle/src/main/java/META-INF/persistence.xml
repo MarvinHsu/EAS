@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="persistenceUnit"
+		transaction-type="JTA">
+
+
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<jta-data-source>jndi/EASXADS</jta-data-source>
+
+
+		<!-- EclipseLink -->
+		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
+		<class>com.hsuforum.eas.entity.Function</class>
+		<class>com.hsuforum.eas.entity.Group</class>
+		<class>com.hsuforum.eas.entity.FunctionItem</class>
+		<class>com.hsuforum.eas.entity.GroupFunction</class>
+		<class>com.hsuforum.eas.entity.GroupFunctionPK</class>
+		<class>com.hsuforum.eas.entity.Module</class>
+		<class>com.hsuforum.eas.entity.User</class>
+		<properties>
+
+			<property name="eclipselink.target-database" value="Oracle10"/>
+			<property name="eclipselink.logging.level" value="INFO" />
+			<property name="eclipselink.target-server" value="Glassfish" />
+			<property name="eclipselink.cache.shared.default" value="false" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

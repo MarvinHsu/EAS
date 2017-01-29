@@ -43,7 +43,7 @@ public class ModuleDaoImpl extends BaseDaoImpl<Module, java.lang.String> impleme
 	public List<Module> findAllFetchRelation() {
 		StringBuffer queryString = new StringBuffer();
 		queryString.append("SELECT DISTINCT entity FROM Module entity ");
-		queryString.append("LEFT JOIN FETCH entity.functions function ");
+		queryString.append("LEFT JOIN FETCH entity.functions fun ");
 		queryString.append("ORDER BY entity.sequence ");
 
 		List<Module> list = this.find(queryString);
