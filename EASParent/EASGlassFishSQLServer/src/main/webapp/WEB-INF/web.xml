@@ -37,11 +37,11 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>client</param-value>
+		<param-value>server</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
-		<param-value>/resources/</param-value>
+		<param-value>/resources</param-value>
 	</context-param>
 	
 
@@ -143,11 +143,13 @@
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>20</session-timeout>
+		<!--  
 		<cookie-config>
 			<http-only>true</http-only>
 			<secure>true</secure>
 			<max-age>1200</max-age>
-		</cookie-config>		
+		</cookie-config>
+		-->		
 	</session-config>
 	<mime-mapping>
 		<extension>xcss</extension>

@@ -37,13 +37,12 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>client</param-value>
-	</context-param>
+		<param-value>server</param-value>
+	</context-param>	
 	<context-param>
 		<param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
 		<param-value>/resources</param-value>
 	</context-param>
-
 
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
@@ -119,19 +118,18 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet>
-
+		
 		<servlet-name>Jersey</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.hsuforum.eas.ws.RESTApplication</param-value>
+			<param-value>com.hsuforum.project.ws.RESTApplication</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -143,11 +141,13 @@
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>20</session-timeout>
+		<!--  
 		<cookie-config>
 			<http-only>true</http-only>
 			<secure>true</secure>
 			<max-age>1200</max-age>
 		</cookie-config>
+		-->
 	</session-config>
 	<mime-mapping>
 		<extension>xcss</extension>
@@ -202,10 +202,7 @@
 		<error-code>404</error-code>
 		<location>/exception/exception.jsf</location>
 	</error-page>
-	<error-page>
-		<error-code>403</error-code>
-		<location>/exception/403.jsf</location>
-	</error-page>
+
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
 		<location>/index.jspx</location>

@@ -10,10 +10,8 @@
 	<packaging>war</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<primefaces.version>6.0</primefaces.version>
-		<primefaces.extension.version>6.0.0</primefaces.extension.version>
-		<spring.version>4.3.6.RELEASE</spring.version>
-		<springSecurity.version>4.2.1.RELEASE</springSecurity.version>
+		<myfaces.version>2.2.11</myfaces.version>
+		<eclipselink.version>2.6.3</eclipselink.version>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -23,24 +21,24 @@
 			<groupId>EAS</groupId>
 			<artifactId>EAS</artifactId>
 			<type>war</type>
-			<version>1.0</version>
+			<version>${project.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		 
+
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-api</artifactId>
-			<version>2.2.11</version>
+			<version>${myfaces.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
 			<artifactId>myfaces-impl</artifactId>
-			<version>2.2.11</version>
+			<version>${myfaces.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>jstl-api</artifactId>
@@ -59,12 +57,9 @@
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
-			<version>2.6.3</version>
+			<version>${eclipselink.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-
 	</dependencies>
 	<build>
 		<finalName>EAS</finalName>

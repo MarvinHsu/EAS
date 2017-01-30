@@ -33,7 +33,7 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-		<param-value>client</param-value>
+		<param-value>server</param-value>
 	</context-param>	
 	<context-param>
 		<param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>
@@ -138,11 +138,13 @@
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>20</session-timeout>
+		<!--  
 		<cookie-config>
 			<http-only>true</http-only>
 			<secure>true</secure>
 			<max-age>1200</max-age>
-		</cookie-config>		
+		</cookie-config>
+		-->		
 	</session-config>
 	<mime-mapping>
 		<extension>xcss</extension>
@@ -184,7 +186,7 @@
 		<welcome-file>default.jsf</welcome-file>
 		<welcome-file>index.jspx</welcome-file>
 	</welcome-file-list>
-	<!--  
+	  
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/exception/exception.jsf</location>
@@ -205,14 +207,13 @@
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
 		<location>/index.jspx</location>
 	</error-page>
-	-->
+	
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Unsecured resources</web-resource-name>
 			<url-pattern>/exception/*</url-pattern>
 			<url-pattern>/resources/*</url-pattern>
 			<url-pattern>/javax.faces.resource/*</url-pattern>
-			<url-pattern>/org.richfaces.resources/*</url-pattern>
 			<url-pattern>/default.jsf</url-pattern>
 			<url-pattern>/index.jspx</url-pattern>
 		</web-resource-collection>
