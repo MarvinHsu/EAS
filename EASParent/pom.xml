@@ -31,9 +31,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<primefaces.version>6.0</primefaces.version>
-		<spring.version>4.3.6.RELEASE</spring.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
 		<springSecurity.version>4.2.0.RELEASE</springSecurity.version>
-		<HSUCommon.version>2.0</HSUCommon.version>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
@@ -380,23 +379,23 @@
 			<dependency>
 				<groupId>HSUCommonParent</groupId>
 				<artifactId>CommonEntity</artifactId>
-				<version>${HSUCommon.version}</version>
+				<version>2.0</version>
 			</dependency>
 			<dependency>
 				<groupId>HSUCommonParent</groupId>
 				<artifactId>CommonDao</artifactId>
-				<version>${HSUCommon.version}</version>
+				<version>2.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>HSUCommonParent</groupId>
 				<artifactId>CommonService</artifactId>
-				<version>${HSUCommon.version}</version>
+				<version>2.0</version>
 			</dependency>
 			<dependency>
 				<groupId>HSUCommonParent</groupId>
 				<artifactId>CommonWeb</artifactId>
-				<version>${HSUCommon.version}</version>
+				<version>2.0</version>
 			</dependency>
 
 		</dependencies>
