@@ -16,19 +16,19 @@
             <param name="ConversionPattern" value="%d %-5p %c{1}:%L %m %n"/>
         </layout>
     </appender>
-    <!--  
+    
     <logger name="org.springframework.security">
         <level value="INFO"/>
         <appender-ref ref="STDIO"/>
         <appender-ref ref="FILE"/>
     </logger>
     
-    <logger name="tw.com.hsu.project.security">
+    <logger name="com.hsuforum.eas.security">
         <level value="INFO"/>
         <appender-ref ref="STDIO"/>
     </logger>
-    -->
-    <logger name="tw.com.hsu.project">
+    
+    <logger name="com.hsuforum.eas">
         <level value="INFO"/>
         <appender-ref ref="STDIO"/>
         <appender-ref ref="FILE"/>
