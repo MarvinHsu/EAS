@@ -9,9 +9,8 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan scoped-proxy="targetClass" base-package="com.hsuforum.eas"/>
     
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-          p:persistenceXmlLocation="classpath:META-INF/persistence.xml" p:persistenceUnitName="persistenceUnit"/>
-      	 
+    <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/persistenceUnit" />
+  	 
     <tx:jta-transaction-manager id="transactionManager"/>
      
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
