@@ -8,23 +8,10 @@
     <context:annotation-config/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan scoped-proxy="targetClass" base-package="com.hsuforum.eas"/>
-    <!--
-    <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/persistenceUnit"/>
-    -->  
+    
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:persistenceXmlLocation="classpath:META-INF/persistence.xml" p:persistenceUnitName="persistenceUnit"/>
-    
-
-
-    <!--
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-          p:entityManagerFactory-ref="entityManagerFactory"/>
-    --> 
-    <!--  
-    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
-    -->
-    
-	 
+      	 
     <tx:jta-transaction-manager id="transactionManager"/>
      
     <tx:advice id="txAdvice" transaction-manager="transactionManager">

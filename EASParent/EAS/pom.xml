@@ -8,6 +8,19 @@
 	</parent>
 	<artifactId>EAS</artifactId>
 	<packaging>war</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson.version>2.6.4</jackson.version>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<finalName>EAS</finalName>
 		<plugins>

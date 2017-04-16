@@ -38,7 +38,7 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 
 	// bi-directional many-to-one association to Function
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TB_FUNCTIONS_ID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "TB_FUNCTIONS_ID", nullable = false)
 	public Function getFunction() {
 		return this.function;
 	}
@@ -49,7 +49,7 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 
 	// bi-directional many-to-one association to FunctionItem
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TB_FUNCTIONS_ITEMS_ID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "TB_FUNCTIONS_ITEMS_ID", nullable = false)
 	public FunctionItem getFunctionItem() {
 		return this.functionItem;
 	}
@@ -60,7 +60,7 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 
 	// bi-directional many-to-one association to Group
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "TB_GROUPS_ID", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "TB_GROUPS_ID", nullable = false)
 	public Group getGroup() {
 		return this.group;
 	}

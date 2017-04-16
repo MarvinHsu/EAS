@@ -13,7 +13,7 @@
 		<javaserverfaces.version>2.2.14</javaserverfaces.version>
 		<resteasy.version>3.0.19.Final</resteasy.version>
 		<jackson.version>2.6.4</jackson.version>
-		<hibernate.version>5.2.8.Final</hibernate.version>
+		<hibernate.version>5.2.9.Final</hibernate.version>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
@@ -118,7 +118,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -136,6 +136,12 @@
 
 						</resource>
 					</webResources>
+					<overlays>
+						<overlay>
+							<groupId>EAS</groupId>
+							<artifactId>EAS</artifactId>
+						</overlay>
+					</overlays>
 				</configuration>
 			</plugin>
 			<plugin>

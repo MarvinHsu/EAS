@@ -127,6 +127,12 @@
 
 						</resource>
 					</webResources>
+					<overlays>
+						<overlay>
+							<groupId>EAS</groupId>
+							<artifactId>EAS</artifactId>
+						</overlay>
+					</overlays>
 				</configuration>
 			</plugin>
 			<plugin>
