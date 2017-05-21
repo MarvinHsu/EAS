@@ -5,9 +5,6 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background: #fff
-		url('#{facesContext.externalContext.requestContextPath}/images/bg.gif')
-		repeat-x;
 	font: normal 18px ;
 	height: 100%;
 }
