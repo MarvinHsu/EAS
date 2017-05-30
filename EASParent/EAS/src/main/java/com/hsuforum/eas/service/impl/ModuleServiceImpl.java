@@ -15,6 +15,8 @@ import com.hsuforum.eas.service.ModuleService;
 @Service("moduleService")
 public class ModuleServiceImpl extends BaseServiceImpl<Module, java.lang.String, ModuleDao> implements ModuleService {
 
+	private static final long serialVersionUID = -6208458659946672638L;
+
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(ModuleServiceImpl.class);
 

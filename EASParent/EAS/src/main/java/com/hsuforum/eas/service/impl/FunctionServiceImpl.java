@@ -16,6 +16,8 @@ import com.hsuforum.eas.service.FunctionService;
 public class FunctionServiceImpl extends BaseServiceImpl<Function, java.lang.String, FunctionDao>
 		implements FunctionService {
 
+	private static final long serialVersionUID = 4045098296836917492L;
+
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(FunctionServiceImpl.class);
 

@@ -21,6 +21,8 @@ import com.hsuforum.eas.entity.User;
  */
 @Repository("userDao")
 public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
+
+	private static final long serialVersionUID = 3551743735222952177L;
 	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 

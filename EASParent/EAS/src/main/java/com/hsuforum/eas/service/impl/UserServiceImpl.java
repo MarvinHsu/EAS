@@ -23,6 +23,7 @@ import com.hsuforum.eas.service.UserService;
 @Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<User, String, UserDao> implements UserService {
 
+	private static final long serialVersionUID = -276502196280318978L;
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(UserServiceImpl.class);
 	@Autowired

@@ -21,6 +21,8 @@ import com.hsuforum.eas.service.GroupService;
 @Service("groupService")
 public class GroupServiceImpl extends BaseServiceImpl<Group, String, GroupDao> implements GroupService {
 
+	private static final long serialVersionUID = -8882435809668503894L;
+
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(GroupServiceImpl.class);
 

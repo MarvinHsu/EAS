@@ -14,6 +14,7 @@ import com.hsuforum.eas.entity.FunctionItem;
 @Repository("functionItemDao")
 public class FunctionItemDaoImpl extends BaseDaoImpl<FunctionItem, java.lang.String> implements FunctionItemDao {
 
+	private static final long serialVersionUID = -7835326433773204291L;
 	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 

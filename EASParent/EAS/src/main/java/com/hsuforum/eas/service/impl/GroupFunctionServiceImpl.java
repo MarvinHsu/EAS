@@ -17,6 +17,8 @@ public class GroupFunctionServiceImpl
 		extends BaseServiceImpl<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK, GroupFunctionDao>
 		implements GroupFunctionService {
 
+	private static final long serialVersionUID = 3469176962996795949L;
+
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(GroupFunctionServiceImpl.class);
 

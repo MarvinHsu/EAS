@@ -16,6 +16,8 @@ import com.hsuforum.eas.service.FunctionItemService;
 public class FunctionItemServiceImpl extends BaseServiceImpl<FunctionItem, java.lang.String, FunctionItemDao>
 		implements FunctionItemService {
 
+	private static final long serialVersionUID = 6787321287605903557L;
+
 	@SuppressWarnings("unused")
 	private final static Log LOG = LogFactory.getLog(FunctionItemServiceImpl.class);
 

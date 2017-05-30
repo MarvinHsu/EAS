@@ -15,6 +15,7 @@ import com.hsuforum.eas.entity.GroupFunction;
 public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK>
 		implements GroupFunctionDao {
 
+	private static final long serialVersionUID = -4460291156921322854L;
 	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 

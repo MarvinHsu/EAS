@@ -21,6 +21,7 @@ import com.hsuforum.eas.entity.Group;
 @Repository("groupDao")
 public class GroupDaoImpl extends BaseDaoImpl<Group, String> implements GroupDao {
 
+	private static final long serialVersionUID = 4363896890398240739L;
 	@PersistenceContext(name = "persistenceUnit")
 	private EntityManager entityManager;
 
