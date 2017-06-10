@@ -24,7 +24,7 @@
             <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.event.merge.entity_copy_observer" value="allow"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
-
+			<property name="hibernate.event.merge.entity_copy_observer" value="allow"/>
         </properties>
     </persistence-unit>
 </persistence>

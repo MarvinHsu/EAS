@@ -31,7 +31,7 @@
 				value="org.hibernate.transaction.JBossTransactionManagerLookup" />
 			<property name="hibernate.transaction.jta.platform"
 				value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />	
-			
+			<property name="hibernate.event.merge.entity_copy_observer" value="allow"/>
 		</properties>
 	</persistence-unit>
 
