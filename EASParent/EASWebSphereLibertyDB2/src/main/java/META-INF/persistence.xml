@@ -25,7 +25,7 @@
 
 			<property name="eclipselink.target-database" value="DB2"/>
 			<property name="eclipselink.logging.level" value="INFO" />
-			<property name="eclipselink.target-server" value="Glassfish" />
+			<property name="eclipselink.target-server" value="WebSphere_Liberty" />
 			<property name="eclipselink.cache.shared.default" value="false" />
 
 		</properties>
