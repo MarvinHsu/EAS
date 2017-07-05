@@ -104,7 +104,7 @@ public class FunctionDaoImpl extends BaseDaoImpl<Function, java.lang.String> imp
 								.append(criteriaKey.toString().replace(".", "_"));
 					} else if (operMap.get(criteriaKey.toString()) != null
 							&& operMap.get(criteriaKey.toString()).equals("ne")) {
-						queryString.append("entity.").append(criteriaKey.toString()).append(" >< :")
+						queryString.append("entity.").append(criteriaKey.toString()).append(" <> :")
 								.append(criteriaKey.toString().replace(".", "_"));
 					} else if (operMap.get(criteriaKey.toString()) != null
 							&& operMap.get(criteriaKey.toString()).equals("like")) {
