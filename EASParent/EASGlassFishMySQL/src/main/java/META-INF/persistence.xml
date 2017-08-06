@@ -26,7 +26,7 @@
 			<property name="eclipselink.target-database" value="MySQL"/>
 			<property name="eclipselink.logging.level" value="INFO" />
 			<property name="eclipselink.target-server" value="Glassfish" />
-			<property name="eclipselink.cache.shared.default" value="false" />
+			
 
 		</properties>
 	</persistence-unit>

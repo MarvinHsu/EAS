@@ -110,7 +110,7 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 		this.sequence = sequence;
 	}
 	// bi-directional many-to-one association to Module
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TB_MODULES_ID")
 	public Module getModule() {
 		return this.module;
