@@ -6,7 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
-		<ui:define name="title">#{resources.com_hsuforum_eas_entity_Function}</ui:define>
+		<ui:define name="head">
+			<title>#{resources.com_hsuforum_eas_entity_Function}</title>
+		</ui:define>
 		<ui:define name="main">
 			<h:form id="readForm">
 				<h3>#{resources.com_hsuforum_eas_entity_Function}</h3>
@@ -43,8 +45,8 @@
 						<p:inputText
 							value="#{functionManagedBean.findCriteriaMap['outcome']}"
 							label="#{resources.com_hsuforum_eas_entity_Function_outcome}" />
-												
-						
+
+
 						<f:facet name="footer">
 							<h:panelGroup style="display:block; text-align:right">
 								<p:commandButton id="commandButtonFind"
@@ -98,7 +100,7 @@
 
 							<h:outputLabel value="#{bo.outcome}" />
 						</p:column>
-						
+
 						<p:column id="columnCreateDate" sortBy="#{bo.createDate}"
 							headerText="#{resources.com_hsuforum_eas_entity_Function_createDate}">
 

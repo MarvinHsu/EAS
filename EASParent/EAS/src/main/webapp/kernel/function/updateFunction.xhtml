@@ -6,7 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
-		<ui:define name="title">#{resources.com_hsuforum_eas_entity_Function}</ui:define>
+		<ui:define name="head">
+			<title>#{resources.com_hsuforum_eas_entity_Function}</title>
+		</ui:define>
 		<ui:define name="main">
 			<h:form id="updateForm">
 				<h1>#{resources.com_hsuforum_eas_entity_Function}-#{resources.update}</h1>
@@ -15,7 +17,7 @@
 
 				<ui:include src="inFunctionEditor.xhtml" />
 
-				
+
 				<h:panelGrid>
 					<h:panelGroup>
 						<p:commandButton id="commandButtonDelete"
