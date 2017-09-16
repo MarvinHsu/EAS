@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>EAS</groupId>
 		<artifactId>EASParent</artifactId>
-		<version>1.0</version>
+		<version>1.0.1</version>
 	</parent>
 	<groupId>EASGlassFishSQLServer</groupId>
 	<artifactId>EASGlassFishSQLServer</artifactId>
