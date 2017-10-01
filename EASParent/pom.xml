@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>EAS</groupId>
+	<groupId>com.hsuforum.EAS</groupId>
 	<artifactId>EASParent</artifactId>
 	<version>1.0.1</version>
 	<packaging>pom</packaging>
@@ -29,32 +29,32 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<primefaces.version>6.1</primefaces.version>
 		<primefaces.extension.version>6.1.0</primefaces.extension.version>
-		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.version>5.0.0.RELEASE</spring.version>
 		<springSecurity.version>4.2.3.RELEASE</springSecurity.version>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>HSUCommonParent</groupId>
+			<groupId>com.hsuforum.HSUCommonParent</groupId>
 			<artifactId>CommonEntity</artifactId>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>HSUCommonParent</groupId>
+			<groupId>com.hsuforum.HSUCommonParent</groupId>
 			<artifactId>CommonDao</artifactId>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>HSUCommonParent</groupId>
+			<groupId>com.hsuforum.HSUCommonParent</groupId>
 			<artifactId>CommonService</artifactId>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>HSUCommonParent</groupId>
+			<groupId>com.hsuforum.HSUCommonParent</groupId>
 			<artifactId>CommonWeb</artifactId>
 			<type>jar</type>
 			<scope>compile</scope>
@@ -391,23 +391,23 @@
 
 
 			<dependency>
-				<groupId>HSUCommonParent</groupId>
+				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonEntity</artifactId>
 				<version>2.0.1</version>
 			</dependency>
 			<dependency>
-				<groupId>HSUCommonParent</groupId>
+				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonDao</artifactId>
 				<version>2.0.1</version>
 			</dependency>
 
 			<dependency>
-				<groupId>HSUCommonParent</groupId>
+				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonService</artifactId>
 				<version>2.0.1</version>
 			</dependency>
 			<dependency>
-				<groupId>HSUCommonParent</groupId>
+				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonWeb</artifactId>
 				<version>2.0.1</version>
 			</dependency>
