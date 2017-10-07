@@ -10,21 +10,24 @@
 		<module>EASTomcatDB2</module>
 		<module>EASTomcatMySQL</module>
 		<module>EASTomcatOracle</module>
+		<module>EASTomcatPostgreSQL</module>
 		<module>EASTomcatSQLServer</module>
 		<module>EASJBossDB2</module>
 		<module>EASJBossMySQL</module>
 		<module>EASJBossOracle</module>
+		<module>EASJBossPostgreSQL</module>
 		<module>EASJBossSQLServer</module>
 		<module>EASGlassFishDB2</module>
 		<module>EASGlassFishMySQL</module>
 		<module>EASGlassFishOracle</module>
+		<module>EASGlassFishPostgreSQL</module>
 		<module>EASGlassFishSQLServer</module>
 		<module>EASWebSphereLibertyMySQL</module>
 		<module>EASWebSphereLibertyDB2</module>
 		<module>EASWebSphereLibertyOracle</module>
+		<module>EASWebSphereLibertyPostgreSQL</module>
 		<module>EASWebSphereLibertySQLServer</module>
-
-
+		
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
