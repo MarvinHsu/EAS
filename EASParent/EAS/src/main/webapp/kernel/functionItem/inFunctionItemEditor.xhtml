@@ -41,7 +41,7 @@
 
 		<h:outputText
 			value="#{resources.com_hsuforum_eas_entity_FunctionItem_function}" />
-		<p:selectOneMenu id="selectFunctionId"
+		<p:selectOneMenu id="selectFunctionId" required="true"
 			value="#{functionItemManagedBean.updatingData.selectFunctionId}"
 			label="#{resources.com_hsuforum_eas_entity_FunctionItem_function}">
 			<f:selectItems value="#{functionItemManagedBean.functionList}" />

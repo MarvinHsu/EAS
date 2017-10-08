@@ -6,13 +6,10 @@
 	<persistence-unit name="persistenceUnit"
 		transaction-type="JTA">
 
-
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<jta-data-source>jndi/EASXADS</jta-data-source>
 
-
-		<!-- EclipseLink -->
 		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
 		<class>com.hsuforum.eas.entity.Function</class>
 		<class>com.hsuforum.eas.entity.Group</class>
@@ -21,13 +18,17 @@
 		<class>com.hsuforum.eas.entity.GroupFunctionPK</class>
 		<class>com.hsuforum.eas.entity.Module</class>
 		<class>com.hsuforum.eas.entity.User</class>
+
 		<properties>
-
-			<property name="eclipselink.target-database" value="SQLServer"/>
-			<property name="eclipselink.logging.level" value="INFO" />
-			<property name="eclipselink.target-server" value="WebSphere_Liberty" />
-			
-
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.WebSphereTransactionManagerLookup" />
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform" />
+			<property name="hibernate.event.merge.entity_copy_observer"
+				value="allow" />
 		</properties>
 	</persistence-unit>
 </persistence>
