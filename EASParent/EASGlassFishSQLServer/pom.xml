@@ -6,7 +6,6 @@
 		<artifactId>EASParent</artifactId>
 		<version>1.0.2</version>
 	</parent>
-	<groupId>EASGlassFishSQLServer</groupId>
 	<artifactId>EASGlassFishSQLServer</artifactId>
 	<packaging>war</packaging>
 	<properties>

@@ -6,7 +6,6 @@
 		<artifactId>EASParent</artifactId>
 		<version>1.0.2</version>
 	</parent>
-	<groupId>EASGlassFishDB2</groupId>
 	<artifactId>EASGlassFishDB2</artifactId>
 	<packaging>war</packaging>
 	<properties>
