@@ -29,7 +29,7 @@ import com.hsuforum.common.entity.impl.SystemDateEntityListener;
  * 
  */
 @Entity
-@Table(name = "tb_functions")
+@Table(name = "TB_FUNCTIONS")
 @EntityListeners({ SystemDateEntityListener.class })
 @NamedQuery(name = "Function.findAll", query = "SELECT f FROM Function f")
 public class Function extends BaseEntityImpl<String> implements SystemDateOperation {

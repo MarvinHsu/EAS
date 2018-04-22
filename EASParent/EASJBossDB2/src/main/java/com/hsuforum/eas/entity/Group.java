@@ -23,7 +23,7 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
  * 
  */
 @Entity
-@Table(name = "tb_groups")
+@Table(name = "TB_GROUPS")
 @NamedQueries({ @NamedQuery(name = "Group.findAll", query = "SELECT t FROM Group t"),
 		@NamedQuery(name = "Group.findById", query = "SELECT t FROM Group t WHERE t.id = :id"),
 		@NamedQuery(name = "Group.findByName", query = "SELECT t FROM Group t WHERE t.name = :name"),

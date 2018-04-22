@@ -4,9 +4,8 @@
 	<parent>
 		<groupId>com.hsuforum.EAS</groupId>
 		<artifactId>EASParent</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
-	<groupId>EASJBossDB2</groupId>
 	<artifactId>EASJBossDB2</artifactId>
 	<packaging>war</packaging>
 	<properties>
@@ -128,7 +127,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.1.0</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<webResources>
