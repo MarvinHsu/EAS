@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EAS</groupId>
@@ -27,7 +28,7 @@
 		<module>EASWebSphereLibertyOracle</module>
 		<module>EASWebSphereLibertyPostgreSQL</module>
 		<module>EASWebSphereLibertySQLServer</module>
-		
+
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +36,7 @@
 		<primefaces.extension.version>6.2</primefaces.extension.version>
 		<spring.version>5.0.9.RELEASE</spring.version>
 		<springSecurity.version>5.0.8.RELEASE</springSecurity.version>
+		<jackson.version>2.9.6</jackson.version>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
@@ -69,9 +71,9 @@
 			<version>4.12</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -88,7 +90,6 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.9</version>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
@@ -127,6 +128,12 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- JSF -->
@@ -145,7 +152,7 @@
 			<artifactId>resources-ckeditor</artifactId>
 			<version>${primefaces.extension.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
@@ -256,9 +263,6 @@
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
 		</dependency>
-
-
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -271,30 +275,9 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-acl</artifactId>
-			<version>${springSecurity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-aspects</artifactId>
 			<version>${springSecurity.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-cas</artifactId>
-			<version>${springSecurity.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>log4j-over-slf4j</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>velocity</artifactId>
-					<groupId>velocity</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -302,22 +285,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-crypto</artifactId>
-			<version>${springSecurity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-ldap</artifactId>
-			<version>${springSecurity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-openid</artifactId>
-			<version>${springSecurity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-remoting</artifactId>
 			<version>${springSecurity.version}</version>
 		</dependency>
 		<dependency>
@@ -330,14 +298,11 @@
 			<artifactId>spring-ldap-core</artifactId>
 			<version>2.0.2.RELEASE</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>2.2.3</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -353,21 +318,12 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.3.3</version>
 			<type>jar</type>
-
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlcleaner</groupId>
 			<artifactId>htmlcleaner</artifactId>
 			<version>2.10</version>
 			<type>jar</type>
-
-		</dependency>
-
-
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
@@ -382,6 +338,26 @@
 				<exclusion>
 					<groupId>commons-beanutils</groupId>
 					<artifactId>commons-beanutils-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xerces</groupId>
+					<artifactId>xercesImpl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis-ext</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -422,15 +398,28 @@
 			<version>1.5.9</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.reactivestreams</groupId>
-		    <artifactId>reactive-streams</artifactId>
-		    <version>1.0.2</version>
+			<groupId>org.reactivestreams</groupId>
+			<artifactId>reactive-streams</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-
-
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonEntity</artifactId>
@@ -441,7 +430,6 @@
 				<artifactId>CommonDao</artifactId>
 				<version>2.0.3</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonService</artifactId>
@@ -452,7 +440,6 @@
 				<artifactId>CommonWeb</artifactId>
 				<version>2.0.3</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -598,7 +585,7 @@
 			<url>http://repository.primefaces.org/</url>
 			<layout>default</layout>
 		</pluginRepository>
-		
+
 	</pluginRepositories>
 	<repositories>
 
@@ -620,6 +607,6 @@
 			<url>http://repository.primefaces.org/</url>
 			<layout>default</layout>
 		</repository>
-		
+
 	</repositories>
 </project>
