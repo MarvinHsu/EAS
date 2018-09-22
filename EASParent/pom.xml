@@ -589,7 +589,18 @@
 			<url>http://repository.primefaces.org/</url>
 			<layout>default</layout>
 		</pluginRepository>
-
+		<pluginRepository>
+			<id>alfresco</id>
+			<name>Alfresco repository</name>
+			<layout>default</layout>
+			<url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven.oracle.com</id>
+			<name>Oralce repository</name>
+			<layout>default</layout>
+			<url>https://maven.oracle.com/</url>
+		</pluginRepository>
 	</pluginRepositories>
 	<repositories>
 
@@ -621,7 +632,7 @@
 			<id>maven.oracle.com</id>
 			<name>Oralce repository</name>
 			<layout>default</layout>
-			<url>https://maven.oracle.com</url>
+			<url>https://maven.oracle.com/</url>
 		</repository>
 	</repositories>
 </project>

@@ -5,10 +5,11 @@
 		<Arg></Arg>
 		<Arg>jndi/EASXADS</Arg>
 		<Arg>
-			<New class="com.ibm.db2.jcc.DB2XADataSource">
+			<New class="org.apache.commons.dbcp.BasicDataSource">
+				<Set name="driverClassName">com.ibm.db2.jcc.DB2Driver</Set>
 				<Set name="url">jdbc:db2://devdb:50000/Sample
 				</Set>
-				<Set name="user">EAS</Set>
+				<Set name="username">EAS</Set>
 				<Set name="password">Happygo1!</Set>
 			</New>
 		</Arg>
