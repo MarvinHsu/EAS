@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configure id="wac"
+	class="org.eclipse.jetty.webapp.WebAppContext">
+	<New id="EASXADS" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
+		<Arg>jndi/EASXADS</Arg>
+		<Arg>
+			<New class="org.postgresql.xa.PGXADataSource">
+				<Set name="url">jdbc:postgresql://devdb:5432/postgres?currentSchema=eas
+				</Set>
+				<Set name="user">EAS</Set>
+				<Set name="password">Happygo1!</Set>
+			</New>
+		</Arg>
+	</New>
+	<New id="tmjndi" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
+		<Arg>java:/TransactionManager</Arg>
+		<Arg>
+			<New class="com.atomikos.icatch.jta.UserTransactionManager" />
+		</Arg>
+	</New>
+
+	<New id="tx" class="org.eclipse.jetty.plus.jndi.Transaction">
+		<Arg>
+			<New class="com.atomikos.icatch.jta.UserTransactionImp" />
+		</Arg>
+	</New>
+</Configure>
