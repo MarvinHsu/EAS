@@ -596,10 +596,10 @@
 			<url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
 		</pluginRepository>
 		<pluginRepository>
-			<id>maven.oracle.com</id>
-			<name>Oralce repository</name>
+			<id>datanucleus</id>
+			<name>Datanucleus repository</name>
 			<layout>default</layout>
-			<url>https://maven.oracle.com/</url>
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<repositories>
@@ -629,10 +629,10 @@
 			<url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
 		</repository>
 		<repository>
-			<id>maven.oracle.com</id>
-			<name>Oralce repository</name>
+			<id>datanucleus</id>
+			<name>Datanucleus repository</name>
 			<layout>default</layout>
-			<url>https://maven.oracle.com/</url>
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
 		</repository>
 	</repositories>
 </project>

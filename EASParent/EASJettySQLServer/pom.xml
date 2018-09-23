@@ -217,8 +217,12 @@
 					<dependency>
 						<groupId>com.microsoft.sqlserver</groupId>
 						<artifactId>mssql-jdbc</artifactId>
-						<version>7.1.0.jre8-preview</version>
-						<scope>test</scope>
+						<version>7.0.0.jre8</version>
+					</dependency>
+					<dependency>
+						<groupId>commons-dbcp</groupId>
+						<artifactId>commons-dbcp</artifactId>
+						<version>1.4</version>
 					</dependency>
 				</dependencies>
 			</plugin>

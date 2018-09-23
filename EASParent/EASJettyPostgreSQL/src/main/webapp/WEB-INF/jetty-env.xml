@@ -5,10 +5,11 @@
 		<Arg></Arg>
 		<Arg>jndi/EASXADS</Arg>
 		<Arg>
-			<New class="org.postgresql.xa.PGXADataSource">
+			<New class="org.apache.commons.dbcp.BasicDataSource">
+				<Set name="driverClassName">org.postgresql.Driver</Set>
 				<Set name="url">jdbc:postgresql://devdb:5432/postgres?currentSchema=eas
 				</Set>
-				<Set name="user">EAS</Set>
+				<Set name="username">EAS</Set>
 				<Set name="password">Happygo1!</Set>
 			</New>
 		</Arg>

@@ -6,8 +6,9 @@
 		<Arg>jndi/EASXADS</Arg>
 		<Arg>
 			<New class="com.microsoft.sqlserver.jdbc.SQLServerXADataSource">
-				<Set name="url">jdbc:sqlserver://devdb:1433;databaseName=eas;
-				</Set>
+				<Set name="serverName">devdb</Set>
+				<Set name="databaseName">EAS</Set>
+				<Set name="portNumber">1433</Set>
 				<Set name="user">EAS</Set>
 				<Set name="password">Happygo1!</Set>
 			</New>

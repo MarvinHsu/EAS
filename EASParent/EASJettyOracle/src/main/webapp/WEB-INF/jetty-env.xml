@@ -6,7 +6,7 @@
 		<Arg>jndi/EASXADS</Arg>
 		<Arg>
 			<New class="oracle.jdbc.xa.client.OracleXADataSource">
-				<Set name="url">jdbc:oracle:thin:@devdb:1521:orcl
+				<Set name="URL">jdbc:oracle:thin:@devdb:1521:orcl
 				</Set>
 				<Set name="user">EAS</Set>
 				<Set name="password">Happygo1!</Set>
