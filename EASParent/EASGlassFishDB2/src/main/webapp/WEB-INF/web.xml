@@ -161,14 +161,7 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	<session-config>
-		<session-timeout>20</session-timeout>
-		<!--  
-		<cookie-config>
-			<http-only>true</http-only>
-			<secure>true</secure>
-			<max-age>1200</max-age>
-		</cookie-config>
-		-->		
+		<session-timeout>20</session-timeout>	
 	</session-config>
 	<mime-mapping>
 		<extension>xcss</extension>

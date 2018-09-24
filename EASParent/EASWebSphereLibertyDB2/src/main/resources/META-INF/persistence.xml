@@ -6,7 +6,7 @@
 	<persistence-unit name="persistenceUnit"
 		transaction-type="JTA">
 
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
 		<jta-data-source>jndi/EASXADS</jta-data-source>
 
@@ -20,15 +20,10 @@
 		<class>com.hsuforum.eas.entity.User</class>
 
 		<properties>
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.DB2Dialect" />
-			<property name="hibernate.transaction.manager_lookup_class"
-				value="org.hibernate.transaction.WebSphereTransactionManagerLookup" />
-			<property name="hibernate.transaction.jta.platform"
-				value="org.hibernate.service.jta.platform.internal.WebSphereExtendedJtaPlatform" />
-			<property name="hibernate.event.merge.entity_copy_observer"
-				value="allow" />
+			<property name="eclipselink.target-database" value="DB2"/>  
+			<property name="eclipselink.logging.level" value="INFO" />
+			<property name="eclipselink.target-server" value="WebSphere_Liberty" />
+			
 		</properties>
 	</persistence-unit>
 </persistence>
