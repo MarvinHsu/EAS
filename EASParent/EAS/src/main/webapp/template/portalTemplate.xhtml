@@ -72,12 +72,11 @@
 						<h:form id="topForm">
 							<h:panelGrid columns="4">
 
-								<div id="google_translate_element"></div>
-								<h:selectOneMenu id="skinSelect" value="#{skinBean.skin}">
+								<p:selectOneMenu id="skinSelect" value="#{skinBean.skin}">
 									<c:forEach var="skin" items="#{skinBean.skins}">
 										<f:selectItem itemLabel="#{skin}" itemValue="#{skin}" />
 									</c:forEach>
-								</h:selectOneMenu>
+								</p:selectOneMenu>
 								<p:commandButton value="#{resources.commandButtonSelectSkin}"
 									id="btnSelectSkin" action="#{skinBean.doSelectSkin}" ajax="false"/>
 								<p:commandButton action="logout" value="#{resources.logout}" ajax="false"/>
