@@ -25,9 +25,7 @@
 
 
 						<p:selectOneMenu id="skinSelect" value="#{skinBean.skin}">
-							<c:forEach var="skin" items="#{skinBean.skins}">
-								<f:selectItem itemLabel="#{skin}" itemValue="#{skin}" />
-							</c:forEach>
+							<f:selectItems value="#{skinBean.skins}" />
 						</p:selectOneMenu>
 						<p:commandButton value="#{resources.commandButtonSelectSkin}"
 							id="btnSelectSkin" ajax="false" action="#{skinBean.doSelectSkin}" />
