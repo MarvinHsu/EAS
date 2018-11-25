@@ -22,8 +22,7 @@
 						name="images/ajaxloadingbar.gif" />
 				</p:dialog>
 				<p:panel>
-					<h:panelGrid columns="2"
-						columnClasses="column35Class, column65Class" id="queryPanelGrid">
+					<p:panelGrid columns="2" id="queryPanelGrid">
 
 						<f:facet name="footer">
 							<h:panelGroup style="display:block; text-align:right">
@@ -40,7 +39,7 @@
 							</h:panelGroup>
 						</f:facet>
 					</h:panelGrid>
-				</p:panel>
+				</p:panelGrid>
 				<p />
 				<p:panel>
 					<p:dataTable id="dataTable" var="bo" paginator="true" scrollable="true" resizable="true"
@@ -56,6 +55,16 @@
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('groupFunction','update')}" />
 							<h:commandLink value="#{bo.id}"
+								action="#{groupFunctionManagedBean.doUpdateAction}"
+								rendered="#{menuManagedBean.isGrant('groupFunction','update')}" />
+
+						</p:column>
+						<p:column id="columnModify" 
+							headerText="#{resources.update}">
+
+							<h:outputText value="#{resources.update}"
+								rendered="#{!menuManagedBean.isGrant('groupFunction','update')}" />
+							<h:commandLink value="#{resources.update}"
 								action="#{groupFunctionManagedBean.doUpdateAction}"
 								rendered="#{menuManagedBean.isGrant('groupFunction','update')}" />
 

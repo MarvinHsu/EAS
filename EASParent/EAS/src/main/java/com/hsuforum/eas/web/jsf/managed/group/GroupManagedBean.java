@@ -2,6 +2,7 @@ package com.hsuforum.eas.web.jsf.managed.group;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +90,15 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 		object.setId(UUID.randomUUID().toString());
 		this.setUpdatingData(this.wrap(object));
 		this.getUpdatingData().setUserList(this.getUserList());
+		this.getUpdatingData().getEntity().setGroupFunctions(new HashSet<GroupFunction>());
+		this.getUpdatingData().setFunctionVoList(new ArrayList<FunctionVo>());
+		
+		for (Function function : this.getFunctionList()) {
+			FunctionVoWrapper functionVoWrapper = new FunctionVoWrapper();
+			FunctionVo functionVo = functionVoWrapper.wrap(function);
+			this.getUpdatingData().getFunctionVoList().add(functionVo);
+		}
+		
 		this.setMode("Create");
 		
 		
