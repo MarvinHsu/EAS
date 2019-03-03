@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.hsuforum.EAS</groupId>
 		<artifactId>EASParent</artifactId>
-		<version>1.0.5</version>
+		<version>1.0.6</version>
 	</parent>
 	<artifactId>EASWebSphereLibertyDB2</artifactId>
 	<packaging>war</packaging>
@@ -143,9 +143,9 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId> org.codehaus.mojo </groupId>
+				<groupId>com.nickwongdev</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.11</version>
+				<version>1.12.1</version>
 				<configuration>
 					<complianceLevel>${java.version}</complianceLevel>
 					<source>${java.version}</source>
