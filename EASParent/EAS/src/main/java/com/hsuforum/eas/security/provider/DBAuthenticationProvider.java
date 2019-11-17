@@ -75,11 +75,6 @@ public class DBAuthenticationProvider extends AbstractUserDetailsAuthenticationP
 		return loadedUser;
 	}
 
-	@Override
-	protected void doAfterPropertiesSet() throws Exception {
-		Assert.notNull(this.userDetailsService);
-	}
-
 	public UserDetailsService getUserDetailsService() {
 		return userDetailsService;
 	}

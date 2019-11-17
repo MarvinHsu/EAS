@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EAS</groupId>
 	<artifactId>EASParent</artifactId>
-	<version>1.0.9</version>
+	<version>1.0.10</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>EAS</module>
@@ -38,11 +38,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<primefaces.version>7.0</primefaces.version>
 		<primefaces.extension.version>7.0</primefaces.extension.version>
-		<spring.version>5.1.9.RELEASE</spring.version>
-		<springSecurity.version>5.1.6.RELEASE</springSecurity.version>
-		<springData.version>Lovelace-SR10</springData.version>
-		<jackson.version>2.9.9</jackson.version>
-		<jackson-databind.version>2.9.9.2</jackson-databind.version>
+		<spring.version>5.2.0.RELEASE</spring.version>
+		<springSecurity.version>5.2.0.RELEASE</springSecurity.version>
+		<springData.version>Moore-RELEASE</springData.version>
+		<jackson.version>2.9.10</jackson.version>
+		<jackson-databind.version>2.9.10.1</jackson-databind.version>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
@@ -457,22 +457,22 @@
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonEntity</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.3</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonDao</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.3</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonService</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.3</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hsuforum.HSUCommonParent</groupId>
 				<artifactId>CommonWeb</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.3</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
@@ -489,7 +489,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -497,7 +497,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>

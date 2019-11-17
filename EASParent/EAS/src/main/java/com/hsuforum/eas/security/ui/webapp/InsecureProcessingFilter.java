@@ -28,10 +28,8 @@ public class InsecureProcessingFilter extends AbstractAuthenticationProcessingFi
 	}
 
 	@Override
-	public org.springframework.security.core.Authentication attemptAuthentication(HttpServletRequest arg0,
-			HttpServletResponse arg1)
-			throws org.springframework.security.core.AuthenticationException, IOException, ServletException {
-
+	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+			throws AuthenticationException, IOException {
 		return null;
 	}
 
