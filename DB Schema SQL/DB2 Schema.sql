@@ -1,6 +1,6 @@
 --==============================================================
 -- DBMS name:      IBM DB2 UDB 9.7 Common Server
--- Created on:     2017/1/14 AM 10:22:45
+-- Created on:     2020/2/29 下午 04:45:20
 --==============================================================
 
 
@@ -155,14 +155,19 @@ comment on column TB_GROUPS.UPDATE_DATE is
 --==============================================================
 create table TB_GROUPS_FUNCTIONS
 (
+   ID                   VARCHAR(36)            not null,
    TB_GROUPS_ID         VARCHAR(36)            not null,
    TB_FUNCTIONS_ID      VARCHAR(36)            not null,
    TB_FUNCTIONS_ITEMS_ID VARCHAR(36)            not null,
-   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
+   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (ID),
+   constraint TB_GROUPS_FUNCTIONS_UK1 unique (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
 );
 
 comment on table TB_GROUPS_FUNCTIONS is
 'Group, function and functionItem join table';
+
+comment on column TB_GROUPS_FUNCTIONS.ID is
+'ID';
 
 comment on column TB_GROUPS_FUNCTIONS.TB_GROUPS_ID is
 'Group''s ID';

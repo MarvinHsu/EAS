@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2016/12/18 PM 09:13:12                       */
+/* Created on:     2020/2/29 下午 12:46:31                       */
 /*==============================================================*/
 
 
@@ -151,14 +151,19 @@ comment on column TB_GROUPS.UPDATE_DATE is
 /* Table: TB_GROUPS_FUNCTIONS                                   */
 /*==============================================================*/
 create table TB_GROUPS_FUNCTIONS (
+   ID                   VARCHAR2(36)          not null,
    TB_GROUPS_ID         VARCHAR2(36)          not null,
    TB_FUNCTIONS_ID      VARCHAR2(36)          not null,
    TB_FUNCTIONS_ITEMS_ID VARCHAR2(36)          not null,
-   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
+   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (ID),
+   constraint TB_GROUPS_FUNCTIONS_UK1 unique (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
 );
 
 comment on table TB_GROUPS_FUNCTIONS is
 'Group, function and functionItem join table';
+
+comment on column TB_GROUPS_FUNCTIONS.ID is
+'ID';
 
 comment on column TB_GROUPS_FUNCTIONS.TB_GROUPS_ID is
 'Group''s ID';
