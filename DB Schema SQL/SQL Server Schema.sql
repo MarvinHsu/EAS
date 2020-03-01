@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2016/12/18 PM 09:13:58                       */
+/* Created on:     2020/2/29 下午 06:46:54                        */
 /*==============================================================*/
 
 
@@ -563,10 +563,12 @@ go
 /* Table: TB_GROUPS_FUNCTIONS                                   */
 /*==============================================================*/
 create table TB_GROUPS_FUNCTIONS (
+   ID                   varchar(36)          not null,
    TB_GROUPS_ID         varchar(36)          not null,
    TB_FUNCTIONS_ID      varchar(36)          not null,
    TB_FUNCTIONS_ITEMS_ID varchar(36)          not null,
-   constraint TBCL_GROUPS_FUNCTIONS_PK primary key nonclustered (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
+   constraint TBCL_GROUPS_FUNCTIONS_PK primary key nonclustered (ID),
+   constraint TB_GROUPS_FUNCTIONS_UK1 unique (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
 )
 go
 
@@ -585,6 +587,25 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description',  
    'Group, function and functionItem join table', 
    'user', @CurrentUser, 'table', 'TB_GROUPS_FUNCTIONS'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('TB_GROUPS_FUNCTIONS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'TB_GROUPS_FUNCTIONS', 'column', 'ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'ID',
+   'user', @CurrentUser, 'table', 'TB_GROUPS_FUNCTIONS', 'column', 'ID'
 go
 
 if exists(select 1 from sys.extended_properties p where

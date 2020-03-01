@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.owasp.esapi.errors.EncryptionException;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.jsf.utils.JSFMessageUtils;
 import com.hsuforum.common.web.util.EncryptUtils;
 import com.hsuforum.common.web.vo.ValueObject;
@@ -23,13 +23,14 @@ import com.hsuforum.eas.common.ErrorCode;
 import com.hsuforum.eas.entity.Group;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.service.GroupService;
+import com.hsuforum.eas.service.UserJpaService;
 import com.hsuforum.eas.service.UserService;
 import com.hsuforum.eas.web.vo.UserVo;
 import com.hsuforum.eas.web.vowrapper.UserVoWrapper;
 
 @ManagedBean
 @SessionScoped
-public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, java.lang.String, UserService> {
+public class UserManagedBean extends TemplatePrimeJpaDataTableManagedBean<User, java.lang.String, UserService, UserJpaService> {
 
 	private static final long serialVersionUID = 4704000081629878950L;
 
@@ -38,7 +39,8 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 	@ManagedProperty(value = "#{userService}")
 	private UserService service;
 
-	
+	@ManagedProperty(value = "#{userJpaService}")
+	private UserJpaService jpaService;
 
 	@ManagedProperty(value = "#{groupService}")
 	private GroupService groupService;
@@ -182,12 +184,14 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, jav
 		this.service = service;
 	}
 
+	public UserJpaService getJpaService() {
+		return jpaService;
+	}
 
-	
+	public void setJpaService(UserJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
 
-
-
-	
 	public List<Group> getGroupList() {
 
 		List<Group> manyBoList = new ArrayList<Group>();

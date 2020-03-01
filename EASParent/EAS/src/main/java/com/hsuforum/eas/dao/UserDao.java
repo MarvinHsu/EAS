@@ -9,7 +9,7 @@ import com.hsuforum.eas.entity.User;
 /**
  * User Data Access Object Interface
  * 
- * @author Administrator
+ * @author Marvin
  *
  */
 public interface UserDao extends BaseDao<User, String> {

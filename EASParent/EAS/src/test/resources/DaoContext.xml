@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-    <bean id="groupDao" class="com.hsuforum.eas.dao.jpa.GroupDaoImpl"/>
-    <bean id="functionDao" class="com.hsuforum.eas.dao.jpa.FunctionDaoImpl"/>
-    <bean id="userDao" class="com.hsuforum.eas.dao.jpa.UserDaoImpl"/>
-    <bean id="itemDao" class="com.hsuforum.eas.dao.jpa.ItemDaoImpl"/>
-    <bean id="departmentDao" class="com.hsuforum.eas.dao.jpa.DepartmentDaoImpl"/>
-    <bean id="newsDao" class="com.hsuforum.eas.dao.jpa.NewsDaoImpl"/>
-    <bean id="newsCategoryDao" class="com.hsuforum.eas.dao.jpa.NewsCategoryDaoImpl"/>
-    <bean id="forumCategoryDao" class="com.hsuforum.eas.dao.jpa.ForumCategoryDaoImpl"/>
-    <bean id="forumDao" class="com.hsuforum.eas.dao.jpa.ForumDaoImpl"/>
-    <bean id="forumTitleDao" class="com.hsuforum.eas.dao.jpa.ForumTitleDaoImpl"/>
-    <bean id="forumReplyDao" class="com.hsuforum.eas.dao.jpa.ForumReplyDaoImpl"/>
-    <bean id="messageDao" class="com.hsuforum.eas.dao.jpa.MessageDaoImpl"/>
-    <bean id="accessTokenDao" class="com.hsuforum.eas.dao.jpa.AccessTokenDaoImpl"/>
-    <bean id="appDao" class="com.hsuforum.eas.dao.jpa.AppDaoImpl"/>
-	<bean id="reportDao" class="com.hsuforum.eas.dao.jpa.ReportDaoImpl"/>
+       xmlns="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					   http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+   
+    
+    <repositories base-package="com.hsuforum.eas.dao" />
+    
     
     <!-- daoContext: codegen begin -->
 
     <!-- daoContext: codegen end -->
-</beans>
+</beans:beans>

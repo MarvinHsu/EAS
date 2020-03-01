@@ -1,8 +1,9 @@
 package com.hsuforum.eas.entity;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -17,9 +18,9 @@ import com.hsuforum.common.entity.impl.BaseEntityImpl;
 @Entity
 @Table(name = "TB_GROUPS_FUNCTIONS")
 @NamedQuery(name = "GroupFunction.findAll", query = "SELECT g FROM GroupFunction g")
-public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
+public class GroupFunction extends BaseEntityImpl<String> {
 	private static final long serialVersionUID = 1L;
-	private GroupFunctionPK id;
+	private String id;
 	private Function function;
 	private FunctionItem functionItem;
 	private Group group;
@@ -27,12 +28,13 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 	public GroupFunction() {
 	}
 
-	@EmbeddedId
-	public GroupFunctionPK getId() {
+	@Id
+	@Column(name = "ID", nullable = false)
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(GroupFunctionPK id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -73,7 +75,9 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((function == null) ? 0 : function.hashCode());
+		result = prime * result + ((functionItem == null) ? 0 : functionItem.hashCode());
+		result = prime * result + ((group == null) ? 0 : group.hashCode());
 		return result;
 	}
 
@@ -86,12 +90,24 @@ public class GroupFunction extends BaseEntityImpl<GroupFunctionPK> {
 		if (getClass() != obj.getClass())
 			return false;
 		GroupFunction other = (GroupFunction) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (function == null) {
+			if (other.function != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!function.equals(other.function))
+			return false;
+		if (functionItem == null) {
+			if (other.functionItem != null)
+				return false;
+		} else if (!functionItem.equals(other.functionItem))
+			return false;
+		if (group == null) {
+			if (other.group != null)
+				return false;
+		} else if (!group.equals(other.group))
 			return false;
 		return true;
 	}
+
+
 
 }

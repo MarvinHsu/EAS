@@ -12,14 +12,13 @@
 
 		<jta-data-source>java:/EASXADS</jta-data-source>
 
-		<class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
-        <class>com.hsuforum.eas.entity.Function</class>
-        <class>com.hsuforum.eas.entity.Group</class>
-        <class>com.hsuforum.eas.entity.FunctionItem</class>
-        <class>com.hsuforum.eas.entity.GroupFunction</class>
-        <class>com.hsuforum.eas.entity.GroupFunctionPK</class>
-        <class>com.hsuforum.eas.entity.Module</class>
-        <class>com.hsuforum.eas.entity.User</class>
+        <class>com.hsuforum.common.bo.impl.BaseBoImpl</class>
+		<class>com.hsuforum.eas.entity.Function</class>
+		<class>com.hsuforum.eas.entity.Group</class>
+		<class>com.hsuforum.eas.entity.FunctionItem</class>
+		<class>com.hsuforum.eas.entity.GroupFunction</class>
+		<class>com.hsuforum.eas.entity.Module</class>
+		<class>com.hsuforum.eas.entity.User</class>
 
 		<properties>
 

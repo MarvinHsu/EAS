@@ -5,7 +5,7 @@ import java.util.List;
 import com.hsuforum.common.dao.BaseDao;
 import com.hsuforum.eas.entity.Module;
 
-public interface ModuleDao extends BaseDao<Module, java.lang.String> {
+public interface ModuleDao extends BaseDao<Module, String> {
 
 	
 	List<Module> findAllFetchRelation();

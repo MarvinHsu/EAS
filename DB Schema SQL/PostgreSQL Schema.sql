@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     2017/10/7 AM 11:47:12                        */
+/* Created on:     2020/2/29 下午 04:33:39                        */
 /*==============================================================*/
 
 
@@ -130,14 +130,19 @@ comment on column TB_GROUPS.UPDATE_DATE is
 /* Table: TB_GROUPS_FUNCTIONS                                   */
 /*==============================================================*/
 create table TB_GROUPS_FUNCTIONS (
+   ID                   VARCHAR(36)          not null,
    TB_GROUPS_ID         VARCHAR(36)          not null,
    TB_FUNCTIONS_ID      VARCHAR(36)          not null,
    TB_FUNCTIONS_ITEMS_ID VARCHAR(36)          not null,
-   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
+   constraint TBCL_GROUPS_FUNCTIONS_PK primary key (ID),
+   constraint TB_GROUPS_FUNCTIONS_UK1 unique (TB_GROUPS_ID, TB_FUNCTIONS_ID, TB_FUNCTIONS_ITEMS_ID)
 );
 
 comment on table TB_GROUPS_FUNCTIONS is
 'Group, function and functionItem join table';
+
+comment on column TB_GROUPS_FUNCTIONS.ID is
+'ID';
 
 comment on column TB_GROUPS_FUNCTIONS.TB_GROUPS_ID is
 'Group''s ID';
@@ -182,7 +187,7 @@ create table TB_USERS (
    NAME                 VARCHAR(40)          not null,
    ACCOUNT              VARCHAR(40)          not null,
    PASSWORD             VARCHAR(255)         null,
-   ENABLED              NUMERIC(1,0)         not null default 1,
+   ENABLED              BOOL                 not null default true,
    EMAIL                VARCHAR(40)          not null,
    CREATE_DATE          DATE                 not null default current_date,
    UPDATE_DATE          DATE                 null,

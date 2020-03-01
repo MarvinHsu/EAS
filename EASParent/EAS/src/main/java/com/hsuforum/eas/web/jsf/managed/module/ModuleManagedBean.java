@@ -13,18 +13,19 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.Module;
 import com.hsuforum.eas.service.FunctionService;
+import com.hsuforum.eas.service.ModuleJpaService;
 import com.hsuforum.eas.service.ModuleService;
 import com.hsuforum.eas.web.vo.ModuleVo;
 import com.hsuforum.eas.web.vowrapper.ModuleVoWrapper;
 
 @ManagedBean
 @SessionScoped
-public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module, java.lang.String, ModuleService> {
+public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Module, String, ModuleService, ModuleJpaService> {
 
 	private static final long serialVersionUID = -6435432912309239472L;
 
@@ -32,7 +33,8 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 
 	@ManagedProperty(value = "#{moduleService}")
 	private ModuleService service;
-
+	@ManagedProperty(value = "#{moduleJpaService}")
+	private ModuleJpaService jpaService;
 	@ManagedProperty(value = "#{functionService}")
 	private FunctionService functionService;
 
@@ -167,6 +169,16 @@ public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module,
 	}
 
 	
+	public ModuleJpaService getJpaService() {
+		return jpaService;
+	}
+
+
+	public void setJpaService(ModuleJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
+
+
 	/**
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setupUpdatingData()
 	 */
