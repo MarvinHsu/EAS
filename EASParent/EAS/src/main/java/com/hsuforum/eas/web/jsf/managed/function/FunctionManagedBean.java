@@ -14,12 +14,13 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
 import com.hsuforum.eas.entity.Module;
 import com.hsuforum.eas.service.FunctionItemService;
+import com.hsuforum.eas.service.FunctionJpaService;
 import com.hsuforum.eas.service.FunctionService;
 import com.hsuforum.eas.service.ModuleService;
 import com.hsuforum.eas.web.util.SelectHelper;
@@ -29,7 +30,7 @@ import com.hsuforum.eas.web.vowrapper.FunctionVoWrapper;
 @ManagedBean
 @SessionScoped
 public class FunctionManagedBean
-		extends TemplatePrimeDataTableManagedBean<Function, java.lang.String, FunctionService> {
+		extends TemplatePrimeJpaDataTableManagedBean<Function, String, FunctionService, FunctionJpaService> {
 
 	private static final long serialVersionUID = -78467379177882514L;
 
@@ -37,6 +38,8 @@ public class FunctionManagedBean
 
 	@ManagedProperty(value = "#{functionService}")
 	private FunctionService service;
+	@ManagedProperty(value = "#{functionJpaService}")
+	private FunctionJpaService jpaService;
 	@ManagedProperty(value = "#{functionItemService}")
 	private FunctionItemService functionItemService;
 	@ManagedProperty(value = "#{moduleService}")
@@ -182,6 +185,18 @@ public class FunctionManagedBean
 	public void setService(FunctionService service) {
 		this.service = service;
 	}
+
+	
+	
+	public FunctionJpaService getJpaService() {
+		return jpaService;
+	}
+
+
+	public void setJpaService(FunctionJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
+
 
 	public List<SelectItem> getModuleList() {
 

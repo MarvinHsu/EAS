@@ -14,15 +14,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
 import com.hsuforum.eas.entity.Group;
 import com.hsuforum.eas.entity.GroupFunction;
-import com.hsuforum.eas.entity.GroupFunctionPK;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.service.FunctionService;
+import com.hsuforum.eas.service.GroupJpaService;
 import com.hsuforum.eas.service.GroupService;
 import com.hsuforum.eas.service.UserService;
 import com.hsuforum.eas.web.vo.FunctionVo;
@@ -32,7 +32,7 @@ import com.hsuforum.eas.web.vowrapper.GroupVoWrapper;
 
 @ManagedBean
 @SessionScoped
-public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, java.lang.String, GroupService> {
+public class GroupManagedBean extends TemplatePrimeJpaDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
 
 	private static final long serialVersionUID = 1096387523639795946L;
 
@@ -41,7 +41,8 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 
 	@ManagedProperty(value = "#{groupService}")
 	private GroupService service;
-
+	@ManagedProperty(value = "#{groupJpaService}")
+	private GroupJpaService jpaService;
 	@ManagedProperty(value = "#{functionService}")
 	private FunctionService functionService;
 
@@ -208,6 +209,16 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 	}
 
 	
+	public GroupJpaService getJpaService() {
+		return jpaService;
+	}
+
+
+	public void setJpaService(GroupJpaService jpaService) {
+		this.jpaService = jpaService;
+	}
+
+
 	/**
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
 	 */
@@ -275,26 +286,48 @@ public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, j
 
 
 	private void setupGroupFunction() {
-		this.getUpdatingData().getEntity().clearGroupFunctions();
 		
+		//remove unused item first
+		Set<GroupFunction> removeGroupFunctions=new HashSet<GroupFunction>();
+		for(FunctionVo functionVo:this.getUpdatingData().getFunctionVoList()){
+			for(GroupFunction existGroupFunction:this.getUpdatingData().getEntity().getGroupFunctions()) {
+				for(FunctionItem functionItem : functionVo.getEntity().getFunctionItems()){
+					boolean uncheck =true;
+					for(String functionItemId : functionVo.getFunctionItemChecked()){
+						if(functionItemId.equals(functionItem.getId())) {
+							uncheck=false;
+						}
+						
+					}
+					
+					if(uncheck==true&&functionItem.getId().equals(existGroupFunction.getFunctionItem().getId())){
+						
+						removeGroupFunctions.add(existGroupFunction);								
+					}
+
+				}				
+				
+			}			
+		}
+		for(GroupFunction removeGroupFunction:removeGroupFunctions) {
+			this.getUpdatingData().getEntity().removeGroupFunction(removeGroupFunction);	
+		}
+
+		//add checked item
 		for(FunctionVo functionVo:this.getUpdatingData().getFunctionVoList()){
 			for(String functionItemId : functionVo.getFunctionItemChecked()){
-				GroupFunctionPK groupFunctionPK = new GroupFunctionPK();
-				groupFunctionPK.setFunctionId(functionVo.getEntity().getId());
-				groupFunctionPK.setFunctionItemId(functionItemId);
-				groupFunctionPK.setGroupId(this.getUpdatingData().getEntity().getId());
-				
-				GroupFunction groupFunction = new GroupFunction();
-				groupFunction.setId(groupFunctionPK);
-				groupFunction.setGroup(this.getUpdatingData().getEntity());
-				groupFunction.setFunction(functionVo.getEntity());
 				for(FunctionItem functionItem : functionVo.getEntity().getFunctionItems()){
+					
 					if(functionItemId.equals(functionItem.getId())){
+						GroupFunction groupFunction = new GroupFunction();
+						groupFunction.setId(UUID.randomUUID().toString());
+						groupFunction.setGroup(this.getUpdatingData().getEntity());
+						groupFunction.setFunction(functionVo.getEntity());
 						groupFunction.setFunctionItem(functionItem);
+						this.getUpdatingData().getEntity().addGroupFunction(groupFunction);								
 					}
-				}
+				}				
 				
-				this.getUpdatingData().getEntity().addGroupFunction(groupFunction);
 			}
 			
 		}

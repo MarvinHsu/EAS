@@ -226,19 +226,7 @@ public class User extends BaseEntityImpl<String> implements SystemDateOperation,
 		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
-	@Transient()
-	public String getDisplayName() throws NullPointerException {
-		Locale locale = JSFUtils.getRequestLocale();
-		if (locale.equals(Locale.SIMPLIFIED_CHINESE)) {
-			StringBuffer name = new StringBuffer(this.getName());
-			TranslationUtils.translate(name, "tradition2Simple");
-			return name.toString();
 
-		} else {
-			return this.getName();
-		}
-
-	}
 
 	@Override
 	public int hashCode() {

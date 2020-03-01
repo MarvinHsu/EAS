@@ -7,7 +7,7 @@ import com.hsuforum.eas.entity.GroupFunction;
  * GroupFunction's Value Object Implement
  * 
  */
-public class GroupFunctionVo extends ValueObjectImpl<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK> {
+public class GroupFunctionVo extends ValueObjectImpl<GroupFunction, String> {
 
 	private static final long serialVersionUID = 1L;
 

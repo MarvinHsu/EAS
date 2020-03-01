@@ -133,7 +133,7 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 
 
 	// bi-directional many-to-one association to FunctionItem
-	@OneToMany(mappedBy = "function", targetEntity = FunctionItem.class, cascade = {CascadeType.ALL}, orphanRemoval=true)
+	@OneToMany(mappedBy = "function", targetEntity = FunctionItem.class, cascade = {CascadeType.ALL})
 	public Set<FunctionItem> getFunctionItems() {
 		return this.functionItems;
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -11,15 +12,15 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
 import com.hsuforum.eas.entity.Group;
 import com.hsuforum.eas.entity.GroupFunction;
-import com.hsuforum.eas.entity.GroupFunctionPK;
 import com.hsuforum.eas.service.FunctionItemService;
 import com.hsuforum.eas.service.FunctionService;
+import com.hsuforum.eas.service.GroupFunctionJpaService;
 import com.hsuforum.eas.service.GroupFunctionService;
 import com.hsuforum.eas.service.GroupService;
 import com.hsuforum.eas.web.util.SelectHelper;
@@ -29,7 +30,7 @@ import com.hsuforum.eas.web.vowrapper.GroupFunctionVoWrapper;
 @ManagedBean
 @SessionScoped
 public class GroupFunctionManagedBean extends
-		TemplatePrimeDataTableManagedBean<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK, GroupFunctionService> {
+	TemplatePrimeJpaDataTableManagedBean<GroupFunction, String, GroupFunctionService, GroupFunctionJpaService> {
 
 	private static final long serialVersionUID = -4759945281183833719L;
 
@@ -37,7 +38,8 @@ public class GroupFunctionManagedBean extends
 
 	@ManagedProperty(value = "#{groupFunctionService}")
 	private GroupFunctionService service;
-
+	@ManagedProperty(value = "#{groupFunctionJpaService}")
+	private GroupFunctionJpaService jpaService;
 	@ManagedProperty(value = "#{groupService}")
 	private GroupService groupService;
 	private List<SelectItem> groupList;
@@ -88,8 +90,7 @@ public class GroupFunctionManagedBean extends
 	@Override
 	protected void initCreatingData() {
 		GroupFunction object = new GroupFunction();
-		GroupFunctionPK groupFunctionPK = new GroupFunctionPK();
-		object.setId(groupFunctionPK);
+		object.setId(UUID.randomUUID().toString());
 		this.setUpdatingData(this.wrap(object));
 
 		this.setMode("Create");
@@ -100,7 +101,7 @@ public class GroupFunctionManagedBean extends
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
-	protected void initUpdatingData(ValueObject<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK> updatingData) {
+	protected void initUpdatingData(ValueObject<GroupFunction, String> updatingData) {
 
 		
 		if (this.getUpdatingData().getEntity().getGroup() != null) {
@@ -158,7 +159,7 @@ public class GroupFunctionManagedBean extends
 	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
-	public void setUpdatingData(ValueObject<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK> vo) {
+	public void setUpdatingData(ValueObject<GroupFunction, String> vo) {
 		super.setUpdatingData(vo);
 	}
 
@@ -177,6 +178,16 @@ public class GroupFunctionManagedBean extends
 	 */
 	public void setService(GroupFunctionService service) {
 		this.service = service;
+	}
+
+
+	public GroupFunctionJpaService getJpaService() {
+		return jpaService;
+	}
+
+
+	public void setJpaService(GroupFunctionJpaService jpaService) {
+		this.jpaService = jpaService;
 	}
 
 
@@ -210,10 +221,10 @@ public class GroupFunctionManagedBean extends
 				&& (this.getUpdatingData().getSelectGroupId().compareTo("") != 0)) {
 			this.getUpdatingData().getEntity()
 					.setGroup(getGroupService().findByPK(this.getUpdatingData().getSelectGroupId()));
-			this.getUpdatingData().getEntity().getId().setGroupId(this.getUpdatingData().getSelectGroupId());
+			
 		} else {
 			this.getUpdatingData().getEntity().setGroup(null);
-			this.getUpdatingData().getEntity().getId().setGroupId(null);
+			
 		}
 	}
 
@@ -249,10 +260,10 @@ public class GroupFunctionManagedBean extends
 				&& (this.getUpdatingData().getSelectFunctionId().compareTo("") != 0)) {
 			this.getUpdatingData().getEntity()
 					.setFunction(getFunctionService().findByPK(this.getUpdatingData().getSelectFunctionId()));
-			this.getUpdatingData().getEntity().getId().setFunctionId(this.getUpdatingData().getSelectFunctionId());
+			
 		} else {
 			this.getUpdatingData().getEntity().setFunction(null);
-			this.getUpdatingData().getEntity().getId().setFunctionId(null);
+			
 		}
 	}
 
@@ -288,10 +299,10 @@ public class GroupFunctionManagedBean extends
 				&& (this.getUpdatingData().getSelectFunctionItemId().compareTo("") != 0)) {
 			this.getUpdatingData().getEntity().setFunctionItem(
 					getFunctionItemService().findByPK(this.getUpdatingData().getSelectFunctionItemId()));
-			this.getUpdatingData().getEntity().getId().setFunctionItemId(this.getUpdatingData().getSelectFunctionItemId());
+			
 		} else {
 			this.getUpdatingData().getEntity().setFunctionItem(null);
-			this.getUpdatingData().getEntity().getId().setFunctionItemId(null);
+			
 		}
 	}
 

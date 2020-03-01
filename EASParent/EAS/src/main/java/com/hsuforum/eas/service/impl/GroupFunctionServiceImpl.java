@@ -14,7 +14,7 @@ import com.hsuforum.eas.service.GroupFunctionService;
 
 @Service("groupFunctionService")
 public class GroupFunctionServiceImpl
-		extends BaseServiceImpl<GroupFunction, com.hsuforum.eas.entity.GroupFunctionPK, GroupFunctionDao>
+		extends BaseServiceImpl<GroupFunction, String, GroupFunctionDao>
 		implements GroupFunctionService {
 
 	private static final long serialVersionUID = 3469176962996795949L;
