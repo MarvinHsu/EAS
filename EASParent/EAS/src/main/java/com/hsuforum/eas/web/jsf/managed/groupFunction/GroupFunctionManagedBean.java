@@ -85,7 +85,7 @@ public class GroupFunctionManagedBean extends
 
 	
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initCreatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initCreatingData()
 	 */
 	@Override
 	protected void initCreatingData() {
@@ -98,7 +98,7 @@ public class GroupFunctionManagedBean extends
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#initUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
 	protected void initUpdatingData(ValueObject<GroupFunction, String> updatingData) {
@@ -127,7 +127,7 @@ public class GroupFunctionManagedBean extends
 
 	
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean#initFindCriteriaMap()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#initFindCriteriaMap()
 	 */
 	@Override
 	protected void initFindCriteriaMap() {
@@ -147,7 +147,7 @@ public class GroupFunctionManagedBean extends
 
 	
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#getUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getUpdatingData()
 	 */
 	@Override
 	public GroupFunctionVo getUpdatingData() {
@@ -156,7 +156,7 @@ public class GroupFunctionManagedBean extends
 
 	
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setUpdatingData(com.hsuforum.common.web.vo.ValueObject)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setUpdatingData(com.hsuforum.common.web.vo.ValueObject)
 	 */
 	@Override
 	public void setUpdatingData(ValueObject<GroupFunction, String> vo) {
@@ -165,7 +165,7 @@ public class GroupFunctionManagedBean extends
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#getService()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#getService()
 	 */
 	public GroupFunctionService getService() {
 
@@ -174,7 +174,7 @@ public class GroupFunctionManagedBean extends
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setService(com.hsuforum.common.service.BaseService)
 	 */
 	public void setService(GroupFunctionService service) {
 		this.service = service;
@@ -308,7 +308,7 @@ public class GroupFunctionManagedBean extends
 
 
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseManagedBeanImpl#setupUpdatingData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.BaseJpaManagedBeanImpl#setupUpdatingData()
 	 */
 	@Override
 	protected void setupUpdatingData() {
@@ -320,7 +320,7 @@ public class GroupFunctionManagedBean extends
 
 	
 	/**
-	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean#findAllData()
+	 * @see com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean#findAllData()
 	 */
 	@Override
 	protected List<GroupFunction> findAllData() {
