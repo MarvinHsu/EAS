@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<ui:insert name="head"></ui:insert>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="defaultTheme"
+		name="css/application.css" target="head" />
+
+
+	<div id="page">
+		<div id="header">
+			<a href="/default.jsf" class="logo"><img
+				src="#{facesContext.externalContext.requestContextPath}/images/hsu-logo.png"
+				alt="hsu-logo" style="max-width:100%;"/> </a>
+
+			<div class="right-controls">
+				<h:form id="topForm">
+					<h:panelGrid columns="1">
+						<p:commandButton action="logout" value="#{resources.logout}"
+							ajax="false" />
+
+					</h:panelGrid>
+				</h:form>
+
+			</div>
+		</div>
+		<div id="page-content">
+			<div class="left-menu">
+				<ui:include src="/template/navigation.xhtml" />
+			</div>
+			<div class="content-container">
+				<!--右側內容區Start -->
+				<ui:insert name="main">Main Content</ui:insert>
+				<!--右側內容區 end -->
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</h:body>
+</html>
