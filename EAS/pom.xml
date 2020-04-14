@@ -320,7 +320,6 @@
 				<directory>src/main/resources</directory>
 				<excludes>
 					<exclude>application*.properties</exclude>
-					<exclude>log4j2*.xml</exclude>
 				</excludes>
 			</resource>
 			<resource>
@@ -330,8 +329,8 @@
 					<include>applicationResources*.properties</include>
 					<include>application.properties</include>
 					<include>application-${spring.profiles.active}.properties</include>
-					<include>log4j2-${spring.profiles.active}.xml</include>
 					<include>*Context.xml</include>
+					<include>log4j2.xml</include>
 				</includes>
 			</resource>
 
