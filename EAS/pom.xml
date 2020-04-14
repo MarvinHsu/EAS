@@ -407,7 +407,7 @@
 			</activation>
 			<properties>
 				<spring.profiles.active>tomcat</spring.profiles.active>
-				<appRoot>C:/Application/EAS</appRoot>
+				<appRoot>/Application/EAS</appRoot>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -427,7 +427,7 @@
 			<id>jetty</id>
 			<properties>
 				<spring.profiles.active>jetty</spring.profiles.active>
-				<appRoot>C:/Application/EAS</appRoot>
+				<appRoot>/Application/EAS</appRoot>
 			</properties>
 			<dependencies>
 				<dependency>
