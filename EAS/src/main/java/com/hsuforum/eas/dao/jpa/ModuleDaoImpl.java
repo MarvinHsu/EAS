@@ -17,7 +17,7 @@ import com.hsuforum.eas.entity.Module;
 public class ModuleDaoImpl extends BaseDaoImpl<Module, java.lang.String> implements ModuleDao {
 
 	private static final long serialVersionUID = -4546766524175547132L;
-	@PersistenceContext(name = "persistenceUnit")
+	@PersistenceContext(name = "default")
 	private EntityManager entityManager;
 
 	/**

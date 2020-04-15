@@ -407,7 +407,7 @@
 			</activation>
 			<properties>
 				<spring.profiles.active>tomcat</spring.profiles.active>
-				<appRoot>/Application/EAS</appRoot>
+				<appRoot>C:/Application/EAS</appRoot>
 			</properties>
 			<dependencies>
 				<dependency>

@@ -17,7 +17,7 @@ import com.hsuforum.eas.entity.Function;
 public class FunctionDaoImpl extends BaseDaoImpl<Function, java.lang.String> implements FunctionDao {
 
 	private static final long serialVersionUID = 2952206892645648763L;
-	@PersistenceContext(name = "persistenceUnit")
+	@PersistenceContext(name = "default")
 	private EntityManager entityManager;
 
 	/**

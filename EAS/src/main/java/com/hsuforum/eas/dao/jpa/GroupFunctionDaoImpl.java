@@ -16,7 +16,7 @@ public class GroupFunctionDaoImpl extends BaseDaoImpl<GroupFunction, String>
 		implements GroupFunctionDao {
 
 	private static final long serialVersionUID = -4460291156921322854L;
-	@PersistenceContext(name = "persistenceUnit")
+	@PersistenceContext(name = "default")
 	private EntityManager entityManager;
 
 	/**
