@@ -10,7 +10,7 @@ public class PageRedirect implements WebMvcConfigurer {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("forward:/default.jsf");
+		registry.addViewController("/").setViewName("redirect:/default.jsf");
 		registry.addViewController("/error").setViewName("forward:/exception/exception.jsf");
 
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
