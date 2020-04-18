@@ -338,11 +338,7 @@
 		</resources>
 	</build>
 	<pluginRepositories>
-		<pluginRepository>
-			<id>maven-releases</id>
-			<name>maven-releases</name>
-			<url>http://nexus.hsuforum.com/repository/maven-releases/</url>
-		</pluginRepository>
+
 		<pluginRepository>
 			<id>central</id>
 			<name>Maven central repository</name>
@@ -370,11 +366,6 @@
 
 	</pluginRepositories>
 	<repositories>
-		<repository>
-			<id>maven-releases</id>
-			<name>maven-releases</name>
-			<url>http://nexus.hsuforum.com/repository/maven-releases/</url>
-		</repository>
 		<repository>
 			<id>central</id>
 			<name>Maven central repository</name>
