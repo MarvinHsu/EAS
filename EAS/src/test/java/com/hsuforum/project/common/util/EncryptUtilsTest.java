@@ -3,19 +3,21 @@ package com.hsuforum.project.common.util;
 import java.io.File;
 import java.io.FileInputStream;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.codecs.Base64;
 import org.owasp.esapi.crypto.CipherText;
 import org.owasp.esapi.crypto.PlainText;
 import org.owasp.esapi.errors.EncryptionException;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hsuforum.common.web.util.EncryptUtils;
-
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class EncryptUtilsTest {
 	@Test
-	@Ignore
 	public void testEncode(){
 		String myplaintext = "abcd1234";
 
@@ -38,7 +40,6 @@ public class EncryptUtilsTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testDecode(){
 		
 	    try {
@@ -65,7 +66,6 @@ public class EncryptUtilsTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testEncrypt() throws EncryptionException{
 		String plainText = "abcd1234";
 
@@ -74,7 +74,6 @@ public class EncryptUtilsTest {
 		
 	}
 	@Test
-	@Ignore
 	public void testDecrypt() throws EncryptionException{
 		String base64Text = "ETMsDgAAAVkLQs75ABRBRVMvQ0JDL1BLQ1M1UGFkZGluZwCAABAAEEZrCjApRLhwepaUbOp9QkIAAAAQZoNcyLu0A5iNjTsoPUULEgAUO0OQJuaofF+rLuqVS/5SwLCMKGo=";
 
