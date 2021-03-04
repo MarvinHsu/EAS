@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.jsf.utils.JSFMessageUtils;
 import com.hsuforum.common.web.util.EncryptUtils;
 import com.hsuforum.common.web.vo.ValueObject;
@@ -30,7 +30,7 @@ import com.hsuforum.eas.web.vowrapper.UserVoWrapper;
 
 @Component
 @SessionScope
-public class UserManagedBean extends TemplatePrimeJpaDataTableManagedBean<User, String, UserService, UserJpaService> {
+public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, String, UserService, UserJpaService> {
 
 	private static final long serialVersionUID = 4704000081629878950L;
 

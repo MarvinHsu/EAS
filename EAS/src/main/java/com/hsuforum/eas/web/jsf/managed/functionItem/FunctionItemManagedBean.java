@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
@@ -27,7 +27,7 @@ import com.hsuforum.eas.web.vowrapper.FunctionItemVoWrapper;
 @Component
 @SessionScope
 public class FunctionItemManagedBean
-		extends TemplatePrimeJpaDataTableManagedBean<FunctionItem, String, FunctionItemService, FunctionItemJpaService> {
+		extends TemplatePrimeDataTableManagedBean<FunctionItem, String, FunctionItemService, FunctionItemJpaService> {
 
 	private static final long serialVersionUID = -3869631270660154620L;
 
