@@ -1,6 +1,5 @@
 package com.hsuforum.eas.entity;
 
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
