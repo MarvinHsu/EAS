@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.utils.JSFUtils;
 
@@ -22,13 +22,13 @@ import com.hsuforum.common.web.jsf.utils.JSFUtils;
  * @author Marvin
  *
  */
-@ManagedBean
-@SessionScoped
+@Component
+@SessionScope
 public class SkinBean implements Serializable {
 
 	private static final long serialVersionUID = -974102925798731707L;
-	@ManagedProperty(value = "red")
-	private String skin;
+	
+	private String skin="red";
 	private List<String> skins;
 
 	@PostConstruct

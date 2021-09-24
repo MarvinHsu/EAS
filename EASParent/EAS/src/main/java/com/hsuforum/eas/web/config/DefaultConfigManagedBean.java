@@ -5,21 +5,26 @@ import java.io.Serializable;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.ApplicationScope;
+
 import com.hsuforum.common.web.jsf.utils.JSFUtils;
 
 /**
  * Default configuration managed bean
  *
  */
+@Component
+@ApplicationScope
 public class DefaultConfigManagedBean implements Serializable {
 
 	private static final long serialVersionUID = -5125088362383666757L;
 	
-	private String systemCode;
-	private Boolean devMode;
-	private Integer rowsOfPerPage;
-	private String mailFrom;
-	private String timeZone;
+	private String systemCode="EAS";
+	private Boolean devMode=true;
+	private Integer rowsOfPerPage=25;
+	private String mailFrom="abc@sample.com";
+	private String timeZone="Asia/Taipei";
 	public Integer getRowsOfPerPage() {
 		return rowsOfPerPage;
 	}
@@ -80,3 +85,4 @@ public class DefaultConfigManagedBean implements Serializable {
 		return (DefaultConfigManagedBean) JSFUtils.getManagedBean("defaultConfigManagedBean");
 	}
 }
+

@@ -9,11 +9,12 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.Module;
@@ -23,19 +24,19 @@ import com.hsuforum.eas.service.ModuleService;
 import com.hsuforum.eas.web.vo.ModuleVo;
 import com.hsuforum.eas.web.vowrapper.ModuleVoWrapper;
 
-@ManagedBean
-@SessionScoped
-public class ModuleManagedBean extends TemplatePrimeJpaDataTableManagedBean<Module, String, ModuleService, ModuleJpaService> {
+@Component
+@SessionScope
+public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module, String, ModuleService, ModuleJpaService> {
 
 	private static final long serialVersionUID = -6435432912309239472L;
 
 	private String mode;
 
-	@ManagedProperty(value = "#{moduleService}")
+	@Autowired
 	private ModuleService service;
-	@ManagedProperty(value = "#{moduleJpaService}")
+	@Autowired
 	private ModuleJpaService jpaService;
-	@ManagedProperty(value = "#{functionService}")
+	@Autowired
 	private FunctionService functionService;
 
 

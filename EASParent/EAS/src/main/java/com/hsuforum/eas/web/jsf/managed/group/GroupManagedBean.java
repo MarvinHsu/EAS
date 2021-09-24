@@ -10,11 +10,12 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
@@ -30,23 +31,23 @@ import com.hsuforum.eas.web.vo.GroupVo;
 import com.hsuforum.eas.web.vowrapper.FunctionVoWrapper;
 import com.hsuforum.eas.web.vowrapper.GroupVoWrapper;
 
-@ManagedBean
-@SessionScoped
-public class GroupManagedBean extends TemplatePrimeJpaDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
+@Component
+@SessionScope
+public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
 
 	private static final long serialVersionUID = 1096387523639795946L;
 
 	
 	private String mode;
 
-	@ManagedProperty(value = "#{groupService}")
+	@Autowired
 	private GroupService service;
-	@ManagedProperty(value = "#{groupJpaService}")
+	@Autowired
 	private GroupJpaService jpaService;
-	@ManagedProperty(value = "#{functionService}")
+	@Autowired
 	private FunctionService functionService;
 
-	@ManagedProperty(value = "#{userService}")
+	@Autowired
 	private UserService userService;
 
 

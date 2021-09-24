@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.event.TabChangeEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.Group;
@@ -29,16 +29,16 @@ import com.hsuforum.eas.web.config.DefaultConfigManagedBean;
 /**
  * Navigation menu managed bean
  */
-@ManagedBean
-@SessionScoped
+@Component
+@SessionScope
 public class MenuManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 7319288785728714429L;
 
-	@ManagedProperty(value = "#{defaultConfigManagedBean}")
+	@Autowired
 	private DefaultConfigManagedBean defaultConfigManagedBean;
 
-	@ManagedProperty(value = "#{moduleService}")
+	@Autowired
 	private ModuleService moduleService;
 	private User user;
 	private List<Module> modules;
@@ -95,7 +95,7 @@ public class MenuManagedBean implements Serializable {
 
 		// Remove managed bean of session
 		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().remove(obj+"ManagedBean");
+		context.getExternalContext().getSessionMap().remove("scopedTarget."+obj+"ManagedBean");
 
 	}
 

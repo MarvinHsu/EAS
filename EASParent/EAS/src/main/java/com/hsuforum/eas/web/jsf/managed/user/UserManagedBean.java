@@ -9,13 +9,13 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import org.owasp.esapi.errors.EncryptionException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.jsf.utils.JSFMessageUtils;
 import com.hsuforum.common.web.util.EncryptUtils;
 import com.hsuforum.common.web.vo.ValueObject;
@@ -28,21 +28,21 @@ import com.hsuforum.eas.service.UserService;
 import com.hsuforum.eas.web.vo.UserVo;
 import com.hsuforum.eas.web.vowrapper.UserVoWrapper;
 
-@ManagedBean
-@SessionScoped
-public class UserManagedBean extends TemplatePrimeJpaDataTableManagedBean<User, java.lang.String, UserService, UserJpaService> {
+@Component
+@SessionScope
+public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, String, UserService, UserJpaService> {
 
 	private static final long serialVersionUID = 4704000081629878950L;
 
 	private String mode;
 
-	@ManagedProperty(value = "#{userService}")
+	@Autowired
 	private UserService service;
 
-	@ManagedProperty(value = "#{userJpaService}")
+	@Autowired
 	private UserJpaService jpaService;
 
-	@ManagedProperty(value = "#{groupService}")
+	@Autowired
 	private GroupService groupService;
 
 

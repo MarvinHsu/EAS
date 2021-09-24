@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EAS</groupId>
 	<artifactId>EASParent</artifactId>
-	<version>1.0.12</version>
+	<version>1.0.13</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>EAS</module>
@@ -36,15 +36,15 @@
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<primefaces.version>7.0</primefaces.version>
-		<primefaces.extension.version>7.0</primefaces.extension.version>
-		<spring.version>5.2.5.RELEASE</spring.version>
+		<primefaces.version>10.0.0</primefaces.version>
+		<primefaces.extension.version>10.0.0</primefaces.extension.version>
+		<spring.version>5.3.10</spring.version>
 		<springSecurity.version>5.3.1.RELEASE</springSecurity.version>
-		<springData.version>Moore-SR6</springData.version>
+		<springData.version>2021.0.5</springData.version>
 		<jackson.version>2.9.10</jackson.version>
 		<jackson-databind.version>2.9.10.3</jackson-databind.version>
-		<hsucommon.version>3.0.5</hsucommon.version>
-		<java.version>1.8</java.version>
+		<hsucommon.version>3.0.11</hsucommon.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -477,7 +477,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-releasetrain</artifactId>
+				<artifactId>spring-data-bom</artifactId>
 				<version>${springData.version}</version>
 				<scope>import</scope>
 				<type>pom</type>

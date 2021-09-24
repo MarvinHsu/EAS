@@ -7,12 +7,13 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
-import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeJpaDataTableManagedBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.FunctionItem;
@@ -27,28 +28,28 @@ import com.hsuforum.eas.web.util.SelectHelper;
 import com.hsuforum.eas.web.vo.GroupFunctionVo;
 import com.hsuforum.eas.web.vowrapper.GroupFunctionVoWrapper;
 
-@ManagedBean
-@SessionScoped
+@Component
+@SessionScope
 public class GroupFunctionManagedBean extends
-	TemplatePrimeJpaDataTableManagedBean<GroupFunction, String, GroupFunctionService, GroupFunctionJpaService> {
+	TemplatePrimeDataTableManagedBean<GroupFunction, String, GroupFunctionService, GroupFunctionJpaService> {
 
 	private static final long serialVersionUID = -4759945281183833719L;
 
 	private String mode;
 
-	@ManagedProperty(value = "#{groupFunctionService}")
+	@Autowired
 	private GroupFunctionService service;
-	@ManagedProperty(value = "#{groupFunctionJpaService}")
+	@Autowired
 	private GroupFunctionJpaService jpaService;
-	@ManagedProperty(value = "#{groupService}")
+	@Autowired
 	private GroupService groupService;
 	private List<SelectItem> groupList;
 
-	@ManagedProperty(value = "#{functionService}")
+	@Autowired
 	private FunctionService functionService;
 	private List<SelectItem> functionList;
 
-	@ManagedProperty(value = "#{functionItemService}")
+	@Autowired
 	private FunctionItemService functionItemService;
 	private List<SelectItem> functionItemList;
 
