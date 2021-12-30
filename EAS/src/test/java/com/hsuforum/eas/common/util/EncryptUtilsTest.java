@@ -1,4 +1,4 @@
-package com.hsuforum.project.common.util;
+package com.hsuforum.eas.common.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,7 +75,7 @@ public class EncryptUtilsTest {
 	}
 	@Test
 	public void testDecrypt() throws EncryptionException{
-		String base64Text = "ETMsDgAAAVkLQs75ABRBRVMvQ0JDL1BLQ1M1UGFkZGluZwCAABAAEEZrCjApRLhwepaUbOp9QkIAAAAQZoNcyLu0A5iNjTsoPUULEgAUO0OQJuaofF+rLuqVS/5SwLCMKGo=";
+		String base64Text = "ETMsDgAAAX4J7/2MABRBRVMvQ0JDL1BLQ1M1UGFkZGluZwCAABAAEH2OYItSbMBcxX0vA5J5utcAAAAQ6urWCdHdERIo3PkiY3KFBQAUjFs4Z7cXq8tyjRR5OPTrE72MCjQ=";
 
 		String plainText=EncryptUtils.decrypt(base64Text);
 		System.out.println("plainText="+plainText);		
