@@ -20,7 +20,7 @@ public class LogoutManagedBean implements Serializable {
 		final FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 
-		externalContext.dispatch("/j_spring_security_logout.jspx");
+		externalContext.dispatch("/j_spring_security_logout.jsf");
 
 		FacesContext.getCurrentInstance().responseComplete();
 
