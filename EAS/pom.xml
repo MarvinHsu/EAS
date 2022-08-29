@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<joinfaces.version>4.7.3</joinfaces.version>
-		<hsucommon.version>3.0.14</hsucommon.version>
+		<hsucommon.version>3.0.15</hsucommon.version>
 		<java.version>11</java.version>
 		<appRoot>/Application/EAS</appRoot>
 	</properties>
