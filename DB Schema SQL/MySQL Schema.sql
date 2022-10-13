@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/2/29 下午 12:35:28                       */
+/* Created on:     2022/10/13 下午 05:50:03                       */
 /*==============================================================*/
 
 
@@ -77,6 +77,7 @@ create table TB_FUNCTIONS
    UPDATE_DATE          datetime  comment 'System update date time',
    CODE                 varchar(40) not null  comment 'Code',
    SEQUENCE             smallint  comment 'Sort sequence',
+   SHOWED               smallint default 1  comment 'Show in menu',
    primary key (ID),
    key TBCL_FUNCTIONS_UK1 (NAME)
 );
@@ -139,6 +140,7 @@ create table TB_MODULES
    NAME                 varchar(50) not null  comment 'Name',
    CODE                 varchar(20) not null  comment 'Code',
    SEQUENCE             smallint  comment 'Sort sequence',
+   SHOWED               smallint default 1  comment 'Show in menu',
    primary key (ID)
 );
 

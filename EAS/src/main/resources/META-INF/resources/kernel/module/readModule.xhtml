@@ -57,8 +57,8 @@
 				<p:panel>
 					<p:dataTable id="dataTable" var="bo" paginator="true" scrollable="true" resizable="true"
 						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rows="#{defaultConfigManagedBean.rowsOfPerPage}"
-						rowsPerPageTemplate="#{defaultConfigManagedBean.rowsOfPerPage}"
+						rows="#{defaultSetting.dataTableRows}"
+						rowsPerPageTemplate="#{defaultSetting.rowsOfPerPage}"
 						value="#{moduleManagedBean.dataList}">
 
 						<p:column id="columnId" sortBy="#{bo.id}"
@@ -82,11 +82,20 @@
 								action="#{moduleManagedBean.doUpdateAction(bo)}"
 								rendered="#{menuManagedBean.isGrant('module','update')}" />
 						</p:column>
-
 						<p:column id="columnCode" sortBy="#{bo.code}"
 							headerText="#{resources.com_hsuforum_eas_entity_Module_code}">
 
 							<h:outputLabel value="#{bo.code}" />
+						</p:column>
+						<p:column id="columnSequence" sortBy="#{bo.sequence}"
+							headerText="#{resources.com_hsuforum_eas_entity_Module_sequence}">
+
+							<h:outputLabel value="#{bo.sequence}" />
+						</p:column>
+						<p:column id="columnShowed" sortBy="#{bo.showed}"
+							headerText="#{resources.com_hsuforum_eas_entity_Module_showed}">
+
+							<h:outputLabel value="#{bo.showed}" />
 						</p:column>
 
 

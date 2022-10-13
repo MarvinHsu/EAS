@@ -26,7 +26,16 @@
 			value="#{moduleManagedBean.updatingData.entity.code}"
 			label="#{resources.com_hsuforum_eas_entity_Module_code}"
 			required="true" />
-
+			
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_sequence}" />
+		<p:inputText id="inputTextSequence"
+			value="#{moduleManagedBean.updatingData.entity.sequence}"
+			label="#{resources.com_hsuforum_eas_entity_Module_sequence}"
+			required="true" />	
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_showed}" />
+		<p:selectBooleanCheckbox id="checkboxShowed"
+			value="#{moduleManagedBean.updatingData.entity.showed}"
+			label="#{resources.com_hsuforum_eas_entity_Module_showed}"/>
 
 
 	</p:panelGrid>

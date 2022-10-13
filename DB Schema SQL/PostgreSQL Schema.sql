@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     2020/2/29 下午 04:33:39                        */
+/* Created on:     2022/10/13 下午 06:00:55                       */
 /*==============================================================*/
 
 
@@ -30,6 +30,7 @@ create table TB_FUNCTIONS (
    UPDATE_DATE          DATE                 null,
    CODE                 VARCHAR(40)          not null,
    SEQUENCE             INT2                 null,
+   SHOWED               INT2                 null default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
    constraint TBCL_FUNCTIONS_UK1 unique (NAME)
 );
@@ -60,6 +61,9 @@ comment on column TB_FUNCTIONS.CODE is
 
 comment on column TB_FUNCTIONS.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_FUNCTIONS.SHOWED is
+'Show in menu';
 
 /*==============================================================*/
 /* Table: TB_FUNCTIONS_ITEMS                                    */
@@ -161,6 +165,7 @@ create table TB_MODULES (
    NAME                 VARCHAR(50)          not null,
    CODE                 VARCHAR(20)          not null,
    SEQUENCE             INT2                 null,
+   SHOWED               INT2                 null default 1,
    constraint TB_MODULES_PK primary key (ID)
 );
 
@@ -178,6 +183,9 @@ comment on column TB_MODULES.CODE is
 
 comment on column TB_MODULES.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_MODULES.SHOWED is
+'Show in menu';
 
 /*==============================================================*/
 /* Table: TB_USERS                                              */

@@ -1,6 +1,9 @@
 package com.hsuforum.eas.web.jsf.managed;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -17,6 +20,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.hsuforum.eas.DefaultSetting;
 import com.hsuforum.eas.entity.Function;
 import com.hsuforum.eas.entity.Group;
 import com.hsuforum.eas.entity.GroupFunction;
@@ -24,7 +28,7 @@ import com.hsuforum.eas.entity.Module;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.security.util.AAUtils;
 import com.hsuforum.eas.service.ModuleService;
-import com.hsuforum.eas.web.config.DefaultConfigManagedBean;
+import com.mchange.v1.util.CollectionUtils;
 
 /**
  * Navigation menu managed bean
@@ -36,13 +40,13 @@ public class MenuManagedBean implements Serializable {
 	private static final long serialVersionUID = 7319288785728714429L;
 
 	@Autowired
-	private DefaultConfigManagedBean defaultConfigManagedBean;
+	private DefaultSetting defaultSetting;
 
 	@Autowired
 	private ModuleService moduleService;
 	private User user;
 	private List<Module> modules;
-	
+
 	private Integer activeTab;
 
 	public MenuManagedBean() {
@@ -61,29 +65,42 @@ public class MenuManagedBean implements Serializable {
 			if (this.modules.size() > 0) {
 				this.activeTab = 0;
 			}
-			if (this.user != null && user.getAuthorities() != null) {
-				for (GrantedAuthority grantedAuthority : user.getAuthorities()) {
+			if (this.user != null && user.getAuthorities() != null && this.modules != null) {
+				for (int i = 0; i < this.modules.size(); i++) {
+					if (this.modules.get(i).getShowed() == true) {
+						List<Function> functions = new ArrayList<Function>();
+						for (GrantedAuthority grantedAuthority : user.getAuthorities()) {
 
-					for (GroupFunction groupFunction : ((Group) grantedAuthority).getGroupFunctions()) {
-						for (int i = 0; i < this.modules.size(); i++) {
-							if (groupFunction.getFunction().getModule() != null && groupFunction.getFunction()
-									.getModule().getCode().equals(this.modules.get(i).getCode())) {
-								this.modules.get(i).setShowed(true);
-								Iterator<Function> iter = this.modules.get(i).getFunctions().iterator();
-								Set<Function> functions = new LinkedHashSet<Function>();
-								while (iter.hasNext()) {
-									Function function = iter.next();
-									if (groupFunction.getFunction().getCode().equals(function.getCode())) {
-										function.setShowed(true);
+							for (GroupFunction groupFunction : ((Group) grantedAuthority).getGroupFunctions()) {
+
+								if (groupFunction.getFunction().getModule() != null && groupFunction.getFunction()
+										.getModule().getCode().equals(this.modules.get(i).getCode())) {
+									Iterator<Function> iter = this.modules.get(i).getFunctions().iterator();
+
+									while (iter.hasNext()) {
+										Function function = iter.next();
+										if (groupFunction.getFunction().getCode().equals(function.getCode())
+												&& function.getShowed() == true) {
+											functions.add(function);
+										}
 									}
-									functions.add(function);
+
 								}
-								this.modules.get(i).setFunctions(functions);
 
 							}
-
 						}
+
+						Collections.sort(functions, new Comparator<Function>() {
+							public int compare(Function s1, Function s2) {
+
+								return s1.getSequence().compareTo(s2.getSequence());
+
+							}
+						});
+
+						this.modules.get(i).setFunctions(new LinkedHashSet<Function>(functions));
 					}
+
 				}
 			}
 		}
@@ -95,13 +112,13 @@ public class MenuManagedBean implements Serializable {
 
 		// Remove managed bean of session
 		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().remove("scopedTarget."+obj+"ManagedBean");
+		context.getExternalContext().getSessionMap().remove("scopedTarget." + obj + "ManagedBean");
 
 	}
 
 	public boolean isGrant(String functionCode, String itemCode) {
-	
-		if (this.getDefaultConfigManagedBean().getDevMode() == true) {
+
+		if (this.getDefaultSetting().getDevMode() == true) {
 			return true;
 		}
 		if (this.getUser() != null && this.getUser().getAuthorities() != null) {
@@ -115,7 +132,7 @@ public class MenuManagedBean implements Serializable {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -156,12 +173,14 @@ public class MenuManagedBean implements Serializable {
 		this.modules = modules;
 	}
 
-	public DefaultConfigManagedBean getDefaultConfigManagedBean() {
-		return defaultConfigManagedBean;
+	public DefaultSetting getDefaultSetting() {
+		return defaultSetting;
 	}
 
-	public void setDefaultConfigManagedBean(DefaultConfigManagedBean defaultConfigManagedBean) {
-		this.defaultConfigManagedBean = defaultConfigManagedBean;
+	public void setDefaultSetting(DefaultSetting defaultSetting) {
+		this.defaultSetting = defaultSetting;
 	}
+
+
 
 }
