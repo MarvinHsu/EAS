@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -28,7 +27,6 @@ import com.hsuforum.eas.entity.Module;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.security.util.AAUtils;
 import com.hsuforum.eas.service.ModuleService;
-import com.mchange.v1.util.CollectionUtils;
 
 /**
  * Navigation menu managed bean
