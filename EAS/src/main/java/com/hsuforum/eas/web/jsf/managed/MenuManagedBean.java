@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,10 @@ public class MenuManagedBean implements Serializable {
 						});
 
 						this.modules.get(i).setFunctions(new LinkedHashSet<Function>(functions));
+					}
+					//if module haven't any function. hidden it
+					if(this.modules.get(i).getShowed() == true && CollectionUtils.isEmpty(this.modules.get(i).getFunctions())) {
+						this.modules.get(i).setShowed(false);
 					}
 
 				}
