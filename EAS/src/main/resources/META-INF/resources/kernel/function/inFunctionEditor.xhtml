@@ -47,7 +47,9 @@
 		<p:inputText id="inputTextSequence"
 			value="#{functionManagedBean.updatingData.entity.sequence}"
 			label="#{resources.com_hsuforum_eas_entity_Function_sequence}"
-			required="true" />	
+			required="true" >
+			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
+		</p:inputText>		
 		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_showed}" />
 		<p:selectBooleanCheckbox id="checkboxShowed"
 			value="#{functionManagedBean.updatingData.entity.showed}"
