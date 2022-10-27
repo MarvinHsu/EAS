@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -67,7 +69,8 @@ public class MenuManagedBean implements Serializable {
 			if (this.user != null && user.getAuthorities() != null && this.modules != null) {
 				for (int i = 0; i < this.modules.size(); i++) {
 					if (this.modules.get(i).getShowed() == true) {
-						List<Function> functions = new ArrayList<Function>();
+						//use set to prevent duplication
+						Set<Function> functions = new HashSet<Function>();
 						for (GrantedAuthority grantedAuthority : user.getAuthorities()) {
 
 							for (GroupFunction groupFunction : ((Group) grantedAuthority).getGroupFunctions()) {
@@ -88,8 +91,9 @@ public class MenuManagedBean implements Serializable {
 
 							}
 						}
-
-						Collections.sort(functions, new Comparator<Function>() {
+						List<Function> functionsArrayList = new ArrayList<Function>();
+						functionsArrayList.addAll(functions);
+						Collections.sort(functionsArrayList, new Comparator<Function>() {
 							public int compare(Function s1, Function s2) {
 
 								return s1.getSequence().compareTo(s2.getSequence());
@@ -97,7 +101,7 @@ public class MenuManagedBean implements Serializable {
 							}
 						});
 
-						this.modules.get(i).setFunctions(new LinkedHashSet<Function>(functions));
+						this.modules.get(i).setFunctions(new LinkedHashSet<Function>(functionsArrayList));
 					}
 					//if module haven't any function. hidden it
 					if(this.modules.get(i).getShowed() == true && CollectionUtils.isEmpty(this.modules.get(i).getFunctions())) {
