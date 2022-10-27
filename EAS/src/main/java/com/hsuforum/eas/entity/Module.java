@@ -11,9 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 
@@ -46,14 +44,14 @@ public class Module extends BaseEntityImpl<String> {
 	private String name;
 	@Basic()
 	@Column(name = "SEQUENCE")
-	private int sequence;
+	private Integer sequence;
+	// is show the module
+	@Column(name = "SHOWED")
+	private Boolean showed;
 	// bi-directional many-to-one association to Function
 	@OneToMany(mappedBy = "module", targetEntity = Function.class, cascade = { CascadeType.ALL })
-	@OrderBy("sequence ASC")
 	private Set<Function> functions;
-	// is show the module
-	@Transient()
-	private Boolean showed = false;
+	
 
 
 

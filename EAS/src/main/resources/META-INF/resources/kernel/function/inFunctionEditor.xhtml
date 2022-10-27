@@ -43,7 +43,17 @@
 			label="#{resources.com_hsuforum_eas_entity_Function_module}">
 			<f:selectItems value="#{functionManagedBean.moduleList}" />
 		</p:selectOneMenu>
-
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_sequence}" />
+		<p:inputText id="inputTextSequence"
+			value="#{functionManagedBean.updatingData.entity.sequence}"
+			label="#{resources.com_hsuforum_eas_entity_Function_sequence}"
+			required="true" >
+			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
+		</p:inputText>		
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_showed}" />
+		<p:selectBooleanCheckbox id="checkboxShowed"
+			value="#{functionManagedBean.updatingData.entity.showed}"
+			label="#{resources.com_hsuforum_eas_entity_Function_showed}"/>
 
 	</p:panelGrid>
 </p:panel>

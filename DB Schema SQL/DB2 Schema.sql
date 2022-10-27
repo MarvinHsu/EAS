@@ -1,6 +1,6 @@
 --==============================================================
 -- DBMS name:      IBM DB2 UDB 9.7 Common Server
--- Created on:     2020/2/29 下午 04:45:20
+-- Created on:     2022/10/13 下午 06:10:02
 --==============================================================
 
 
@@ -52,6 +52,7 @@ create table TB_FUNCTIONS
    UPDATE_DATE          DATE,
    CODE                 VARCHAR(40)            not null,
    SEQUENCE             SMALLINT,
+   SHOWED               SMALLINT               default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
    constraint TBCL_FUNCTIONS_UK1 unique ("NAME")
 );
@@ -82,6 +83,9 @@ comment on column TB_FUNCTIONS.CODE is
 
 comment on column TB_FUNCTIONS.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_FUNCTIONS.SHOWED is
+'Show in menu';
 
 --==============================================================
 -- Table: TB_FUNCTIONS_ITEMS
@@ -187,6 +191,7 @@ create table TB_MODULES
    "NAME"               VARCHAR(50)            not null,
    CODE                 VARCHAR(20)            not null,
    SEQUENCE             SMALLINT,
+   SHOWED               SMALLINT               default 1,
    constraint TB_MODULES_PK primary key (ID)
 );
 
@@ -204,6 +209,9 @@ comment on column TB_MODULES.CODE is
 
 comment on column TB_MODULES.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_MODULES.SHOWED is
+'Show in menu';
 
 --==============================================================
 -- Table: TB_USERS

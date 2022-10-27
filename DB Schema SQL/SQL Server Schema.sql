@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2020/2/29 下午 06:46:54                        */
+/* Created on:     2022/10/13 下午 06:02:42                       */
 /*==============================================================*/
 
 
@@ -114,6 +114,7 @@ create table TB_FUNCTIONS (
    UPDATE_DATE          datetime             null,
    CODE                 varchar(40)          not null,
    SEQUENCE             smallint             null,
+   SHOWED               smallint             null default 1,
    constraint TBCL_FUNCTIONS_PK primary key nonclustered (ID),
    constraint TBCL_FUNCTIONS_UK1 unique (NAME)
 )
@@ -286,6 +287,25 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Sort sequence',
    'user', @CurrentUser, 'table', 'TB_FUNCTIONS', 'column', 'SEQUENCE'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('TB_FUNCTIONS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SHOWED')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'TB_FUNCTIONS', 'column', 'SHOWED'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Show in menu',
+   'user', @CurrentUser, 'table', 'TB_FUNCTIONS', 'column', 'SHOWED'
 go
 
 /*==============================================================*/
@@ -673,6 +693,7 @@ create table TB_MODULES (
    NAME                 varchar(50)          not null,
    CODE                 varchar(20)          not null,
    SEQUENCE             smallint             null,
+   SHOWED               smallint             null default 1,
    constraint TB_MODULES_PK primary key nonclustered (ID)
 )
 go
@@ -768,6 +789,25 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Sort sequence',
    'user', @CurrentUser, 'table', 'TB_MODULES', 'column', 'SEQUENCE'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('TB_MODULES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SHOWED')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'TB_MODULES', 'column', 'SHOWED'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Show in menu',
+   'user', @CurrentUser, 'table', 'TB_MODULES', 'column', 'SHOWED'
 go
 
 /*==============================================================*/

@@ -22,7 +22,7 @@
 
 			<div id="page">
 				<div id="header">
-					<a href="/default.jsf" class="logo"><img
+					<a href="#{facesContext.externalContext.requestContextPath}/default.jsf" class="logo"><img
 						src="#{facesContext.externalContext.requestContextPath}/images/hsu-logo.png"
 						alt="hsu-logo" style="max-width:100%;" /> </a>
 
@@ -42,9 +42,9 @@
 				<div id="page-content">
 
 					<div class="content-container">
-						<!--右側內容區Start -->
+						<!--Right content start -->
 						<ui:insert name="main">Main Content</ui:insert>
-						<!--右側內容區 end -->
+						<!--Right content end -->
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -61,7 +61,7 @@
 
 			<div id="page">
 				<div id="header">
-					<a href="/default.jsf" class="logo"><img
+					<a href="#{facesContext.externalContext.requestContextPath}/default.jsf" class="logo"><img
 						src="#{facesContext.externalContext.requestContextPath}/images/hsu-logo.png"
 						alt="hsu-logo" /> </a>
 
@@ -82,9 +82,9 @@
 						<ui:insert name="left">Left Content</ui:insert>
 					</div>
 					<div class="content-container">
-						<!--右側內容區Start -->
+						<!--Right content start -->
 						<ui:insert name="main">Main Content</ui:insert>
-						<!--右側內容區 end -->
+						<!--Right content end -->
 					</div>
 					<div class="clear"></div>
 				</div>

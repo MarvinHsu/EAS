@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2020/2/29 下午 12:46:31                       */
+/* Created on:     2022/10/13 下午 06:07:43                       */
 /*==============================================================*/
 
 
@@ -51,6 +51,7 @@ create table TB_FUNCTIONS (
    UPDATE_DATE          DATE,
    CODE                 VARCHAR2(40)          not null,
    SEQUENCE             SMALLINT,
+   SHOWED               SMALLINT             default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
    constraint TBCL_FUNCTIONS_UK1 unique (NAME)
 );
@@ -81,6 +82,9 @@ comment on column TB_FUNCTIONS.CODE is
 
 comment on column TB_FUNCTIONS.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_FUNCTIONS.SHOWED is
+'Show in menu';
 
 /*==============================================================*/
 /* Table: TB_FUNCTIONS_ITEMS                                    */
@@ -182,6 +186,7 @@ create table TB_MODULES (
    NAME                 VARCHAR2(50)          not null,
    CODE                 VARCHAR2(20)          not null,
    SEQUENCE             SMALLINT,
+   SHOWED               SMALLINT             default 1,
    constraint TB_MODULES_PK primary key (ID)
 );
 
@@ -199,6 +204,9 @@ comment on column TB_MODULES.CODE is
 
 comment on column TB_MODULES.SEQUENCE is
 'Sort sequence';
+
+comment on column TB_MODULES.SHOWED is
+'Show in menu';
 
 /*==============================================================*/
 /* Table: TB_USERS                                              */

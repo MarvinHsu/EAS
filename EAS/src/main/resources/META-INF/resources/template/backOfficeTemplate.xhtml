@@ -15,7 +15,7 @@
 
 	<div id="page">
 		<div id="header">
-			<a href="/default.jsf" class="logo"><img
+			<a href="#{facesContext.externalContext.requestContextPath}/default.jsf" class="logo"><img
 				src="#{facesContext.externalContext.requestContextPath}/images/hsu-logo.png"
 				alt="hsu-logo" style="max-width:100%;"/> </a>
 
@@ -35,9 +35,9 @@
 				<ui:include src="/template/navigation.xhtml" />
 			</div>
 			<div class="content-container">
-				<!--右側內容區Start -->
+				<!--Right content start-->
 				<ui:insert name="main">Main Content</ui:insert>
-				<!--右側內容區 end -->
+				<!--Right content end-->
 			</div>
 			<div class="clear"></div>
 		</div>
