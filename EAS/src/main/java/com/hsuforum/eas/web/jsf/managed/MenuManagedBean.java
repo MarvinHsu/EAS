@@ -10,10 +10,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.faces.context.FacesContext;
-import jakarta.faces.event.ActionEvent;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.event.TabChangeEvent;
@@ -30,6 +26,10 @@ import com.hsuforum.eas.entity.Module;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.security.util.AAUtils;
 import com.hsuforum.eas.service.ModuleService;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
 
 /**
  * Navigation menu managed bean

@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import jakarta.annotation.PostConstruct;
-
 import org.owasp.esapi.errors.EncryptionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +25,8 @@ import com.hsuforum.eas.service.UserJpaService;
 import com.hsuforum.eas.service.UserService;
 import com.hsuforum.eas.web.vo.UserVo;
 import com.hsuforum.eas.web.vowrapper.UserVoWrapper;
+
+import jakarta.annotation.PostConstruct;
 
 @Component
 @SessionScope

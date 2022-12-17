@@ -6,6 +6,13 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.hsuforum.common.entity.SystemDateOperation;
+import com.hsuforum.common.entity.impl.BaseEntityImpl;
+import com.hsuforum.common.entity.impl.SystemDateEntityListener;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,14 +28,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.hsuforum.common.entity.SystemDateOperation;
-import com.hsuforum.common.entity.impl.BaseEntityImpl;
-import com.hsuforum.common.entity.impl.SystemDateEntityListener;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
