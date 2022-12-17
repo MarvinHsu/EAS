@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.owasp.esapi.errors.EncryptionException;
 import org.springframework.beans.factory.annotation.Autowired;

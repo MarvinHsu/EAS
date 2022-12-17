@@ -10,9 +10,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.primefaces.component.accordionpanel.AccordionPanel;

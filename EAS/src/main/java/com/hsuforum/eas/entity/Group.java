@@ -3,17 +3,18 @@ package com.hsuforum.eas.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
@@ -57,9 +58,11 @@ public class Group extends BaseEntityImpl<String> implements GrantedAuthority {
 	// bi-directional many-to-one association to GroupFunction
 	@OneToMany(mappedBy = "group", targetEntity = GroupFunction.class, cascade = {
 			CascadeType.ALL }, orphanRemoval = true)
+	@ToString.Exclude
 	private Set<GroupFunction> groupFunctions;
 	// bi-directional many-to-many association to User
 	@ManyToMany(mappedBy = "groups", targetEntity = User.class, cascade = { CascadeType.ALL })
+	@ToString.Exclude
 	private Set<User> users;
 
 	public Group(String id, String name, String code) {

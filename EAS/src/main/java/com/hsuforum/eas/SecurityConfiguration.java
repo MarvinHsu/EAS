@@ -1,11 +1,10 @@
 package com.hsuforum.eas;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
@@ -17,8 +16,8 @@ import org.springframework.security.web.servletapi.SecurityContextHolderAwareReq
 import org.springframework.security.web.session.ConcurrentSessionFilter;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration {
+
 	@Autowired
 	ConcurrentSessionFilter concurrentSessionFilter;
 	@Autowired
@@ -38,43 +37,55 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	FilterSecurityInterceptor filterSecurityInterceptor;
 
-	@Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = httpSecurity
-        		.authorizeRequests();
 
-        registry.antMatchers("/images/**").permitAll();
-        registry.antMatchers("/resources/**").permitAll();
-        registry.antMatchers("/img/**").permitAll();
-        registry.antMatchers("/*.html").permitAll();
-        registry.antMatchers("/*.xml").permitAll();    
-   
-        registry
-        	.and()        
-        	.csrf()
-        	.disable()
-        	.authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .loginPage("/login.jsf")
-            .failureUrl("/login.jsf")
-            .loginProcessingUrl("/j_spring_security_check.jsf")
-            .and()
-            .addFilterBefore(concurrentSessionFilter, ConcurrentSessionFilter.class)
-            .addFilterBefore(securityContextPersistenceFilter, SecurityContextPersistenceFilter.class)
-            .addFilterBefore(logoutFilter, LogoutFilter.class)
-            .addFilterBefore(usernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(securityContextHolderAwareRequestFilter, SecurityContextHolderAwareRequestFilter.class)
-            .addFilterBefore(rememberMeFilter,RememberMeAuthenticationFilter.class)
-            .addFilterBefore(anonymousProcessingFilter, AnonymousAuthenticationFilter.class)
-            .addFilterBefore(exceptionTranslationFilter, ExceptionTranslationFilter.class)
-            .addFilterBefore(filterSecurityInterceptor, FilterSecurityInterceptor.class);
-        
-    }
+
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
+
+		httpSecurity
+				.authorizeHttpRequests()
+				.requestMatchers("/images/**").permitAll()
+				.requestMatchers("/resources/**").permitAll()
+				.requestMatchers("/img/**").permitAll()
+				.requestMatchers("/*.html").permitAll()
+				.requestMatchers("/*.xml").permitAll()
+				.requestMatchers("/*.txt").permitAll()
+				.requestMatchers("/login.jsf").permitAll()
+				.requestMatchers("/jakarta.faces.resource/**").permitAll()
+				.requestMatchers("/index.jspx").permitAll()
+				.requestMatchers("/default.jsf").permitAll()
+				.requestMatchers("/favicon.ico").permitAll()
+				.requestMatchers("/error").permitAll()
+				.requestMatchers("/exception/exception.jsf","/").permitAll()
+				.and()
+				.csrf()
+				.disable()
+				.authorizeHttpRequests()
+				.anyRequest()
+				.authenticated()
+				.and()
+				.formLogin()
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.loginPage("/login.jsf")
+				.failureUrl("/login.jsf")
+				.loginProcessingUrl("/j_spring_security_check.jsf")
+				.and()
+				.addFilterBefore(concurrentSessionFilter, ConcurrentSessionFilter.class)
+				.addFilterBefore(securityContextPersistenceFilter, SecurityContextPersistenceFilter.class)
+				.addFilterBefore(logoutFilter, LogoutFilter.class)
+				.addFilterBefore(usernamePasswordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(securityContextHolderAwareRequestFilter, SecurityContextHolderAwareRequestFilter.class)
+				.addFilterBefore(rememberMeFilter,RememberMeAuthenticationFilter.class)
+				.addFilterBefore(anonymousProcessingFilter, AnonymousAuthenticationFilter.class)
+				.addFilterBefore(exceptionTranslationFilter, ExceptionTranslationFilter.class)
+				.addFilterBefore(filterSecurityInterceptor, FilterSecurityInterceptor.class)
+		;
+
+		return httpSecurity.build();
+
+	}
 
 
 }
