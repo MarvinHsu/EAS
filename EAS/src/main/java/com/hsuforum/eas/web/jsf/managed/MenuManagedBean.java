@@ -16,7 +16,7 @@ import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.hsuforum.eas.DefaultSetting;
 import com.hsuforum.eas.entity.Function;
@@ -35,7 +35,7 @@ import jakarta.faces.event.ActionEvent;
  * Navigation menu managed bean
  */
 @Component
-@SessionScope
+@RequestScope
 public class MenuManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 7319288785728714429L;
