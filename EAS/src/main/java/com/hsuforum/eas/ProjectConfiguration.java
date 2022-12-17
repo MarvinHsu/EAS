@@ -146,7 +146,7 @@ public class ProjectConfiguration {
 		securityContextLogoutHandler.setInvalidateHttpSession(true);
 		securityContextLogoutHandler.setClearAuthentication(true);
 		logoutHandlers[1]=securityContextLogoutHandler;
-		LogoutFilter LogoutFilter = new LogoutFilter("/index.jspx", logoutHandlers);
+		LogoutFilter LogoutFilter = new LogoutFilter("/default.jsf", logoutHandlers);
 		LogoutFilter.setFilterProcessesUrl("/j_spring_security_logout.jsf");
         return LogoutFilter;
     }
