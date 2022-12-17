@@ -8,9 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
-import javax.faces.model.SelectItem;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -27,6 +24,9 @@ import com.hsuforum.eas.service.ModuleService;
 import com.hsuforum.eas.web.util.SelectHelper;
 import com.hsuforum.eas.web.vo.FunctionVo;
 import com.hsuforum.eas.web.vowrapper.FunctionVoWrapper;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.model.SelectItem;
 
 @Component
 @SessionScope

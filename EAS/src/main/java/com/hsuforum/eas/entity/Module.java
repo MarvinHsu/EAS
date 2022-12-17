@@ -3,21 +3,21 @@ package com.hsuforum.eas.entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * The persistent class for the TBSSO_MODULES database table.
@@ -50,6 +50,7 @@ public class Module extends BaseEntityImpl<String> {
 	private Boolean showed;
 	// bi-directional many-to-one association to Function
 	@OneToMany(mappedBy = "module", targetEntity = Function.class, cascade = { CascadeType.ALL })
+	@ToString.Exclude
 	private Set<Function> functions;
 	
 

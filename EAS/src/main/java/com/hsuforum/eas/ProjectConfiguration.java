@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.EntityManagerFactory;
-
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
@@ -64,6 +62,8 @@ import com.hsuforum.eas.security.userdetails.JpaUserDetailsService;
 import com.hsuforum.eas.security.vote.UserVoter;
 import com.hsuforum.eas.service.GroupFunctionService;
 import com.hsuforum.eas.service.UserService;
+
+import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @ImportResource(value = { "classpath*:ScheduleContext.xml",

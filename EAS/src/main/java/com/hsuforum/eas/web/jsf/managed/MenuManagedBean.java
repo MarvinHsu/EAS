@@ -10,17 +10,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-
 import org.apache.commons.collections4.CollectionUtils;
 import org.primefaces.component.accordionpanel.AccordionPanel;
 import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.hsuforum.eas.DefaultSetting;
 import com.hsuforum.eas.entity.Function;
@@ -31,11 +27,15 @@ import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.security.util.AAUtils;
 import com.hsuforum.eas.service.ModuleService;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
+
 /**
  * Navigation menu managed bean
  */
 @Component
-@SessionScope
+@RequestScope
 public class MenuManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 7319288785728714429L;

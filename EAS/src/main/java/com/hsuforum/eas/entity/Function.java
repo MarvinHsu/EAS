@@ -4,28 +4,28 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import com.hsuforum.common.entity.SystemDateOperation;
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 import com.hsuforum.common.entity.impl.SystemDateEntityListener;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * The persistent class for the tbcl_functions database table.
@@ -67,12 +67,15 @@ public class Function extends BaseEntityImpl<String> implements SystemDateOperat
 	// bi-directional many-to-one association to Module
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TB_MODULES_ID")
+	@ToString.Exclude
 	private Module module;
 	// bi-directional many-to-one association to FunctionItem
 	@OneToMany(mappedBy = "function", targetEntity = FunctionItem.class, cascade = {CascadeType.ALL})
+	@ToString.Exclude
 	private Set<FunctionItem> functionItems;
 	// bi-directional many-to-one association to GroupFunction
 	@OneToMany(mappedBy = "function", targetEntity = GroupFunction.class)
+	@ToString.Exclude
 	private Set<GroupFunction> groupFunctions;
 	
 

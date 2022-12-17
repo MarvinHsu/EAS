@@ -9,8 +9,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -30,6 +28,8 @@ import com.hsuforum.eas.web.vo.FunctionVo;
 import com.hsuforum.eas.web.vo.GroupVo;
 import com.hsuforum.eas.web.vowrapper.FunctionVoWrapper;
 import com.hsuforum.eas.web.vowrapper.GroupVoWrapper;
+
+import jakarta.annotation.PostConstruct;
 
 @Component
 @SessionScope
