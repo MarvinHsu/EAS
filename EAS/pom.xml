@@ -241,7 +241,7 @@
 						<configuration>
 							<compilerArgs>
 								<arg>-d</arg>
-								<arg>${project.build.directory}/unwoven-classes</arg>
+								<arg>${project.build.directory}/classes</arg>
 							</compilerArgs>
 						</configuration>
 					</execution>
