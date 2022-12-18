@@ -273,7 +273,7 @@
 					<complianceLevel>${java.version}</complianceLevel>
 					<sources />
 					<weaveDirectories>
-						<weaveDirectory>${project.build.directory}/unwoven-classes</weaveDirectory>
+						<weaveDirectory>${project.build.directory}/classes</weaveDirectory>
 					</weaveDirectories>
 				</configuration>
 				<executions>
