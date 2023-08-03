@@ -29,6 +29,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
@@ -74,11 +76,11 @@ public class ProjectConfiguration {
 	EntityManagerFactory entityManagerFactory;
 	@Bean
 	@ConfigurationProperties(prefix = "project")
-	public DefaultSetting defaultSetting() {
+	DefaultSetting defaultSetting() {
 		return new DefaultSetting();
 	}
 	@Bean
-	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+	PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactory);
 
@@ -86,7 +88,7 @@ public class ProjectConfiguration {
 	}
 
 	@Bean
-	public TransactionInterceptor txAdvice(PlatformTransactionManager transactionManager) {
+	TransactionInterceptor txAdvice(PlatformTransactionManager transactionManager) {
 		NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();
 		
 		RuleBasedTransactionAttribute readOnlyTx = new RuleBasedTransactionAttribute();
@@ -107,39 +109,39 @@ public class ProjectConfiguration {
 		return txAdvice;
 	}
 	@Bean
-    public Advisor dbOperation1(TransactionInterceptor txAdvice) {
+    Advisor dbOperation1(TransactionInterceptor txAdvice) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression("execution(* com.hsuforum..*Facade.*(..))");
         return new DefaultPointcutAdvisor(pointcut, txAdvice);
     }
 	@Bean
-    public Advisor dbOperation2(TransactionInterceptor txAdvice) {
+    Advisor dbOperation2(TransactionInterceptor txAdvice) {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
         pointcut.setExpression("execution(* com.hsuforum..*Service.*(..))");
         return new DefaultPointcutAdvisor(pointcut, txAdvice);
     }
 	@Bean
-    public SessionRegistry SessionRegistry() {
+    SessionRegistry SessionRegistry() {
 		return new SessionRegistryImpl();
     }
 	
 	@Bean
-    public ConcurrentSessionControlAuthenticationStrategy sessionController(SessionRegistry sessionRegistry) {
+    ConcurrentSessionControlAuthenticationStrategy sessionController(SessionRegistry sessionRegistry) {
 		ConcurrentSessionControlAuthenticationStrategy sessionController= new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry);
 		sessionController.setMaximumSessions(1);
 		return sessionController;
     }
 	@Bean
-    public ConcurrentSessionFilter concurrentSessionFilter(SessionRegistry sessionRegistry) {
+    ConcurrentSessionFilter concurrentSessionFilter(SessionRegistry sessionRegistry) {
 		ConcurrentSessionFilter concurrentSessionFilter= new ConcurrentSessionFilter(sessionRegistry);
 		return concurrentSessionFilter;
     }
 	@Bean
-    public SecurityContextPersistenceFilter securityContextPersistenceFilter() {
+    SecurityContextPersistenceFilter securityContextPersistenceFilter() {
         return new SecurityContextPersistenceFilter();
     }
 	@Bean
-    public LogoutFilter logoutFilter(RememberMeServices rememberMeServices) {
+    LogoutFilter logoutFilter(RememberMeServices rememberMeServices) {
 		LogoutHandler[] logoutHandlers = new LogoutHandler[2];
 		logoutHandlers[0]=(LogoutHandler) rememberMeServices;
 		SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
@@ -152,7 +154,7 @@ public class ProjectConfiguration {
     }
 	
 	@Bean
-    public UserDetailsService userDetailsService(UserService userService) {
+    UserDetailsService userDetailsService(UserService userService) {
 		
 		JpaUserDetailsService jpaUserDetailsService = new JpaUserDetailsService();
 		jpaUserDetailsService.setUserService(userService);
@@ -160,10 +162,12 @@ public class ProjectConfiguration {
     }
 	
 	@Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
+    AuthenticationManager authenticationManager(UserDetailsService userDetailsService, DefaultSetting defaultSetting, PasswordEncoder passwordEncoder) {
 		
 		DBAuthenticationProvider dbAuthenticationProvider= new DBAuthenticationProvider();
 		dbAuthenticationProvider.setUserDetailsService(userDetailsService);
+		dbAuthenticationProvider.setDefaultSetting(defaultSetting);
+		dbAuthenticationProvider.setPasswordEncoder(passwordEncoder);
 		AnonymousAuthenticationProvider anonymousAuthenticationProvider = new AnonymousAuthenticationProvider("foobar");
 		RememberMeAuthenticationProvider rememberMeAuthenticationProvider = new RememberMeAuthenticationProvider("spring");
 		List<AuthenticationProvider> authenticationProviders = new ArrayList<AuthenticationProvider>();
@@ -174,7 +178,7 @@ public class ProjectConfiguration {
         return authenticationManager;
     }
 	@Bean
-    public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter(SessionAuthenticationStrategy sessionAuthenticationStrategy, AuthenticationManager authenticationManager, RememberMeServices rememberMeServices, AuthenticationFailureHandler authenticationFailureHandler) {
+    UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter(SessionAuthenticationStrategy sessionAuthenticationStrategy, AuthenticationManager authenticationManager, RememberMeServices rememberMeServices, AuthenticationFailureHandler authenticationFailureHandler) {
 		UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter = new UsernamePasswordAuthenticationFilter();
 		usernamePasswordAuthenticationFilter.setFilterProcessesUrl("/j_spring_security_check.jsf");
 		usernamePasswordAuthenticationFilter.setSessionAuthenticationStrategy(sessionAuthenticationStrategy);
@@ -186,18 +190,18 @@ public class ProjectConfiguration {
     }
 	
 	@Bean
-    public SimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
+    SimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
 		SimpleUrlAuthenticationFailureHandler authenticationFailureHandler = new SimpleUrlAuthenticationFailureHandler();
 		authenticationFailureHandler.setDefaultFailureUrl("/login.jsf");
         return authenticationFailureHandler;
     }
 	
 	@Bean
-    public SecurityContextHolderAwareRequestFilter securityContextHolderAwareRequestFilter() {
+    SecurityContextHolderAwareRequestFilter securityContextHolderAwareRequestFilter() {
         return new SecurityContextHolderAwareRequestFilter();
     }
 	@Bean
-    public AnonymousAuthenticationFilter anonymousProcessingFilter() {
+    AnonymousAuthenticationFilter anonymousProcessingFilter() {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_ANONYMOUS");
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(simpleGrantedAuthority);
@@ -206,19 +210,19 @@ public class ProjectConfiguration {
     }
 	
 	@Bean
-    public LoginUrlAuthenticationEntryPoint loginUrlAuthenticationEntryPoint() {
+    LoginUrlAuthenticationEntryPoint loginUrlAuthenticationEntryPoint() {
 		LoginUrlAuthenticationEntryPoint loginUrlAuthenticationEntryPoint = new LoginUrlAuthenticationEntryPoint("/login.jsf");	
         return loginUrlAuthenticationEntryPoint;
     }
 	
 	@Bean
-    public ExceptionTranslationFilter exceptionTranslationFilter(LoginUrlAuthenticationEntryPoint loginUrlAuthenticationEntryPoint) {
+    ExceptionTranslationFilter exceptionTranslationFilter(LoginUrlAuthenticationEntryPoint loginUrlAuthenticationEntryPoint) {
 		ExceptionTranslationFilter exceptionTranslationFilter = new ExceptionTranslationFilter(loginUrlAuthenticationEntryPoint);	
         return exceptionTranslationFilter;
     }
 	
 	@Bean
-    public AffirmativeBased affirmativeBased() {
+    AffirmativeBased affirmativeBased() {
 		List<AccessDecisionVoter<?>> decisionVoters = new ArrayList<AccessDecisionVoter<?>>();
 		decisionVoters.add(new UserVoter());
 		decisionVoters.add(new AuthenticatedVoter());
@@ -227,7 +231,7 @@ public class ProjectConfiguration {
         return affirmativeBased;
     }
 	@Bean
-    public FilterSecurityInterceptor filterSecurityInterceptor(FilterInvocationSecurityMetadataSource securityMetadataSource, AuthenticationManager authenticationManager, AffirmativeBased accessDecisionManager) {
+    FilterSecurityInterceptor filterSecurityInterceptor(FilterInvocationSecurityMetadataSource securityMetadataSource, AuthenticationManager authenticationManager, AffirmativeBased accessDecisionManager) {
 		FilterSecurityInterceptor filterSecurityInterceptor = new FilterSecurityInterceptor();
 		filterSecurityInterceptor.setObserveOncePerRequest(true);
 		filterSecurityInterceptor.setAuthenticationManager(authenticationManager);
@@ -237,23 +241,27 @@ public class ProjectConfiguration {
         return filterSecurityInterceptor;
     }
 	@Bean
-    public FilterInvocationSecurityMetadataSource securityMetadataSource(GroupFunctionService groupFunctionService) {
+    FilterInvocationSecurityMetadataSource securityMetadataSource(GroupFunctionService groupFunctionService) {
 		JpaFilterInvocationDefinitionSource jpaFilterInvocationDefinitionSource = new JpaFilterInvocationDefinitionSource(groupFunctionService);
         return jpaFilterInvocationDefinitionSource;
     }
 	@Bean
-    public LoggerListener loggerListener() {
+    LoggerListener loggerListener() {
         return new LoggerListener();
     }
 	@Bean
-    public RememberMeAuthenticationFilter rememberMeFilter(RememberMeServices rememberMeServices, AuthenticationManager authenticationManager) {
+    RememberMeAuthenticationFilter rememberMeFilter(RememberMeServices rememberMeServices, AuthenticationManager authenticationManager) {
 		RememberMeAuthenticationFilter rememberMeFilter = new RememberMeAuthenticationFilter(authenticationManager, rememberMeServices);
         return rememberMeFilter;
     }
 	@Bean
-    public RememberMeServices rememberMeServices(UserDetailsService userDetailsService) {
+    RememberMeServices rememberMeServices(UserDetailsService userDetailsService) {
 		RememberMeServices rememberMeServices = new TokenBasedRememberMeServices("spring", userDetailsService);
         return rememberMeServices;
     }
-
+	@Bean
+	PasswordEncoder passwordEncoder(DefaultSetting defaultSetting) {
+		PasswordEncoder passwordEncoder=new Pbkdf2PasswordEncoder(defaultSetting.getSecret(), 0, 15, Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512);
+        return passwordEncoder;
+    }
 }

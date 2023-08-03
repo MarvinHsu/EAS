@@ -8,16 +8,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.owasp.esapi.errors.EncryptionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
-import com.hsuforum.common.web.jsf.utils.JSFMessageUtils;
-import com.hsuforum.common.web.util.EncryptUtils;
 import com.hsuforum.common.web.vo.ValueObject;
-import com.hsuforum.eas.common.ErrorCode;
 import com.hsuforum.eas.entity.Group;
 import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.service.GroupService;
@@ -44,7 +41,9 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, Str
 
 	@Autowired
 	private GroupService groupService;
-
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public UserManagedBean() {
 
@@ -97,14 +96,8 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, Str
 	@Override
 	protected void initUpdatingData(ValueObject<User, java.lang.String> updatingData) {
 
-		try {
-			String decryptPassword=EncryptUtils.decrypt(this.getUpdatingData().getEntity().getPassword());
-			this.getUpdatingData().getEntity().setPassword(decryptPassword);
-		} catch (EncryptionException e) {
-			
-			e.printStackTrace();
-			JSFMessageUtils.showErrorMessage(ErrorCode.P10004.toString());
-		}
+
+		this.getUpdatingData().setOriPassword(this.getUpdatingDataValue().getPassword());
 		
 		this.getUpdatingData().setGroupList(this.getGroupList());
 		Set<Group> groupList = this.getUpdatingData().getEntity().getGroups();
@@ -184,6 +177,20 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, Str
 		this.service = service;
 	}
 
+	/**
+	 * @return the passwordEncoder
+	 */
+	public PasswordEncoder getPasswordEncoder() {
+		return passwordEncoder;
+	}
+
+	/**
+	 * @param passwordEncoder the passwordEncoder to set
+	 */
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
+	}
+
 	public UserJpaService getJpaService() {
 		return jpaService;
 	}
@@ -234,14 +241,13 @@ public class UserManagedBean extends TemplatePrimeDataTableManagedBean<User, Str
 	 */
 	@Override
 	protected void setupUpdatingData() {
-		try {
-			String encryptPassword=EncryptUtils.encrypt(this.getUpdatingData().getEntity().getPassword());
-			this.getUpdatingData().getEntity().setPassword(encryptPassword);
-		} catch (EncryptionException e) {
-			
-			e.printStackTrace();
-			JSFMessageUtils.showErrorMessage(ErrorCode.P10005.toString());
+
+		if(!this.getUpdatingData().getOriPassword().equals(this.getUpdatingData().getEntity().getPassword())) {
+			String encodingPassword=this.getPasswordEncoder().encode(this.getUpdatingData().getEntity().getPassword());
+			this.getUpdatingData().getEntity().setPassword(encodingPassword);
 		}
+			
+
 		this.setupGroup();
 	}
 

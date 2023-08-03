@@ -11,6 +11,7 @@ public class DefaultSetting implements Serializable{
 	private Boolean devMode=true;
 	private Integer rowsOfPerPage;
 	private String timeZone;
+	private String secret;
     
 	public int getDataTableRows() {
 		return dataTableRows;
@@ -41,6 +42,12 @@ public class DefaultSetting implements Serializable{
 	}
 	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
+	}
+	public String getSecret() {
+		return secret;
+	}
+	public void setSecret(String secret) {
+		this.secret = secret;
 	} 
 
 

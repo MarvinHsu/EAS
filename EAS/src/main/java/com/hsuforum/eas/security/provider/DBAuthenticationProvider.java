@@ -10,8 +10,10 @@ import org.springframework.security.authentication.dao.AbstractUserDetailsAuthen
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.hsuforum.common.web.util.EncryptUtils;
+import com.hsuforum.eas.DefaultSetting;
 
 /**
  * 
@@ -26,7 +28,8 @@ public class DBAuthenticationProvider extends AbstractUserDetailsAuthenticationP
 	private UserDetailsService userDetailsService;
 
 	private boolean includeDetailsObject = true;
-
+	private DefaultSetting defaultSetting;
+	private PasswordEncoder passwordEncoder;
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
 			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
@@ -35,20 +38,10 @@ public class DBAuthenticationProvider extends AbstractUserDetailsAuthenticationP
 					messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials"));
 		}
 		
-		boolean valid = false;
-		try {
-			String decryptPassword=EncryptUtils.decrypt(userDetails.getPassword());
-			if(decryptPassword.equals(authentication.getCredentials().toString())){
-				valid=true;
-			}
-		} catch (EncryptionException e) {
-			logger.error(e.getMessage());
-			e.printStackTrace();
-			throw new BadCredentialsException(e.getMessage());
-		}
-		
-				
-		if (!valid) {
+		String password = userDetails.getPassword();
+
+	    boolean matches=passwordEncoder.matches(authentication.getCredentials().toString(),password );
+		if (!matches) {
 			throw new BadCredentialsException(
 					messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials"));
 		}
@@ -88,6 +81,22 @@ public class DBAuthenticationProvider extends AbstractUserDetailsAuthenticationP
 
 	public void setIncludeDetailsObject(boolean includeDetailsObject) {
 		this.includeDetailsObject = includeDetailsObject;
+	}
+
+	public DefaultSetting getDefaultSetting() {
+		return defaultSetting;
+	}
+
+	public void setDefaultSetting(DefaultSetting defaultSetting) {
+		this.defaultSetting = defaultSetting;
+	}
+
+	public PasswordEncoder getPasswordEncoder() {
+		return passwordEncoder;
+	}
+
+	public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+		this.passwordEncoder = passwordEncoder;
 	}
 
 }
