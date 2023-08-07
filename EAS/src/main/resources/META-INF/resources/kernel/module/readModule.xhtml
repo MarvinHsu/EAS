@@ -7,11 +7,11 @@
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
 		<ui:define name="head">
-			<title>#{resources.com_hsuforum_eas_entity_Module}</title>
+			<title>#{resources.com_hsuforum_eas_entity_primary_Module}</title>
 		</ui:define>
 		<ui:define name="main">
 			<h:form id="readForm">
-				<h3>#{resources.com_hsuforum_eas_entity_Module}</h3>
+				<h3>#{resources.com_hsuforum_eas_entity_primary_Module}</h3>
 				<p:growl id="growl" />
 
 				<p:ajaxStatus onstart="PF('statusDialog').show()"
@@ -26,15 +26,15 @@
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_Module_name}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_Module_name}" />
 						<p:inputText value="#{moduleManagedBean.findCriteriaMap['name']}"
-							label="#{resources.com_hsuforum_eas_entity_Module_name}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_Module_name}" />
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_Module_code}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_Module_code}" />
 						<p:inputText value="#{moduleManagedBean.findCriteriaMap['code']}"
-							label="#{resources.com_hsuforum_eas_entity_Module_code}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_Module_code}" />
 
 
 						<f:facet name="footer">
@@ -63,7 +63,7 @@
 
 						<p:column id="columnId" sortBy="#{bo.id}"
 							rendered="#{defaultSetting.devMode}"
-							headerText="#{resources.com_hsuforum_eas_entity_Module_id}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Module_id}">
 
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('module','update')}" />
@@ -74,7 +74,7 @@
 						</p:column>
 
 						<p:column id="columnName" sortBy="#{bo.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_Module_name}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Module_name}">
 
 							<h:outputText value="#{bo.name}"
 								rendered="#{!menuManagedBean.isGrant('module','update')}" />
@@ -83,17 +83,17 @@
 								rendered="#{menuManagedBean.isGrant('module','update')}" />
 						</p:column>
 						<p:column id="columnCode" sortBy="#{bo.code}"
-							headerText="#{resources.com_hsuforum_eas_entity_Module_code}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Module_code}">
 
 							<h:outputLabel value="#{bo.code}" />
 						</p:column>
 						<p:column id="columnSequence" sortBy="#{bo.sequence}"
-							headerText="#{resources.com_hsuforum_eas_entity_Module_sequence}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Module_sequence}">
 
 							<h:outputLabel value="#{bo.sequence}" />
 						</p:column>
 						<p:column id="columnShowed" sortBy="#{bo.showed}"
-							headerText="#{resources.com_hsuforum_eas_entity_Module_showed}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Module_showed}">
 
 							<h:outputLabel value="#{bo.showed}" />
 						</p:column>

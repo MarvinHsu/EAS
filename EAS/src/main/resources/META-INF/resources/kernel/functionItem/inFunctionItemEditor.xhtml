@@ -8,41 +8,41 @@
 	<p:panelGrid columns="2">
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_FunctionItem_id}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_id}" />
 		<p:inputText value="#{functionItemManagedBean.updatingData.entity.id}"
-			label="#{resources.com_hsuforum_eas_entity_FunctionItem_id}"
+			label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_id}"
 			readOnly="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_FunctionItem_name}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_name}" />
 		<p:inputText id="inputTextName"
 			value="#{functionItemManagedBean.updatingData.entity.name}"
-			label="#{resources.com_hsuforum_eas_entity_FunctionItem_name}"
+			label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_name}"
 			required="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_FunctionItem_code}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_code}" />
 		<p:inputText id="inputTextCode"
 			value="#{functionItemManagedBean.updatingData.entity.code}"
-			label="#{resources.com_hsuforum_eas_entity_FunctionItem_code}"
+			label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_code}"
 			required="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_FunctionItem_url}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_url}" />
 		<p:inputText id="inputTextUrl"
 			value="#{functionItemManagedBean.updatingData.entity.url}"
-			label="#{resources.com_hsuforum_eas_entity_FunctionItem_url}"
+			label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_url}"
 			required="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_FunctionItem_function}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_function}" />
 		<p:selectOneMenu id="selectFunctionId" required="true"
 			value="#{functionItemManagedBean.updatingData.selectFunctionId}"
-			label="#{resources.com_hsuforum_eas_entity_FunctionItem_function}">
+			label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_function}">
 			<f:selectItems value="#{functionItemManagedBean.functionList}" />
 		</p:selectOneMenu>
 

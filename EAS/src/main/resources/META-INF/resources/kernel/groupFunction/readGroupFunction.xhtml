@@ -7,11 +7,11 @@
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
 		<ui:define name="head">
-			<title>#{resources.com_hsuforum_eas_entity_GroupFunction}</title>
+			<title>#{resources.com_hsuforum_eas_entity_primary_GroupFunction}</title>
 		</ui:define>
 		<ui:define name="main">
 			<h:form id="readForm">
-				<h3>#{resources.com_hsuforum_eas_entity_GroupFunction}</h3>
+				<h3>#{resources.com_hsuforum_eas_entity_primary_GroupFunction}</h3>
 				<p:growl id="growl" />
 
 				<p:ajaxStatus onstart="PF('statusDialog').show()"
@@ -50,7 +50,7 @@
 
 						<p:column id="columnId" sortBy="#{bo.id}"
 							rendered="#{defaultSetting.devMode}"
-							headerText="#{resources.com_hsuforum_eas_entity_GroupFunction_id}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_GroupFunction_id}">
 
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('groupFunction','update')}" />
@@ -70,17 +70,17 @@
 
 						</p:column>
 						<p:column id="columnGroup" sortBy="#{bo.group.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_GroupFunction_group}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_GroupFunction_group}">
 
 							<h:outputLabel value="#{bo.group.name}" />
 						</p:column>
 						<p:column id="columnFunction" sortBy="#{bo.function.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_GroupFunction_function}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_GroupFunction_function}">
 
 							<h:outputLabel value="#{bo.function.name}" />
 						</p:column>
 						<p:column id="columnFunctionItem" sortBy="#{bo.functionItem.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_GroupFunction_functionItem}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_GroupFunction_functionItem}">
 
 							<h:outputLabel value="#{bo.functionItem.name}" />
 						</p:column>

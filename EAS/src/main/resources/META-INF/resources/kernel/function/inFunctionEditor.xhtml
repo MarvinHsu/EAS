@@ -7,52 +7,52 @@
 <p:panel>
 	<p:panelGrid columns="2">
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_id}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Function_id}" />
 		<p:inputText value="#{functionManagedBean.updatingData.entity.id}"
-			label="#{resources.com_hsuforum_eas_entity_Function_id}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_id}"
 			readOnly="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_Function_name}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_Function_name}" />
 		<p:inputText id="inputTextName"
 			value="#{functionManagedBean.updatingData.entity.name}"
-			label="#{resources.com_hsuforum_eas_entity_Function_name}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_name}"
 			required="true" />
 
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_Function_code}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_Function_code}" />
 		<p:inputText id="inputTextCode"
 			value="#{functionManagedBean.updatingData.entity.code}"
-			label="#{resources.com_hsuforum_eas_entity_Function_code}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_code}"
 			required="true" />
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_Function_outcome}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_Function_outcome}" />
 		<p:inputText id="inputTextOutcome"
 			value="#{functionManagedBean.updatingData.entity.outcome}"
-			label="#{resources.com_hsuforum_eas_entity_Function_outcome}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_outcome}"
 			required="true" />
 
 		<h:outputText
-			value="#{resources.com_hsuforum_eas_entity_Function_module}" />
+			value="#{resources.com_hsuforum_eas_entity_primary_Function_module}" />
 		<p:selectOneMenu id="selectModuleId"
 			value="#{functionManagedBean.updatingData.selectModuleId}"
-			label="#{resources.com_hsuforum_eas_entity_Function_module}">
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_module}">
 			<f:selectItems value="#{functionManagedBean.moduleList}" />
 		</p:selectOneMenu>
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_sequence}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Function_sequence}" />
 		<p:inputText id="inputTextSequence"
 			value="#{functionManagedBean.updatingData.entity.sequence}"
-			label="#{resources.com_hsuforum_eas_entity_Function_sequence}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_sequence}"
 			required="true" >
 			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
 		</p:inputText>		
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Function_showed}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Function_showed}" />
 		<p:selectBooleanCheckbox id="checkboxShowed"
 			value="#{functionManagedBean.updatingData.entity.showed}"
-			label="#{resources.com_hsuforum_eas_entity_Function_showed}"/>
+			label="#{resources.com_hsuforum_eas_entity_primary_Function_showed}"/>
 
 	</p:panelGrid>
 </p:panel>
