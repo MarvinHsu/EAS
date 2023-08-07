@@ -1,4 +1,4 @@
-package com.hsuforum.eas.entity;
+package com.hsuforum.eas.entity.primary;
 
 import java.util.ArrayList;
 import java.util.Collection;

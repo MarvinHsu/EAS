@@ -14,8 +14,8 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
-import com.hsuforum.eas.entity.Function;
-import com.hsuforum.eas.entity.Module;
+import com.hsuforum.eas.entity.primary.Function;
+import com.hsuforum.eas.entity.primary.Module;
 import com.hsuforum.eas.service.FunctionService;
 import com.hsuforum.eas.service.ModuleJpaService;
 import com.hsuforum.eas.service.ModuleService;
@@ -23,9 +23,11 @@ import com.hsuforum.eas.web.vo.ModuleVo;
 import com.hsuforum.eas.web.vowrapper.ModuleVoWrapper;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @SessionScope
+@Slf4j
 public class ModuleManagedBean extends TemplatePrimeDataTableManagedBean<Module, String, ModuleService, ModuleJpaService> {
 
 	private static final long serialVersionUID = -6435432912309239472L;

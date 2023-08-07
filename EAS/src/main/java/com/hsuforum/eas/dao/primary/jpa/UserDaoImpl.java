@@ -1,4 +1,4 @@
-package com.hsuforum.eas.dao.jpa;
+package com.hsuforum.eas.dao.primary.jpa;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,12 +7,13 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
-import com.hsuforum.eas.dao.UserDao;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.dao.primary.UserDao;
+import com.hsuforum.eas.entity.primary.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * User Data Access Object Implement
@@ -20,10 +21,11 @@ import jakarta.persistence.Query;
  *
  */
 @Repository("userDao")
+@Slf4j
 public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 
 	private static final long serialVersionUID = 3551743735222952177L;
-	@PersistenceContext(name = "default")
+	@PersistenceContext(name = "primary")
 	private EntityManager entityManager;
 
 	/**
@@ -44,7 +46,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 
 	
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#findAllFetchRelation()
+	 * @see com.hsuforum.eas.dao.primary.UserDao#findAllFetchRelation()
 	 */
 	@Override
 	public List<User> findAllFetchRelation() {
@@ -157,7 +159,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 	}
 
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#doLogin(java.lang.String)
+	 * @see com.hsuforum.eas.dao.primary.UserDao#doLogin(java.lang.String)
 	 */
 	@Override
 	public User doLogin(final String account) {
@@ -187,7 +189,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 	}
 
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#findByCriteriaMapFetchRelation(java.util.Map)
+	 * @see com.hsuforum.eas.dao.primary.UserDao#findByCriteriaMapFetchRelation(java.util.Map)
 	 */
 	@Override
 	public List<User> findByCriteriaMapFetchRelation(Map<String, ? extends Object> criteriaMap) {
@@ -225,7 +227,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 	}
 
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#findByAccountOtherEmail(java.lang.String,
+	 * @see com.hsuforum.eas.dao.primary.UserDao#findByAccountOtherEmail(java.lang.String,
 	 *      java.lang.String)
 	 */
 	@Override
@@ -252,7 +254,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 	}
 
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#findByAccount(java.lang.String)
+	 * @see com.hsuforum.eas.dao.primary.UserDao#findByAccount(java.lang.String)
 	 */
 	@Override
 	public User findByAccount(final String account) {
@@ -264,7 +266,7 @@ public class UserDaoImpl extends BaseDaoImpl<User, String> implements UserDao {
 	}
 
 	/**
-	 * @see com.hsuforum.eas.dao.UserDao#findForSentActivate(java.lang.String)
+	 * @see com.hsuforum.eas.dao.primary.UserDao#findForSentActivate(java.lang.String)
 	 */
 	@Override
 	public User findForSentActivate(final String email) {

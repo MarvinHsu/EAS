@@ -12,8 +12,8 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
-import com.hsuforum.eas.entity.Function;
-import com.hsuforum.eas.entity.FunctionItem;
+import com.hsuforum.eas.entity.primary.Function;
+import com.hsuforum.eas.entity.primary.FunctionItem;
 import com.hsuforum.eas.service.FunctionItemJpaService;
 import com.hsuforum.eas.service.FunctionItemService;
 import com.hsuforum.eas.service.FunctionService;
@@ -23,9 +23,11 @@ import com.hsuforum.eas.web.vowrapper.FunctionItemVoWrapper;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.model.SelectItem;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @SessionScope
+@Slf4j
 public class FunctionItemManagedBean
 		extends TemplatePrimeDataTableManagedBean<FunctionItem, String, FunctionItemService, FunctionItemJpaService> {
 

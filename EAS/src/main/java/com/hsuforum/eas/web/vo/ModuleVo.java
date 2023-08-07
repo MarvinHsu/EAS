@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hsuforum.common.web.vo.impl.ValueObjectImpl;
-import com.hsuforum.eas.entity.Function;
-import com.hsuforum.eas.entity.Module;
+import com.hsuforum.eas.entity.primary.Function;
+import com.hsuforum.eas.entity.primary.Module;
 
 /**
  * Module's Value Object Implement

@@ -1,4 +1,4 @@
-package com.hsuforum.eas.entity;
+package com.hsuforum.eas.entity.primary;
 
 /**
  * Function code enum

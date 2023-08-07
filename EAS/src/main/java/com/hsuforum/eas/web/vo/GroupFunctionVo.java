@@ -1,7 +1,7 @@
 package com.hsuforum.eas.web.vo;
 
 import com.hsuforum.common.web.vo.impl.ValueObjectImpl;
-import com.hsuforum.eas.entity.GroupFunction;
+import com.hsuforum.eas.entity.primary.GroupFunction;
 
 /**
  * GroupFunction's Value Object Implement

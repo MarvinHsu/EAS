@@ -1,4 +1,4 @@
-package com.hsuforum.eas.entity;
+package com.hsuforum.eas.entity.primary;
 
 import com.hsuforum.common.entity.impl.BaseEntityImpl;
 

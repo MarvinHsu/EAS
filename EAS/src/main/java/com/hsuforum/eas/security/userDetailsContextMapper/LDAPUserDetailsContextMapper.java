@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.DirContextOperations;
@@ -16,15 +14,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.ldap.userdetails.UserDetailsContextMapper;
 
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.User;
 import com.hsuforum.eas.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 /**
  * 
  * @author Marvin
  *
  */
+@Slf4j
 public class LDAPUserDetailsContextMapper implements UserDetailsContextMapper {
-	protected final Log logger = LogFactory.getLog(this.getClass());
+	
 	protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
 	private UserService userService;
 
@@ -35,8 +36,8 @@ public class LDAPUserDetailsContextMapper implements UserDetailsContextMapper {
 	@Override
 	public UserDetails mapUserFromContext(DirContextOperations ctx, String username,
 			Collection<? extends GrantedAuthority> authority) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("Load user by username: " + username);
+		if (log.isDebugEnabled()) {
+			log.debug("Load user by username: " + username);
 		}
 
 		Map<String, String> crit = new HashMap<String, String>();

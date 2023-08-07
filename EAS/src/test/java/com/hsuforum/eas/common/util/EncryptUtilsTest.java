@@ -14,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hsuforum.common.web.util.EncryptUtils;
+
+import lombok.extern.slf4j.Slf4j;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class EncryptUtilsTest {
@@ -54,7 +56,7 @@ public class EncryptUtilsTest {
 
             CipherText restoredCipherText =CipherText.fromPortableSerializedBytes(bytes);
 
-	        System.out.println("restoredCipherText="+restoredCipherText);
+            System.out.println("restoredCipherText="+restoredCipherText);
 	        
 	        PlainText recoveredPlaintext = ESAPI.encryptor().decrypt(restoredCipherText) ;
 	        System.out.println("recoveredPlaintext="+recoveredPlaintext);

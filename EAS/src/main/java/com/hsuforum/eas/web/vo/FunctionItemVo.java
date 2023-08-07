@@ -1,7 +1,7 @@
 package com.hsuforum.eas.web.vo;
 
 import com.hsuforum.common.web.vo.impl.ValueObjectImpl;
-import com.hsuforum.eas.entity.FunctionItem;
+import com.hsuforum.eas.entity.primary.FunctionItem;
 
 /**
  * FunctionItem's Value Object Implement

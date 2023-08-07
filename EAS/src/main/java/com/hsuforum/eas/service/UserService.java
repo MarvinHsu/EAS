@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.hsuforum.common.service.BaseService;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.User;
 
 /**
  * User Service Interface

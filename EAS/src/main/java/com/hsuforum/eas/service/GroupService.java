@@ -3,7 +3,7 @@ package com.hsuforum.eas.service;
 import java.util.List;
 
 import com.hsuforum.common.service.BaseService;
-import com.hsuforum.eas.entity.Group;
+import com.hsuforum.eas.entity.primary.Group;
 
 /**
  * Group Service Interface

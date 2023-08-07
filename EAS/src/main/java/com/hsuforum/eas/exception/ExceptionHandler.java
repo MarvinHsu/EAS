@@ -9,12 +9,15 @@ import org.aspectj.lang.annotation.Pointcut;
 
 import com.hsuforum.common.web.jsf.utils.JSFMessageUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Exception handler in web layer action  
  * @author Marvin
  *
  */
 @Aspect
+@Slf4j
 public class ExceptionHandler {
 
 	protected final Log logger = LogFactory.getLog(this.getClass());

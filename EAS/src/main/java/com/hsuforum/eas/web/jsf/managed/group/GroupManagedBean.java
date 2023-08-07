@@ -15,11 +15,11 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.common.web.jsf.managedbean.impl.TemplatePrimeDataTableManagedBean;
 import com.hsuforum.common.web.vo.ValueObject;
-import com.hsuforum.eas.entity.Function;
-import com.hsuforum.eas.entity.FunctionItem;
-import com.hsuforum.eas.entity.Group;
-import com.hsuforum.eas.entity.GroupFunction;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.Function;
+import com.hsuforum.eas.entity.primary.FunctionItem;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.GroupFunction;
+import com.hsuforum.eas.entity.primary.User;
 import com.hsuforum.eas.service.FunctionService;
 import com.hsuforum.eas.service.GroupJpaService;
 import com.hsuforum.eas.service.GroupService;
@@ -30,9 +30,11 @@ import com.hsuforum.eas.web.vowrapper.FunctionVoWrapper;
 import com.hsuforum.eas.web.vowrapper.GroupVoWrapper;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @SessionScope
+@Slf4j
 public class GroupManagedBean extends TemplatePrimeDataTableManagedBean<Group, String, GroupService, GroupJpaService> {
 
 	private static final long serialVersionUID = 1096387523639795946L;

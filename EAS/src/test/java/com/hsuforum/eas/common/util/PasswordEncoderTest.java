@@ -10,6 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hsuforum.eas.DefaultSetting;
 
+import lombok.extern.slf4j.Slf4j;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class PasswordEncoderTest {

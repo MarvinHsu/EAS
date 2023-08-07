@@ -1,4 +1,4 @@
-package com.hsuforum.eas.dao.jpa;
+package com.hsuforum.eas.dao.primary.jpa;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,22 +7,19 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.hsuforum.common.dao.jpa.BaseDaoImpl;
-import com.hsuforum.eas.dao.GroupDao;
-import com.hsuforum.eas.entity.Group;
+import com.hsuforum.eas.dao.primary.FunctionDao;
+import com.hsuforum.eas.entity.primary.Function;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.extern.slf4j.Slf4j;
 
-/**
- * Group Data Access Object Implement
- *
- *
- */
-@Repository("groupDao")
-public class GroupDaoImpl extends BaseDaoImpl<Group, String> implements GroupDao {
+@Repository("functionDao")
+@Slf4j
+public class FunctionDaoImpl extends BaseDaoImpl<Function, java.lang.String> implements FunctionDao {
 
-	private static final long serialVersionUID = 4363896890398240739L;
-	@PersistenceContext(name = "default")
+	private static final long serialVersionUID = 2952206892645648763L;
+	@PersistenceContext(name = "primary")
 	private EntityManager entityManager;
 
 	/**
@@ -43,41 +40,42 @@ public class GroupDaoImpl extends BaseDaoImpl<Group, String> implements GroupDao
 
 	
 	/**
-	 * @see com.hsuforum.eas.dao.GroupDao#findAllFetchRelation()
+	 * @see com.hsuforum.eas.dao.primary.FunctionDao#findAllFetchRelation()
 	 */
 	@Override
-	public List<Group> findAllFetchRelation() {
+	public List<Function> findAllFetchRelation() {
 		StringBuffer queryString = new StringBuffer();
-		queryString.append("SELECT DISTINCT entity FROM Group entity ");
+		queryString.append("SELECT DISTINCT entity FROM Function entity	");
+		queryString.append("LEFT JOIN FETCH entity.functionItems ");
 		queryString.append("LEFT JOIN FETCH entity.groupFunctions groupFunction ");
-		queryString.append("LEFT JOIN FETCH entity.users ");
+		queryString.append("LEFT JOIN FETCH entity.module ");
 		queryString.append("LEFT JOIN FETCH groupFunction.group ");
 		queryString.append("LEFT JOIN FETCH groupFunction.function ");
 		queryString.append("LEFT JOIN FETCH groupFunction.functionItem ");
 		queryString.append("ORDER BY entity.id	");
 
-		List<Group> list = this.find(queryString);
+		List<Function> list = this.find(queryString);
 
 		return list;
 	}
 
 	@Override
-	public List<Group> findByCriteriaMap(final Map<String, ? extends Object> criteriaMap,
+	public List<Function> findByCriteriaMap(final Map<String, ? extends Object> criteriaMap,
 			final Map<String, String> operMap, final Map<String, String> sortMap) {
 		StringBuffer queryString = new StringBuffer();
 		queryString.append("SELECT DISTINCT entity FROM " + this.getPersistClass().getSimpleName()).append(" entity ");
+		queryString.append("LEFT JOIN FETCH entity.functionItems ");
 		queryString.append("LEFT JOIN FETCH entity.groupFunctions groupFunction ");
-		queryString.append("LEFT JOIN FETCH entity.users ");
+		queryString.append("LEFT JOIN FETCH entity.module ");
 		queryString.append("LEFT JOIN FETCH groupFunction.group ");
 		queryString.append("LEFT JOIN FETCH groupFunction.function ");
 		queryString.append("LEFT JOIN FETCH groupFunction.functionItem ");
 		Map<String, Object> newCriteriaMap = new HashMap<String, Object>();
 
-		// 用來判斷是否需要裁減String，因為條件句，最後可能是"AND"字串
 		boolean isTruncateWhereQueryString = false;
 		boolean isTruncateSortQueryString = false;
 		for (String criteriaKey : criteriaMap.keySet()) {
-			// 假如條件不為空則加入條件句
+
 			if (null == criteriaMap.get(criteriaKey)) {
 				continue;
 			}
@@ -159,55 +157,4 @@ public class GroupDaoImpl extends BaseDaoImpl<Group, String> implements GroupDao
 		}
 		return this.findByNamedParams(queryString, newCriteriaMap);
 	}
-
-	/**
-	 * @see com.hsuforum.eas.service.GroupService#findByPKFetchFuntions(java.lang.Long)
-	 */
-	@Override
-	public Group findByPKFetchFunctions(String pk) {
-
-		StringBuffer queryString = new StringBuffer();
-		queryString.append("SELECT DISTINCT g ");
-		queryString.append("FROM Group g ");
-		queryString.append("    LEFT JOIN FETCH g.users ");
-		queryString.append("WHERE g.id=:id ");
-		queryString.append("ORDER BY g.id ");
-
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("id", pk);
-
-		List<Group> groupList = this.findByNamedParams(queryString, params);
-
-		if (groupList.size() > 0) {
-			return groupList.get(0);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * @see com.hsuforum.eas.dao.GroupDao#findByPKFetchUsers(java.lang.String)
-	 */
-	@Override
-	public Group findByPKFetchUsers(String pk) {
-
-		StringBuffer queryString = new StringBuffer();
-		queryString.append("SELECT DISTINCT g ");
-		queryString.append("FROM Group g ");
-		queryString.append("    LEFT JOIN FETCH g.users ");
-		queryString.append("WHERE g.id=:id ");
-		queryString.append("ORDER BY g.id ");
-
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("id", pk);
-
-		List<Group> groupList = this.findByNamedParams(queryString, params);
-
-		if (groupList.size() > 0) {
-			return groupList.get(0);
-		} else {
-			return null;
-		}
-	}
-
 }

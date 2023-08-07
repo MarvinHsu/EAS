@@ -2,6 +2,8 @@ package com.hsuforum.eas.web.config;
 
 import java.io.Serializable;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 public class WSConfigBean implements Serializable {
 
 	private static final long serialVersionUID = 5913706553532111030L;
