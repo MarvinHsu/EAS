@@ -7,6 +7,7 @@ import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+import com.hsuforum.eass.entity.schedule.Job;
 import com.hsuforum.eass.entity.schedule.JobExecuteLog;
 import com.hsuforum.eass.entity.schedule.JobExecuteStatus;
 import com.hsuforum.eass.entity.schedule.JobSystem;
@@ -32,8 +33,7 @@ public class SampleJob extends QuartzJobBean {
     	//write job execute log
     	JobExecuteLog jobExecuteLog = new JobExecuteLog();
     	jobExecuteLog.setId(UUID.randomUUID().toString());
-    	jobExecuteLog.setJob("SampleCornJob");
-    	jobExecuteLog.setJobSystem(jobSystem);
+    	jobExecuteLog.setJob(Job.SampleJob);
     	jobExecuteLog.setJobExecuteStatus(JobExecuteStatus.Success);
     	jobRunningLogJpaService.save(jobExecuteLog);
     }
