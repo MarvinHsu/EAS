@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Slf4j
 public class PasswordEncoderTest {
 	@Autowired
 	DefaultSetting defaultSetting;
@@ -26,9 +27,9 @@ public class PasswordEncoderTest {
 	    	PasswordEncoder passwordEncoder = new Pbkdf2PasswordEncoder(defaultSetting.getSecret(), 0, 15, Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512);       
 	    	String passwordEncoderString=passwordEncoder.encode("abcd1234");
 	    
-	    	System.out.println("passwordEncoderString="+passwordEncoderString);
+	    	log.info("passwordEncoderString="+passwordEncoderString);
 	    } catch(Exception ex) {
-	    	System.out.println("exception="+ex.getMessage());
+	    	log.info("exception="+ex.getMessage());
 	    	ex.printStackTrace();
 	    }
 	}

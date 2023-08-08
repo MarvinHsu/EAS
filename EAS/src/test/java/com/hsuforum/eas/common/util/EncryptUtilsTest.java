@@ -18,6 +18,7 @@ import com.hsuforum.common.web.util.EncryptUtils;
 import lombok.extern.slf4j.Slf4j;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Slf4j
 public class EncryptUtilsTest {
 	@Test
 	public void testEncode(){
@@ -26,17 +27,17 @@ public class EncryptUtilsTest {
 	    try {
 	        CipherText ciphertext = ESAPI.encryptor().encrypt( new PlainText(myplaintext) );
 	        String base64=Base64.encodeBytes(ciphertext.asPortableSerializedByteArray());
-	        System.out.println("ciphertext base64="+base64);
+	        log.info("ciphertext base64="+base64);
 	        
 	        
 	                    
 	        CipherText cipherText2=CipherText.fromPortableSerializedBytes(Base64.decode(base64));
 	        
 	        PlainText recoveredPlaintext = ESAPI.encryptor().decrypt(cipherText2) ;
-	        System.out.println("recoveredPlaintext="+recoveredPlaintext);
+	        log.info("recoveredPlaintext="+recoveredPlaintext);
 	        assert myplaintext.equals( recoveredPlaintext.toString() );
 	    } catch(Exception ex) {
-	    	System.out.println("exception="+ex.getMessage());
+	    	log.info("exception="+ex.getMessage());
 	    	ex.printStackTrace();
 	    }
 	}
@@ -45,7 +46,7 @@ public class EncryptUtilsTest {
 	public void testDecode(){
 		
 	    try {
-	    	String filePath="D:/appublic/applications/com.hsuforum.eas.security.util/EncodeKey";
+	    	String filePath="/Application/EAS/EncodeKey";
 	    	File serializedFile = new File(filePath);
             FileInputStream fis = new FileInputStream(serializedFile);
             
@@ -56,13 +57,13 @@ public class EncryptUtilsTest {
 
             CipherText restoredCipherText =CipherText.fromPortableSerializedBytes(bytes);
 
-            System.out.println("restoredCipherText="+restoredCipherText);
+            log.info("restoredCipherText="+restoredCipherText);
 	        
 	        PlainText recoveredPlaintext = ESAPI.encryptor().decrypt(restoredCipherText) ;
-	        System.out.println("recoveredPlaintext="+recoveredPlaintext);
+	        log.info("recoveredPlaintext="+recoveredPlaintext);
 	        
 	    } catch(Exception ex) {
-	    	System.out.println("exception="+ex.getMessage());
+	    	log.info("exception="+ex.getMessage());
 	    	ex.printStackTrace();
 	    }
 	}
@@ -72,7 +73,7 @@ public class EncryptUtilsTest {
 		String plainText = "abcd1234";
 
 		String encryptString=EncryptUtils.encrypt(plainText);
-		System.out.println("plainText="+plainText+" encryptString="+encryptString);		
+		log.info("plainText="+plainText+" encryptString="+encryptString);		
 		
 	}
 	@Test
@@ -80,7 +81,7 @@ public class EncryptUtilsTest {
 		String base64Text = "ETMsDgAAAX4J7/2MABRBRVMvQ0JDL1BLQ1M1UGFkZGluZwCAABAAEH2OYItSbMBcxX0vA5J5utcAAAAQ6urWCdHdERIo3PkiY3KFBQAUjFs4Z7cXq8tyjRR5OPTrE72MCjQ=";
 
 		String plainText=EncryptUtils.decrypt(base64Text);
-		System.out.println("plainText="+plainText);		
+		log.info("plainText="+plainText);		
 		
 	}
 }

@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Slf4j
 public class FunctionJpaRepositoryTest {
 	
 	@Autowired
@@ -23,7 +24,7 @@ public class FunctionJpaRepositoryTest {
 	public void testFindAll(){
 		List<Function> functions= repository.findAll();
 		for(Function function :functions) {
-			System.out.println("Function.id="+function.getId());
+			log.info("Function.id="+function.getId());
 		}
 	}
 }
