@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.AuthenticatedVoter;
@@ -43,22 +42,27 @@ import org.springframework.security.web.context.SecurityContextPersistenceFilter
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 import org.springframework.security.web.session.ConcurrentSessionFilter;
 
+import com.hsuforum.common.service.util.ServiceLocator;
+import com.hsuforum.eas.exception.ExceptionHandler;
 import com.hsuforum.eas.security.intercept.web.JpaFilterInvocationDefinitionSource;
 import com.hsuforum.eas.security.provider.DBAuthenticationProvider;
 import com.hsuforum.eas.security.userdetails.JpaUserDetailsService;
 import com.hsuforum.eas.security.vote.UserVoter;
 import com.hsuforum.eas.service.GroupFunctionService;
 import com.hsuforum.eas.service.UserService;
-
 @Configuration
-@ImportResource(value = {"classpath*:WebContext.xml", "classpath*:ServiceContext.xml", "classpath*:DaoContext.xml"})
 public class ProjectConfiguration {
 	@Bean
 	@ConfigurationProperties(prefix = "project")
 	DefaultSetting defaultSetting() {
 		return new DefaultSetting();
 	}
-    
+	ExceptionHandler exceptionHandler() {
+		return new ExceptionHandler();
+	}
+	ServiceLocator serviceLocator() {
+		return new ServiceLocator();
+	}
 	@Bean
     SessionRegistry SessionRegistry() {
 		return new SessionRegistryImpl();

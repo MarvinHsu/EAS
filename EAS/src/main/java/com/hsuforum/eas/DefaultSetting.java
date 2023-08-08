@@ -3,7 +3,10 @@ package com.hsuforum.eas;
 import java.io.Serializable;
 
 import lombok.Data;
-
+/**
+ * Default setting class
+ * @author Marvin
+ */
 @Data
 public class DefaultSetting implements Serializable{ 
 
