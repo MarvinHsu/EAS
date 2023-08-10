@@ -15,7 +15,7 @@ public class DefaultSetting implements Serializable{
     private int dataTableRows;
     private String mailFrom;
 	private Boolean devMode=true;
-	private Integer rowsOfPerPage;
+	private String rowsOfPerPage;
 	private String timeZone;
 	private String secret;
     
