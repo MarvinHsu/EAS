@@ -259,6 +259,31 @@
 		<finalName>EAS</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<version>2.1.0</version>
+				<executions>
+					<execution>
+						<id>utf8-to-latin1</id>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+						<phase>process-resources</phase><!-- default -->
+						<configuration>
+							<srcDir>src/main/native2ascii</srcDir><!-- default -->
+							<targetDir>${project.build.outputDirectory}</targetDir><!--	default -->
+							<encoding>${project.build.sourceEncoding}</encoding><!-- default -->
+							<includes>
+								<include>**/*.properties</include><!-- default -->
+							</includes>
+							<excludes>
+								<exclude></exclude><!-- nothing by default -->
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -317,6 +342,7 @@
 			<plugin>
 				<groupId>org.joinfaces</groupId>
 				<artifactId>joinfaces-maven-plugin</artifactId>
+				<version>${joinfaces.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
