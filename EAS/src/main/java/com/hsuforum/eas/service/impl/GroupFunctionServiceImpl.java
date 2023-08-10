@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsuforum.common.service.impl.BaseServiceImpl;
-import com.hsuforum.eas.dao.GroupFunctionDao;
-import com.hsuforum.eas.entity.GroupFunction;
+import com.hsuforum.eas.dao.primary.GroupFunctionDao;
+import com.hsuforum.eas.entity.primary.GroupFunction;
 import com.hsuforum.eas.service.GroupFunctionService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service("groupFunctionService")
+@Slf4j
 public class GroupFunctionServiceImpl
 		extends BaseServiceImpl<GroupFunction, String, GroupFunctionDao>
 		implements GroupFunctionService {

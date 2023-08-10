@@ -16,6 +16,7 @@ import com.hsuforum.common.web.jsf.utils.JSFUtils;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -24,6 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @Component
 @SessionScope
+@Slf4j
 public class SkinBean implements Serializable {
 
 	private static final long serialVersionUID = -974102925798731707L;

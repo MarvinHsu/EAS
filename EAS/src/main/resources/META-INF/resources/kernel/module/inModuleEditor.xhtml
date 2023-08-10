@@ -7,42 +7,42 @@
 <p:panel>
 	<p:panelGrid columns="2">
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_id}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Module_id}" />
 		<p:inputText value="#{moduleManagedBean.updatingData.entity.id}"
-			label="#{resources.com_hsuforum_eas_entity_Module_id}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Module_id}"
 			readOnly="true" />
 
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_name}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Module_name}" />
 		<p:inputText id="inputTextName"
 			value="#{moduleManagedBean.updatingData.entity.name}"
-			label="#{resources.com_hsuforum_eas_entity_Module_name}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Module_name}"
 			required="true" />
 
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_code}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Module_code}" />
 		<p:inputText id="inputTextCode"
 			value="#{moduleManagedBean.updatingData.entity.code}"
-			label="#{resources.com_hsuforum_eas_entity_Module_code}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Module_code}"
 			required="true" />
 			
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_sequence}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Module_sequence}" />
 		<p:inputText id="inputTextSequence"
 			value="#{moduleManagedBean.updatingData.entity.sequence}"
-			label="#{resources.com_hsuforum_eas_entity_Module_sequence}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Module_sequence}"
 			required="true" >
 			<f:convertNumber maxFractionDigits="0" minFractionDigits="0" />
 		</p:inputText>		
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Module_showed}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Module_showed}" />
 		<p:selectBooleanCheckbox id="checkboxShowed"
 			value="#{moduleManagedBean.updatingData.entity.showed}"
-			label="#{resources.com_hsuforum_eas_entity_Module_showed}"/>
+			label="#{resources.com_hsuforum_eas_entity_primary_Module_showed}"/>
 
 
 	</p:panelGrid>
 </p:panel>
 <p />
-<p:panel header="#{resources.com_hsuforum_eas_entity_Function}">
+<p:panel header="#{resources.com_hsuforum_eas_entity_primary_Function}">
 	<p:dataTable id="dataTableFunction"
 		value="#{moduleManagedBean.updatingData.functionList}" var="entity"
 		selection="#{moduleManagedBean.updatingData.functionSelectedRowKeys}"
@@ -50,13 +50,13 @@
 		<p:column selectionMode="multiple"
 			style="width:16px;text-align:center" />
 		<p:column id="columnId"
-			headerText="#{resources.com_hsuforum_eas_entity_Function_id}">
+			headerText="#{resources.com_hsuforum_eas_entity_primary_Function_id}">
 
 			<h:outputLabel value="#{entity.id}" />
 
 		</p:column>
 		<p:column id="columnName"
-			headerText="#{resources.com_hsuforum_eas_entity_Function_name}">
+			headerText="#{resources.com_hsuforum_eas_entity_primary_Function_name}">
 
 			<h:outputLabel value="#{entity.name}" />
 

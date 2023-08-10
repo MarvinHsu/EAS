@@ -3,17 +3,19 @@ package com.hsuforum.eas.entity.listener.impl;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.hsuforum.eas.entity.User;
 import com.hsuforum.eas.entity.listener.SystemUserOperations;
+import com.hsuforum.eas.entity.primary.User;
 
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Set create and update user listenter
  * @author Marvin
  *
  */
+@Slf4j
 public class SystemUserEntityListener {
 
 	/**

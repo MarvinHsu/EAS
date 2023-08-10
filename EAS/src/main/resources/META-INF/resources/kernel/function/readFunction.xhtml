@@ -7,11 +7,11 @@
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
 		<ui:define name="head">
-			<title>#{resources.com_hsuforum_eas_entity_Function}</title>
+			<title>#{resources.com_hsuforum_eas_entity_primary_Function}</title>
 		</ui:define>
 		<ui:define name="main">
 			<h:form id="readForm">
-				<h3>#{resources.com_hsuforum_eas_entity_Function}</h3>
+				<h3>#{resources.com_hsuforum_eas_entity_primary_Function}</h3>
 				<p:growl id="growl" />
 
 				<p:ajaxStatus onstart="PF('statusDialog').show()"
@@ -26,24 +26,24 @@
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_Function_name}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_Function_name}" />
 						<p:inputText
 							value="#{functionManagedBean.findCriteriaMap['name']}"
-							label="#{resources.com_hsuforum_eas_entity_Function_name}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_Function_name}" />
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_Function_code}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_Function_code}" />
 						<p:inputText
 							value="#{functionManagedBean.findCriteriaMap['code']}"
-							label="#{resources.com_hsuforum_eas_entity_Function_code}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_Function_code}" />
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_Function_outcome}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_Function_outcome}" />
 						<p:inputText
 							value="#{functionManagedBean.findCriteriaMap['outcome']}"
-							label="#{resources.com_hsuforum_eas_entity_Function_outcome}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_Function_outcome}" />
 
 
 						<f:facet name="footer">
@@ -73,7 +73,7 @@
 
 						<p:column id="columnId" sortBy="#{bo.id}" width="210"
 							rendered="#{defaultSetting.devMode}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_id}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_id}">
 
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('function','update')}" />
@@ -84,7 +84,7 @@
 						</p:column>
 
 						<p:column id="columnName" sortBy="#{bo.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_name}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_name}">
 
 							<h:outputText value="#{bo.name}"
 								rendered="#{!menuManagedBean.isGrant('function','update')}" />
@@ -94,28 +94,28 @@
 						</p:column>
 
 						<p:column id="columnCode" sortBy="#{bo.code}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_code}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_code}">
 
 							<h:outputLabel value="#{bo.code}" />
 						</p:column>
 
 						<p:column id="columnOutcome" sortBy="#{bo.outcome}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_outcome}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_outcome}">
 
 							<h:outputLabel value="#{bo.outcome}" />
 						</p:column>
 						<p:column id="columnSequence" sortBy="#{bo.sequence}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_sequence}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_sequence}">
 
 							<h:outputLabel value="#{bo.sequence}" />
 						</p:column>
 						<p:column id="columnShowed" sortBy="#{bo.showed}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_showed}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_showed}">
 
 							<h:outputLabel value="#{bo.showed}" />
 						</p:column>
 						<p:column id="columnCreateDate" sortBy="#{bo.createDate}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_createDate}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_createDate}">
 
 							<h:outputLabel value="#{bo.createDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"
@@ -123,7 +123,7 @@
 							</h:outputLabel>
 						</p:column>
 						<p:column id="columnUpdateDate" sortBy="#{bo.updateDate}"
-							headerText="#{resources.com_hsuforum_eas_entity_Function_updateDate}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_Function_updateDate}">
 
 							<h:outputLabel value="#{bo.updateDate}">
 								<f:convertDateTime type="date" pattern="yyyy/MM/dd"

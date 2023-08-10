@@ -19,23 +19,25 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
 import com.hsuforum.eas.DefaultSetting;
-import com.hsuforum.eas.entity.Function;
-import com.hsuforum.eas.entity.Group;
-import com.hsuforum.eas.entity.GroupFunction;
-import com.hsuforum.eas.entity.Module;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.Function;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.GroupFunction;
+import com.hsuforum.eas.entity.primary.Module;
+import com.hsuforum.eas.entity.primary.User;
 import com.hsuforum.eas.security.util.AAUtils;
 import com.hsuforum.eas.service.ModuleService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.ActionEvent;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Navigation menu managed bean
  */
 @Component
 @RequestScope
+@Slf4j
 public class MenuManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 7319288785728714429L;

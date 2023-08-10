@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsuforum.common.service.impl.BaseServiceImpl;
-import com.hsuforum.eas.dao.FunctionItemDao;
-import com.hsuforum.eas.entity.FunctionItem;
+import com.hsuforum.eas.dao.primary.FunctionItemDao;
+import com.hsuforum.eas.entity.primary.FunctionItem;
 import com.hsuforum.eas.service.FunctionItemService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service("functionItemService")
+@Slf4j
 public class FunctionItemServiceImpl extends BaseServiceImpl<FunctionItem, java.lang.String, FunctionItemDao>
 		implements FunctionItemService {
 

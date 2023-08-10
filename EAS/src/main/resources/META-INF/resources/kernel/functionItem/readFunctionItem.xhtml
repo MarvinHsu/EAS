@@ -7,11 +7,11 @@
 <body>
 	<ui:composition template="/template/backOfficeTemplate.xhtml">
 		<ui:define name="head">
-			<title>#{resources.com_hsuforum_eas_entity_FunctionItem}</title>
+			<title>#{resources.com_hsuforum_eas_entity_primary_FunctionItem}</title>
 		</ui:define>
 		<ui:define name="main">
 			<h:form id="readForm">
-				<h3>#{resources.com_hsuforum_eas_entity_FunctionItem}</h3>
+				<h3>#{resources.com_hsuforum_eas_entity_primary_FunctionItem}</h3>
 				<p:growl id="growl" />
 
 				<p:ajaxStatus onstart="PF('statusDialog').show()"
@@ -26,24 +26,24 @@
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_FunctionItem_name}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_name}" />
 						<p:inputText
 							value="#{functionItemManagedBean.findCriteriaMap['name']}"
-							label="#{resources.com_hsuforum_eas_entity_FunctionItem_name}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_name}" />
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_FunctionItem_code}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_code}" />
 						<p:inputText
 							value="#{functionItemManagedBean.findCriteriaMap['code']}"
-							label="#{resources.com_hsuforum_eas_entity_FunctionItem_code}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_code}" />
 
 
 						<h:outputText
-							value="#{resources.com_hsuforum_eas_entity_FunctionItem_url}" />
+							value="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_url}" />
 						<p:inputText
 							value="#{functionItemManagedBean.findCriteriaMap['url']}"
-							label="#{resources.com_hsuforum_eas_entity_FunctionItem_url}" />
+							label="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_url}" />
 
 
 						<f:facet name="footer">
@@ -72,7 +72,7 @@
 
 						<p:column id="columnId" sortBy="#{bo.id}"
 							rendered="#{defaultSetting.devMode}"
-							headerText="#{resources.com_hsuforum_eas_entity_FunctionItem_id}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_id}">
 
 							<h:outputText value="#{bo.id}"
 								rendered="#{!menuManagedBean.isGrant('functionItem','update')}" />
@@ -83,7 +83,7 @@
 						</p:column>
 
 						<p:column id="columnName" sortBy="#{bo.name}"
-							headerText="#{resources.com_hsuforum_eas_entity_FunctionItem_name}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_name}">
 
 							<h:outputText value="#{bo.name}"
 								rendered="#{!menuManagedBean.isGrant('functionItem','update')}" />
@@ -93,13 +93,13 @@
 						</p:column>
 
 						<p:column id="columnCode" sortBy="#{bo.code}"
-							headerText="#{resources.com_hsuforum_eas_entity_FunctionItem_code}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_code}">
 
 							<h:outputLabel value="#{bo.code}" />
 						</p:column>
 
 						<p:column id="columnUrl" sortBy="#{bo.url}"
-							headerText="#{resources.com_hsuforum_eas_entity_FunctionItem_url}">
+							headerText="#{resources.com_hsuforum_eas_entity_primary_FunctionItem_url}">
 
 							<h:outputLabel value="#{bo.url}" />
 						</p:column>

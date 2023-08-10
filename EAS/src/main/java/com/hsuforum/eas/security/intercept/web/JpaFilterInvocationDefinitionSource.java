@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.access.vote.AuthenticatedVoter;
@@ -19,21 +17,23 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import com.hsuforum.eas.entity.FunctionItem;
-import com.hsuforum.eas.entity.Group;
-import com.hsuforum.eas.entity.GroupFunction;
+import com.hsuforum.eas.entity.primary.FunctionItem;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.GroupFunction;
 import com.hsuforum.eas.service.GroupFunctionService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Filter invocation definition source
  * @author Marvin
  *
  */
+@Slf4j
 public class JpaFilterInvocationDefinitionSource implements FilterInvocationSecurityMetadataSource {
 
-	protected final Log logger = LogFactory.getLog(getClass());
+
 
 	private final Map<RequestMatcher, Collection<ConfigAttribute>> requestMap;
 
@@ -55,7 +55,7 @@ public class JpaFilterInvocationDefinitionSource implements FilterInvocationSecu
 			RequestMatcher requestMatcher = new AntPathRequestMatcher(funtionItem.getUrl());
 			requestMap.put(requestMatcher, definition);
 
-			if (logger.isDebugEnabled()) {
+			if (log.isDebugEnabled()) {
 				Iterator iter = definition.iterator();
 
 				StringBuffer sb = new StringBuffer();
@@ -64,7 +64,7 @@ public class JpaFilterInvocationDefinitionSource implements FilterInvocationSecu
 					sb.append(attr.getAttribute());
 					sb.append(", ");
 				}
-				logger.debug("url = " + funtionItem.getUrl() + ", roles = " + sb.toString());
+				log.debug("url = " + funtionItem.getUrl() + ", roles = " + sb.toString());
 			}
 
 		}

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hsuforum.common.web.vo.impl.ValueObjectImpl;
-import com.hsuforum.eas.entity.Group;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.User;
 
 /**
  * User's Value Object Implement
@@ -16,7 +16,7 @@ public class UserVo extends ValueObjectImpl<User, java.lang.String> {
 	private static final long serialVersionUID = 6138174031000398081L;
 	private List<Group> groupList = null;
 	private List<Group> groupSelectedRowKeys;
-
+	private String oriPassword;
 
 	/**
 	 * Constructor
@@ -73,6 +73,21 @@ public class UserVo extends ValueObjectImpl<User, java.lang.String> {
 	public void setGroupSelectedRowKeys(List<Group> groupSelectedRowKeys) {
 		this.groupSelectedRowKeys = groupSelectedRowKeys;
 	}
+
+	/**
+	 * @return the oriPassword
+	 */
+	public String getOriPassword() {
+		return oriPassword;
+	}
+
+	/**
+	 * @param oriPassword the oriPassword to set
+	 */
+	public void setOriPassword(String oriPassword) {
+		this.oriPassword = oriPassword;
+	}
+
 
 
 

@@ -1,6 +1,6 @@
 package com.hsuforum.eas.entity.listener;
 
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.User;
 
 /**
  * Get user to update create user and update user

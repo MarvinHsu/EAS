@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsuforum.common.service.impl.BaseServiceImpl;
-import com.hsuforum.eas.dao.UserDao;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.dao.primary.UserDao;
+import com.hsuforum.eas.entity.primary.User;
 import com.hsuforum.eas.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * User Service Implement
@@ -21,6 +23,7 @@ import com.hsuforum.eas.service.UserService;
  */
 
 @Service("userService")
+@Slf4j
 public class UserServiceImpl extends BaseServiceImpl<User, String, UserDao> implements UserService {
 
 	private static final long serialVersionUID = -276502196280318978L;

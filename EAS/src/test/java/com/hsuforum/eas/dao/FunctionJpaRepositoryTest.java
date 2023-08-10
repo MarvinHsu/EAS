@@ -8,19 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.hsuforum.eas.entity.Function;
+import com.hsuforum.eas.dao.primary.FunctionJpaRepository;
+import com.hsuforum.eas.entity.primary.Function;
+
+import lombok.extern.slf4j.Slf4j;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@Slf4j
 public class FunctionJpaRepositoryTest {
 	
 	@Autowired
 	private FunctionJpaRepository repository;
 	@Test
 	public void testFindAll(){
-		List<Function> functions=repository.findAll();
+		List<Function> functions= repository.findAll();
 		for(Function function :functions) {
-			System.out.println("Function.id="+function.getId());
+			log.info("Function.id="+function.getId());
 		}
 	}
 }

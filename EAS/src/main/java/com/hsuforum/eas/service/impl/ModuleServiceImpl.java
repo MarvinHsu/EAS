@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsuforum.common.service.impl.BaseServiceImpl;
-import com.hsuforum.eas.dao.ModuleDao;
-import com.hsuforum.eas.entity.Module;
+import com.hsuforum.eas.dao.primary.ModuleDao;
+import com.hsuforum.eas.entity.primary.Module;
 import com.hsuforum.eas.service.ModuleService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service("moduleService")
+@Slf4j
 public class ModuleServiceImpl extends BaseServiceImpl<Module, java.lang.String, ModuleDao> implements ModuleService {
 
 	private static final long serialVersionUID = -6208458659946672638L;

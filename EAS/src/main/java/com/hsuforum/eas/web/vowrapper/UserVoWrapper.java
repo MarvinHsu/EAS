@@ -1,7 +1,7 @@
 package com.hsuforum.eas.web.vowrapper;
 
 import com.hsuforum.common.web.vo.impl.VoWrapperImpl;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.User;
 import com.hsuforum.eas.web.vo.UserVo;
 
 /**

@@ -4,11 +4,14 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Authentication & Authorization utility
  * @author Marvin
  *
  */
+@Slf4j
 public class AAUtils {
 
 	/**

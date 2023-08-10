@@ -12,14 +12,7 @@
        http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd ">
    
-    <bean id="wsConfigBean"
-    	class="com.hsuforum.eas.web.config.WSConfigBean" 
-    	p:dataTableRows="25" p:mailFrom="abc@abc.com"
-    	scope="singleton" />
-	
-
-    <bean class="com.hsuforum.eas.exception.ExceptionHandler"></bean>
-    <bean id="serviceLocator" class="com.hsuforum.common.service.util.ServiceLocator"/>
+    
     
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
@@ -30,7 +23,7 @@
             </list>
         </property>
     </bean>
-	
+
     <bean id="facadeMonitoringAdvisor"
 		class="net.bull.javamelody.MonitoringSpringAdvisor">
 		<property name="pointcut">
@@ -51,5 +44,5 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 </beans>

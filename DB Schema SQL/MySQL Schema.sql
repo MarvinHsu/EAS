@@ -64,6 +64,7 @@ alter table TB_USERS_GROUPS
 
 drop table if exists TB_USERS_GROUPS;
 
+
 /*==============================================================*/
 /* Table: TB_FUNCTIONS                                          */
 /*==============================================================*/
@@ -197,4 +198,3 @@ alter table TB_USERS_GROUPS add constraint FK_TB_0005 foreign key (TB_GROUPS_ID)
 
 alter table TB_USERS_GROUPS add constraint FK_TB_0006 foreign key (TB_USERS_ID)
       references TB_USERS (ID) on delete restrict on update restrict;
-

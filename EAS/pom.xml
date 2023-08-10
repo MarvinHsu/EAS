@@ -16,6 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<joinfaces.version>5.1.2</joinfaces.version>
 		<hsucommon.version>4.0.3</hsucommon.version>
+		<easscore.version>3.0.3</easscore.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EAS</appRoot>
 	</properties>
@@ -35,6 +36,10 @@
 		<dependency>
 			<groupId>com.hsuforum.HSUCommonParent</groupId>
 			<artifactId>CommonWeb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.hsuforum.EASSParent</groupId>
+			<artifactId>EASSCore</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.joinfaces</groupId>
@@ -118,6 +123,8 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -129,7 +136,7 @@
 		<dependency>
 			<groupId>net.bull.javamelody</groupId>
 			<artifactId>javamelody-spring-boot-starter</artifactId>
-			<version>2.0.0</version>
+			<version>2.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -183,6 +190,33 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>com.mchange</groupId>
+		    <artifactId>c3p0</artifactId>
+		    <version>0.9.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.db2</groupId>
+			<artifactId>jcc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc10</artifactId>
+		    <version>19.19.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -207,7 +241,11 @@
 				<artifactId>CommonWeb</artifactId>
 				<version>${hsucommon.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.hsuforum.EASSParent</groupId>
+				<artifactId>EASSCore</artifactId>
+				<version>${easscore.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.joinfaces</groupId>
 				<artifactId>joinfaces-dependencies</artifactId>
@@ -272,7 +310,6 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>test-compile</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -288,7 +325,6 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -406,69 +442,35 @@
 		<profile>
 			<id>tomcat-db2</id>
 			<properties>
-				<spring.profiles.active>tomcat-mysql</spring.profiles.active>
+				<spring.profiles.active>tomcat-db2</spring.profiles.active>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.ibm.db2</groupId>
-					<artifactId>jcc</artifactId>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>tomcat-mysql</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
-			</activation>
+			</activation>						
 			<properties>
 				<spring.profiles.active>tomcat-mysql</spring.profiles.active>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>mysql</groupId>
-					<artifactId>mysql-connector-java</artifactId>
-					<version>8.0.32</version>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>tomcat-oracle</id>
 			<properties>
 				<spring.profiles.active>tomcat-oracle</spring.profiles.active>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.oracle.jdbc</groupId>
-					<artifactId>ojdbc10</artifactId>
-					<version>19.3.0.0</version>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>tomcat-postgresql</id>
 			<properties>
 				<spring.profiles.active>tomcat-postgresql</spring.profiles.active>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-					<version>42.4.3</version>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>tomcat-sqlserver</id>
 			<properties>
 				<spring.profiles.active>tomcat-sqlserver</spring.profiles.active>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.microsoft.sqlserver</groupId>
-					<artifactId>mssql-jdbc</artifactId>
-					<version>8.4.1.jre11</version>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>jetty-db2</id>
@@ -516,16 +518,17 @@
 				<dependency>
 					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jakarta.servlet.jsp-api</artifactId>
-					<version>2.3.3</version>
+					<version>3.1.1</version>
 				</dependency>
 				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.el</artifactId>
-					<version>3.0.0</version>
-				</dependency>
+			        <groupId>jakarta.servlet</groupId>
+			        <artifactId>jakarta.servlet-api</artifactId>
+			        <version>5.0.0</version>
+			    </dependency>
 				<dependency>
-					<groupId>com.ibm.db2</groupId>
-					<artifactId>jcc</artifactId>
+					<groupId>jakarta.el</groupId>
+					<artifactId>jakarta.el-api</artifactId>
+					<version>5.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -575,16 +578,17 @@
 				<dependency>
 					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jakarta.servlet.jsp-api</artifactId>
-					<version>2.3.3</version>
+					<version>3.1.1</version>
 				</dependency>
 				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.el</artifactId>
-					<version>3.0.0</version>
-				</dependency>
+			        <groupId>jakarta.servlet</groupId>
+			        <artifactId>jakarta.servlet-api</artifactId>
+			        <version>5.0.0</version>
+			    </dependency>
 				<dependency>
-					<groupId>mysql</groupId>
-					<artifactId>mysql-connector-java</artifactId>
+					<groupId>jakarta.el</groupId>
+					<artifactId>jakarta.el-api</artifactId>
+					<version>5.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -634,17 +638,17 @@
 				<dependency>
 					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jakarta.servlet.jsp-api</artifactId>
-					<version>2.3.3</version>
+					<version>3.1.1</version>
 				</dependency>
 				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.el</artifactId>
-					<version>3.0.0</version>
-				</dependency>
+			        <groupId>jakarta.servlet</groupId>
+			        <artifactId>jakarta.servlet-api</artifactId>
+			        <version>5.0.0</version>
+			    </dependency>
 				<dependency>
-					<groupId>com.oracle.jdbc</groupId>
-					<artifactId>ojdbc10</artifactId>
-					<version>19.3.0.0</version>
+					<groupId>jakarta.el</groupId>
+					<artifactId>jakarta.el-api</artifactId>
+					<version>5.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -694,17 +698,17 @@
 				<dependency>
 					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jakarta.servlet.jsp-api</artifactId>
-					<version>2.3.3</version>
+					<version>3.1.1</version>
 				</dependency>
 				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.el</artifactId>
-					<version>3.0.0</version>
-				</dependency>
+			        <groupId>jakarta.servlet</groupId>
+			        <artifactId>jakarta.servlet-api</artifactId>
+			        <version>5.0.0</version>
+			    </dependency>
 				<dependency>
-					<groupId>org.postgresql</groupId>
-					<artifactId>postgresql</artifactId>
-					<version>42.4.3</version>
+					<groupId>jakarta.el</groupId>
+					<artifactId>jakarta.el-api</artifactId>
+					<version>5.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -754,17 +758,17 @@
 				<dependency>
 					<groupId>jakarta.servlet.jsp</groupId>
 					<artifactId>jakarta.servlet.jsp-api</artifactId>
-					<version>2.3.3</version>
+					<version>3.1.1</version>
 				</dependency>
 				<dependency>
-					<groupId>org.glassfish</groupId>
-					<artifactId>jakarta.el</artifactId>
-					<version>3.0.0</version>
-				</dependency>
+			        <groupId>jakarta.servlet</groupId>
+			        <artifactId>jakarta.servlet-api</artifactId>
+			        <version>5.0.0</version>
+			    </dependency>
 				<dependency>
-					<groupId>com.microsoft.sqlserver</groupId>
-					<artifactId>mssql-jdbc</artifactId>
-					<version>8.4.1.jre11</version>
+					<groupId>jakarta.el</groupId>
+					<artifactId>jakarta.el-api</artifactId>
+					<version>5.0.1</version>
 				</dependency>
 			</dependencies>
 		</profile>

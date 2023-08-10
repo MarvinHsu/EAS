@@ -9,16 +9,19 @@ import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.FilterInvocation;
 
-import com.hsuforum.eas.entity.FunctionItem;
-import com.hsuforum.eas.entity.Group;
-import com.hsuforum.eas.entity.GroupFunction;
-import com.hsuforum.eas.entity.User;
+import com.hsuforum.eas.entity.primary.FunctionItem;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.GroupFunction;
+import com.hsuforum.eas.entity.primary.User;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * User voter
  * @author Marvin
  *
  */
+@Slf4j
 public class UserVoter extends RoleVoter {
 
 	

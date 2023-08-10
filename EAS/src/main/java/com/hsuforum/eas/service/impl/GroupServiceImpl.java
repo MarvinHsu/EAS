@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsuforum.common.service.impl.BaseServiceImpl;
-import com.hsuforum.eas.dao.GroupDao;
-import com.hsuforum.eas.entity.Group;
+import com.hsuforum.eas.dao.primary.GroupDao;
+import com.hsuforum.eas.entity.primary.Group;
 import com.hsuforum.eas.service.GroupService;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Group Service Implement
@@ -19,6 +21,7 @@ import com.hsuforum.eas.service.GroupService;
  *
  */
 @Service("groupService")
+@Slf4j
 public class GroupServiceImpl extends BaseServiceImpl<Group, String, GroupDao> implements GroupService {
 
 	private static final long serialVersionUID = -8882435809668503894L;

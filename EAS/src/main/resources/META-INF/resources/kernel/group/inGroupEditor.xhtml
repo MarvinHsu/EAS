@@ -8,22 +8,22 @@
 <p:panel>
 	<p:panelGrid columns="2">
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Group_id}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Group_id}" />
 		<p:inputText value="#{groupManagedBean.updatingData.entity.id}"
-			label="#{resources.com_hsuforum_eas_entity_Group_id}" readOnly="true" />
+			label="#{resources.com_hsuforum_eas_entity_primary_Group_id}" readOnly="true" />
 
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Group_name}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Group_name}" />
 		<p:inputText id="inputTextName"
 			value="#{groupManagedBean.updatingData.entity.name}"
-			label="#{resources.com_hsuforum_eas_entity_Group_name}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Group_name}"
 			required="true" />
 
 
-		<h:outputText value="#{resources.com_hsuforum_eas_entity_Group_code}" />
+		<h:outputText value="#{resources.com_hsuforum_eas_entity_primary_Group_code}" />
 		<p:inputText id="inputTextCode"
 			value="#{groupManagedBean.updatingData.entity.code}"
-			label="#{resources.com_hsuforum_eas_entity_Group_code}"
+			label="#{resources.com_hsuforum_eas_entity_primary_Group_code}"
 			required="true" />
 
 
@@ -32,7 +32,7 @@
 </p:panel>
 <p />
 <p:panel
-	header="#{resources.com_hsuforum_eas_entity_Group_groupFunctions}">
+	header="#{resources.com_hsuforum_eas_entity_primary_Group_groupFunctions}">
 
 
 	<p:dataTable id="dataTableGroupFunction"
@@ -40,14 +40,14 @@
 		var="functionVo">
 
 		<p:column id="columnId"
-			headerText="#{resources.com_hsuforum_eas_entity_Function_id}"
+			headerText="#{resources.com_hsuforum_eas_entity_primary_Function_id}"
 			width="100">
 
 			<h:outputLabel value="#{functionVo.entity.name}" />
 
 		</p:column>
 		<p:column id="columnName"
-			headerText="#{resources.com_hsuforum_eas_entity_Function_name}">
+			headerText="#{resources.com_hsuforum_eas_entity_primary_Function_name}">
 
 			<p:selectManyCheckbox layout="grid" columns="4"
 				value="#{functionVo.functionItemChecked}">
