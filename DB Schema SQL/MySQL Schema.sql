@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2022/10/13 下午 05:50:03                       */
+/* Created on:     2023/8/11 PM 07:38:21                        */
 /*==============================================================*/
 
 
@@ -64,7 +64,6 @@ alter table TB_USERS_GROUPS
 
 drop table if exists TB_USERS_GROUPS;
 
-
 /*==============================================================*/
 /* Table: TB_FUNCTIONS                                          */
 /*==============================================================*/
@@ -80,7 +79,7 @@ create table TB_FUNCTIONS
    SEQUENCE             smallint  comment 'Sort sequence',
    SHOWED               smallint default 1  comment 'Show in menu',
    primary key (ID),
-   key TBCL_FUNCTIONS_UK1 (NAME)
+   key TBCL_FUNCTIONS_UK1 (CODE)
 );
 
 alter table TB_FUNCTIONS comment 'Function table';
@@ -198,3 +197,4 @@ alter table TB_USERS_GROUPS add constraint FK_TB_0005 foreign key (TB_GROUPS_ID)
 
 alter table TB_USERS_GROUPS add constraint FK_TB_0006 foreign key (TB_USERS_ID)
       references TB_USERS (ID) on delete restrict on update restrict;
+

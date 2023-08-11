@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2022/10/13 PM 06:07:43                       */
+/* Created on:     2023/8/11 PM 07:37:30                        */
 /*==============================================================*/
 
 
@@ -53,7 +53,7 @@ create table TB_FUNCTIONS (
    SEQUENCE             SMALLINT,
    SHOWED               SMALLINT             default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
-   constraint TBCL_FUNCTIONS_UK1 unique (NAME)
+   constraint TBCL_FUNCTIONS_UK1 unique (CODE)
 );
 
 comment on table TB_FUNCTIONS is
