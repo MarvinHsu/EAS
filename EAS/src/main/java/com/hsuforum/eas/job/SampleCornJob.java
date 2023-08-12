@@ -30,7 +30,7 @@ public class SampleCornJob  extends QuartzJobBean {
     	//write job execute log
     	JobExecuteLog jobExecuteLog = new JobExecuteLog();
     	jobExecuteLog.setId(UUID.randomUUID().toString());
-    	jobExecuteLog.setJob(Job.SampleCornJob);
+    	jobExecuteLog.setJob(Job.SampleCornJob_EAS);
     	jobExecuteLog.setJobExecuteStatus(JobExecuteStatus.Success);
     	jobRunningLogJpaService.save(jobExecuteLog);
     }

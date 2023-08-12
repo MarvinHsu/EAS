@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2022/10/13 PM 06:02:42                       */
+/* Created on:     2023/8/11 PM 07:36:37                        */
 /*==============================================================*/
 
 
@@ -116,7 +116,7 @@ create table TB_FUNCTIONS (
    SEQUENCE             smallint             null,
    SHOWED               smallint             null default 1,
    constraint TBCL_FUNCTIONS_PK primary key nonclustered (ID),
-   constraint TBCL_FUNCTIONS_UK1 unique (NAME)
+   constraint TBCL_FUNCTIONS_UK1 unique (CODE)
 )
 go
 

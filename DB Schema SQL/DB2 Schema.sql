@@ -1,6 +1,6 @@
 --==============================================================
 -- DBMS name:      IBM DB2 UDB 9.7 Common Server
--- Created on:     2022/10/13 PM 06:10:02
+-- Created on:     2023/8/11 PM 07:35:55
 --==============================================================
 
 
@@ -54,7 +54,7 @@ create table TB_FUNCTIONS
    SEQUENCE             SMALLINT,
    SHOWED               SMALLINT               default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
-   constraint TBCL_FUNCTIONS_UK1 unique ("NAME")
+   constraint TBCL_FUNCTIONS_UK1 unique (CODE)
 );
 
 comment on table TB_FUNCTIONS is

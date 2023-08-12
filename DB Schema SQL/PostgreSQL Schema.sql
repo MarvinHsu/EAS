@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     2022/10/13 下午 06:00:55                       */
+/* Created on:     2023/8/11 PM 07:35:04                        */
 /*==============================================================*/
 
 
@@ -32,7 +32,7 @@ create table TB_FUNCTIONS (
    SEQUENCE             INT2                 null,
    SHOWED               INT2                 null default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
-   constraint TBCL_FUNCTIONS_UK1 unique (NAME)
+   constraint TBCL_FUNCTIONS_UK1 unique (CODE)
 );
 
 comment on table TB_FUNCTIONS is

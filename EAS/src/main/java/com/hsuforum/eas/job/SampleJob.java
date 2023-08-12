@@ -33,7 +33,7 @@ public class SampleJob extends QuartzJobBean {
     	//write job execute log
     	JobExecuteLog jobExecuteLog = new JobExecuteLog();
     	jobExecuteLog.setId(UUID.randomUUID().toString());
-    	jobExecuteLog.setJob(Job.SampleJob);
+    	jobExecuteLog.setJob(Job.SampleJob_EAS);
     	jobExecuteLog.setJobExecuteStatus(JobExecuteStatus.Success);
     	jobRunningLogJpaService.save(jobExecuteLog);
     }
