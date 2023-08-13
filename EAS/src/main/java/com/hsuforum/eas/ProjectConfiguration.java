@@ -57,9 +57,11 @@ public class ProjectConfiguration {
 	DefaultSetting defaultSetting() {
 		return new DefaultSetting();
 	}
+	@Bean
 	ExceptionHandler exceptionHandler() {
 		return new ExceptionHandler();
 	}
+	@Bean
 	ServiceLocator serviceLocator() {
 		return new ServiceLocator();
 	}
