@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages={"com.hsuforum.eas","com.hsuforum.eass"})
 @SpringBootApplication
-
 public class ProjectApplication  extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

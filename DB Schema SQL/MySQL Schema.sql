@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2023/8/11 PM 07:38:21                        */
+/* Created on:     2023/8/15 PM 05:58:45                        */
 /*==============================================================*/
 
 
@@ -94,7 +94,8 @@ create table TB_FUNCTIONS_ITEMS
    NAME                 varchar(50) not null  comment 'Name',
    CODE                 varchar(20) not null  comment 'Code',
    URL                  varchar(200)  comment 'URL',
-   primary key (ID)
+   primary key (ID),
+   key TB_FUNCTIONS_ITEMS_UK1 (TB_FUNCTIONS_ID, CODE)
 );
 
 alter table TB_FUNCTIONS_ITEMS comment 'Function item table';
@@ -111,7 +112,7 @@ create table TB_GROUPS
    CREATE_DATE          datetime not null default CURRENT_TIMESTAMP  comment 'System crate data time',
    UPDATE_DATE          datetime  comment 'System update data time',
    primary key (ID),
-   key TBCL_GROUPS_UK1 (NAME)
+   key TBCL_GROUPS_UK1 (CODE)
 );
 
 alter table TB_GROUPS comment 'Group table';
@@ -141,7 +142,8 @@ create table TB_MODULES
    CODE                 varchar(20) not null  comment 'Code',
    SEQUENCE             smallint  comment 'Sort sequence',
    SHOWED               smallint default 1  comment 'Show in menu',
-   primary key (ID)
+   primary key (ID),
+   key TB_MODULES_UK1 (CODE)
 );
 
 alter table TB_MODULES comment 'Module table';
