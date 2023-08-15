@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 12c                           */
-/* Created on:     2023/8/11 PM 07:37:30                        */
+/* Created on:     2023/8/15 ¤U¤È 05:58:02                        */
 /*==============================================================*/
 
 
@@ -95,7 +95,8 @@ create table TB_FUNCTIONS_ITEMS (
    NAME                 NVARCHAR2(50)         not null,
    CODE                 VARCHAR2(20)          not null,
    URL                  VARCHAR2(200),
-   constraint TBCL_FUNCTIONS_ITEMS_PK primary key (ID)
+   constraint TBCL_FUNCTIONS_ITEMS_PK primary key (ID),
+   constraint TB_FUNCTIONS_ITEMS_UK1 unique (TB_FUNCTIONS_ID, CODE)
 );
 
 comment on table TB_FUNCTIONS_ITEMS is
@@ -127,7 +128,7 @@ create table TB_GROUPS (
    CREATE_DATE          DATE                 default SYSDATE  not null,
    UPDATE_DATE          DATE,
    constraint TBCL_GROUPS_PK primary key (ID),
-   constraint TBCL_GROUPS_UK1 unique (NAME)
+   constraint TBCL_GROUPS_UK1 unique (CODE)
 );
 
 comment on table TB_GROUPS is
@@ -187,7 +188,8 @@ create table TB_MODULES (
    CODE                 VARCHAR2(20)          not null,
    SEQUENCE             SMALLINT,
    SHOWED               SMALLINT             default 1,
-   constraint TB_MODULES_PK primary key (ID)
+   constraint TB_MODULES_PK primary key (ID),
+   constraint TB_MODULES_UK1 unique (CODE)
 );
 
 comment on table TB_MODULES is

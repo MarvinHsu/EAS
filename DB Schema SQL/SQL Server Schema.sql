@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     2023/8/11 PM 07:36:37                        */
+/* Created on:     2023/8/15 PM 05:54:40                        */
 /*==============================================================*/
 
 
@@ -317,7 +317,8 @@ create table TB_FUNCTIONS_ITEMS (
    NAME                 nvarchar(50)         not null,
    CODE                 varchar(20)          not null,
    URL                  varchar(200)         null,
-   constraint TBCL_FUNCTIONS_ITEMS_PK primary key nonclustered (ID)
+   constraint TBCL_FUNCTIONS_ITEMS_PK primary key nonclustered (ID),
+   constraint TB_FUNCTIONS_ITEMS_UK1 unique (TB_FUNCTIONS_ID, CODE)
 )
 go
 
@@ -444,7 +445,7 @@ create table TB_GROUPS (
    CREATE_DATE          datetime             not null default getdate(),
    UPDATE_DATE          datetime             null,
    constraint TBCL_GROUPS_PK primary key nonclustered (ID),
-   constraint TBCL_GROUPS_UK1 unique (NAME)
+   constraint TBCL_GROUPS_UK1 unique (CODE)
 )
 go
 
@@ -694,7 +695,8 @@ create table TB_MODULES (
    CODE                 varchar(20)          not null,
    SEQUENCE             smallint             null,
    SHOWED               smallint             null default 1,
-   constraint TB_MODULES_PK primary key nonclustered (ID)
+   constraint TB_MODULES_PK primary key nonclustered (ID),
+   constraint TB_MODULES_UK1 unique (CODE)
 )
 go
 

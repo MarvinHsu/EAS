@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     2023/8/11 PM 07:35:04                        */
+/* Created on:     2023/8/15 ¤U¤È 06:00:37                        */
 /*==============================================================*/
 
 
@@ -32,7 +32,7 @@ create table TB_FUNCTIONS (
    SEQUENCE             INT2                 null,
    SHOWED               INT2                 null default 1,
    constraint TBCL_FUNCTIONS_PK primary key (ID),
-   constraint TBCL_FUNCTIONS_UK1 unique (CODE)
+   constraint TBCL_FUNCTIONS_UK1 unique (TB_MODULES_ID, CODE)
 );
 
 comment on table TB_FUNCTIONS is
@@ -74,7 +74,8 @@ create table TB_FUNCTIONS_ITEMS (
    NAME                 VARCHAR(50)          not null,
    CODE                 VARCHAR(20)          not null,
    URL                  VARCHAR(200)         null,
-   constraint TBCL_FUNCTIONS_ITEMS_PK primary key (ID)
+   constraint TBCL_FUNCTIONS_ITEMS_PK primary key (ID),
+   constraint TB_FUNCTIONS_ITEMS_UK1 unique (TB_FUNCTIONS_ID, CODE)
 );
 
 comment on table TB_FUNCTIONS_ITEMS is
@@ -106,7 +107,7 @@ create table TB_GROUPS (
    CREATE_DATE          DATE                 not null default current_date,
    UPDATE_DATE          DATE                 null,
    constraint TBCL_GROUPS_PK primary key (ID),
-   constraint TBCL_GROUPS_UK1 unique (NAME)
+   constraint TBCL_GROUPS_UK1 unique (CODE)
 );
 
 comment on table TB_GROUPS is
@@ -166,7 +167,8 @@ create table TB_MODULES (
    CODE                 VARCHAR(20)          not null,
    SEQUENCE             INT2                 null,
    SHOWED               INT2                 null default 1,
-   constraint TB_MODULES_PK primary key (ID)
+   constraint TB_MODULES_PK primary key (ID),
+   constraint TB_MODULES_UK1 unique (CODE)
 );
 
 comment on table TB_MODULES is
