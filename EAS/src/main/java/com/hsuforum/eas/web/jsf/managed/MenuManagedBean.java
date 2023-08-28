@@ -16,7 +16,7 @@ import org.primefaces.event.TabChangeEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.hsuforum.eas.DefaultSetting;
 import com.hsuforum.eas.entity.primary.Function;
@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  * Navigation menu managed bean
  */
 @Component
-@RequestScope
+@SessionScope
 @Slf4j
 public class MenuManagedBean implements Serializable {
 
