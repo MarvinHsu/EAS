@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<joinfaces.version>5.4.5</joinfaces.version>
 		<hsucommon.version>4.4.0</hsucommon.version>
-		<easscore.version>3.3.1</easscore.version>
+		<easscore.version>3.4.0</easscore.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EAS</appRoot>
 		<spring.profiles.active>tomcat-mysql</spring.profiles.active>
