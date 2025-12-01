@@ -4,19 +4,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EAS</groupId>
 	<artifactId>EAS</artifactId>
-	<version>3.4.1</version>
+	<version>4.0.0</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.6</version>
+		<version>4.0.0</version>
 		<relativePath />
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<joinfaces.version>5.5.6</joinfaces.version>
-		<hsucommon.version>4.4.1</hsucommon.version>
-		<easscore.version>3.4.1</easscore.version>
+		<joinfaces.version>6.0.0</joinfaces.version>
+		<hsucommon.version>5.0.0</hsucommon.version>
+		<easscore.version>4.0.0</easscore.version>
 		<java.version>17</java.version>
 		<appRoot>/Application/EAS</appRoot>
 		<spring.profiles.active>tomcat-mysql</spring.profiles.active>
@@ -45,42 +45,18 @@
 		<dependency>
 			<groupId>org.joinfaces</groupId>
 			<artifactId>primefaces-spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-quartz</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -89,10 +65,6 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -120,6 +92,10 @@
 			<artifactId>spring-security-ldap</artifactId>
 		</dependency>
 		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-access</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
@@ -131,12 +107,14 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjtools</artifactId>
-		</dependency>		
+		</dependency>
+		<!--		
 		<dependency>
 			<groupId>net.bull.javamelody</groupId>
 			<artifactId>javamelody-spring-boot-starter</artifactId>
 			<version>2.0.1</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
