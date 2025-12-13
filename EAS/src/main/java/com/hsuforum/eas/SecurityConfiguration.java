@@ -57,7 +57,6 @@ public class SecurityConfiguration {
 					.requestMatchers("/default.jsf").permitAll()
 					.requestMatchers("/favicon.ico").permitAll()
 					.requestMatchers("/error").permitAll()
-					.requestMatchers("/login.jsf").permitAll()
 					.requestMatchers("/exception/exception.jsf").permitAll()
 					.requestMatchers("/").permitAll()
 					.anyRequest()
