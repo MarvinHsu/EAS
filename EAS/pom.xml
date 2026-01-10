@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hsuforum.EAS</groupId>
 	<artifactId>EAS</artifactId>
-	<version>4.0.1</version>
+	<version>4.0.2</version>
 	<packaging>jar</packaging>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -281,17 +281,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>default-compile</id>
-						<configuration>
-							<compilerArgs>
-								<arg>-d</arg>
-								<arg>${project.build.directory}/classes</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -318,17 +315,21 @@
 					<forceAjcCompile>true</forceAjcCompile>
 					<complianceLevel>${java.version}</complianceLevel>
 					<sources />
+					<testSources/>
 					<weaveDirectories>
 						<weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+						<weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>
 					</weaveDirectories>
 				</configuration>
 				<executions>
 					<execution>
 						<goals>
-							<goal>compile</goal>						
+							<goal>compile</goal>
+							<goal>test-compile</goal>
 						</goals>
 					</execution>
 				</executions>
+
 				<dependencies>
 					<dependency>
 						<groupId>org.aspectj</groupId>
@@ -339,6 +340,11 @@
 						<groupId>org.aspectj</groupId>
 						<artifactId>aspectjweaver</artifactId>
 						<version>1.9.25.1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+						<version>1.18.42</version>
 					</dependency>
 				</dependencies>
 			</plugin>
