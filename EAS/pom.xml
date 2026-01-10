@@ -329,7 +329,6 @@
 						</goals>
 					</execution>
 				</executions>
-
 				<dependencies>
 					<dependency>
 						<groupId>org.aspectj</groupId>
