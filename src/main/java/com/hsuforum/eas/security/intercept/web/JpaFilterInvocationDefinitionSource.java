@@ -1,0 +1,111 @@
+package com.hsuforum.eas.security.intercept.web;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.access.vote.AuthenticatedVoter;
+import org.springframework.security.web.FilterInvocation;
+import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+
+import com.hsuforum.eas.entity.primary.FunctionItem;
+import com.hsuforum.eas.entity.primary.Group;
+import com.hsuforum.eas.entity.primary.GroupFunction;
+import com.hsuforum.eas.service.GroupFunctionService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * Filter invocation definition source
+ * @author Marvin
+ *
+ */
+@Slf4j
+public class JpaFilterInvocationDefinitionSource implements FilterInvocationSecurityMetadataSource {
+
+
+
+	private final Map<RequestMatcher, Collection<ConfigAttribute>> requestMap;
+
+	public JpaFilterInvocationDefinitionSource(GroupFunctionService groupFunctionService) {
+		super();
+		requestMap = new LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>>();
+		List<GroupFunction> groupFunctions = groupFunctionService.findAllFetchRelation();
+
+		for (GroupFunction groupFunction : groupFunctions) {
+			List<ConfigAttribute> configAttributes = new ArrayList<ConfigAttribute>();
+			Group group = groupFunction.getGroup();
+
+			configAttributes.add(new SecurityConfig(group.getAuthority()));
+
+			Collection<ConfigAttribute> definition = new ArrayList<ConfigAttribute>(configAttributes);
+
+			FunctionItem funtionItem = groupFunction.getFunctionItem();
+
+			RequestMatcher requestMatcher = PathPatternRequestMatcher.withDefaults().matcher(funtionItem.getUrl());
+			requestMap.put(requestMatcher, definition);
+
+			if (log.isDebugEnabled()) {
+				Iterator iter = definition.iterator();
+
+				StringBuffer sb = new StringBuffer();
+				while (iter.hasNext()) {
+					ConfigAttribute attr = (ConfigAttribute) iter.next();
+					sb.append(attr.getAttribute());
+					sb.append(", ");
+				}
+				log.debug("url = " + funtionItem.getUrl() + ", roles = " + sb.toString());
+			}
+
+		}
+
+		// add definition source /login.jsf=IS_AUTHENTICATED_ANONYMOUSLY
+		ArrayList<ConfigAttribute> ava = new ArrayList<ConfigAttribute>();
+		ava.add(new SecurityConfig(AuthenticatedVoter.IS_AUTHENTICATED_ANONYMOUSLY));
+		requestMap.put(PathPatternRequestMatcher.withDefaults().matcher("/login.jsf"), ava);
+		// add definition source /**=IS_AUTHENTICATED_FULLY
+		ArrayList<ConfigAttribute> aaf = new ArrayList<ConfigAttribute>();
+		ava.add(new SecurityConfig(AuthenticatedVoter.IS_AUTHENTICATED_FULLY));
+		requestMap.put(PathPatternRequestMatcher.withDefaults().matcher("/**/*.jsf"), aaf);
+
+	}
+
+	public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
+		final HttpServletRequest request = ((FilterInvocation) object).getRequest();
+		for (Map.Entry<RequestMatcher, Collection<ConfigAttribute>> entry : requestMap.entrySet()) {
+			if (entry.getKey().matches(request)) {
+				return entry.getValue();
+			}
+		}
+		return null;
+	}
+
+	public Collection<ConfigAttribute> getConfigAttributeDefinitions() {
+		return this.getAllConfigAttributes();
+	}
+
+	public Collection<ConfigAttribute> getAllConfigAttributes() {
+		Set<ConfigAttribute> allAttributes = new HashSet<ConfigAttribute>();
+
+		for (Map.Entry<RequestMatcher, Collection<ConfigAttribute>> entry : requestMap.entrySet()) {
+			allAttributes.addAll(entry.getValue());
+		}
+
+		return allAttributes;
+	}
+
+	public boolean supports(Class<?> clazz) {
+		return FilterInvocation.class.isAssignableFrom(clazz);
+	}
+
+}
