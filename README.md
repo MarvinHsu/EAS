@@ -9,7 +9,6 @@ Enterprise Application Stack(EAS) is a Java 21 Spring Boot 4 web application bui
 - Spring Data JPA persistence
 - Spring Security
 - Quartz scheduling
-- JavaMelody monitoring
 - OSS security tooling and OWASP ESAPI configuration
 
 ## Repository Structure
