@@ -34,7 +34,7 @@ mvn -DskipTests package
 
 - `tomcat-db2` (JAR)
 - `tomcat-mysql` (JAR)
-- `tomcat-oeacle` (JAR)
+- `tomcat-oracle` (JAR)
 - `tomcat-postgresql` (JAR)
 - `tomcat-sqlserver` (JAR)
 
@@ -43,7 +43,7 @@ Activate a profile with `-P{profile}`.
 ## Important Notes
 
 - Unit tests are skipped by default in `pom.xml` via `maven-surefire-plugin`; run `mvn test` explicitly for tests.
-- Localization resources are authored under `src/main/native2ascii` and converted during build.
+- Update localization source files in [src/main/native2ascii](../src/main/native2ascii) when changing user-facing text; the build will convert them into generated resources under [src/main/resources](../src/main/resources).
 - Avoid editing generated files under `target/`.
 
 ## Security & Configuration
@@ -57,4 +57,4 @@ This repository currently does not include feature planning artifacts like `spec
 
 ## Contact
 
-For contribution or support, refer to internal HSUForum team practices and the `.github/copilot-instructions.md` guidance.
+For contribution or support, refer to internal EAS team practices and the `.github/copilot-instructions.md` guidance.
