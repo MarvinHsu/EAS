@@ -1,5 +1,5 @@
 # EAS
-Enterprise Application Stack(EAS) is a Java 21 Spring Boot 4 web application built with JSF/PrimeFaces via JoinFaces. It is packaged as a JAR and uses Maven for build and dependency management. Default user and password is admin/abcd1234
+Enterprise Application Stack(EAS) is a Java 21 Spring Boot 4 web application built with JSF/PrimeFaces via JoinFaces. It is packaged as a JAR and uses Maven for build and dependency management. The product introduction link is [https://www.hsuforum.com/default.jsf?tabParam=easTab](https://www.hsuforum.com/default.jsf?tabParam=easTab "Go to The product introduction"). Default user and password is admin/abcd1234
 
 ## Key Features
 
